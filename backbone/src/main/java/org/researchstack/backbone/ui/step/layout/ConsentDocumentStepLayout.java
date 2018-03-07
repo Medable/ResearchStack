@@ -1,12 +1,18 @@
 package org.researchstack.backbone.ui.step.layout;
 
+import android.app.Activity;
 import android.content.Context;
-import android.support.v7.app.AlertDialog;
+import android.support.annotation.NonNull;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.LinearLayout;
+
+import com.afollestad.materialdialogs.DialogAction;
+import com.afollestad.materialdialogs.MaterialDialog;
+import com.afollestad.materialdialogs.Theme;
 
 import org.researchstack.backbone.R;
 import org.researchstack.backbone.result.StepResult;
@@ -78,11 +84,50 @@ public class ConsentDocumentStepLayout extends LinearLayout implements StepLayou
         LayoutInflater.from(getContext()).inflate(R.layout.rsb_step_layout_consent_doc, this, true);
 
         WebView pdfView = (WebView) findViewById(R.id.webview);
+
+        pdfView.setWebViewClient(new WebViewClient()
+        {
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                return false;
+            }
+
+            @Override
+            public void onPageFinished(WebView view, String url)
+            {
+                final SubmitBar submitBar = (SubmitBar) findViewById(R.id.submit_bar);
+                submitBar.setPositiveTitleColor(step.getColorSecondary());
+                submitBar.setPositiveAction(new OnClickListener()
+                {
+                    @Override
+                    public void onClick(View view)
+                    {
+                        showDialog(new MaterialDialog.SingleButtonCallback()
+                        {
+                            @Override
+                            public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which)
+                            {
+                                stepResult.setResult(true);
+                                callbacks.onSaveStep(StepCallbacks.ACTION_NEXT, step, stepResult);
+                                submitBar.clearActions();
+                            }
+                        });
+                    }
+                });
+                submitBar.setNegativeTitleColor(step.getPrimaryColor());
+                submitBar.setNegativeAction(new OnClickListener()
+                {
+                    @Override
+                    public void onClick(View view)
+                    {
+                        disagreeConsent();
+                    }
+                });
+            }
+        });
+
         pdfView.loadData(htmlContent, "text/html; charset=UTF-8", null);
 
-        SubmitBar submitBar = (SubmitBar) findViewById(R.id.submit_bar);
-        submitBar.setPositiveAction(v -> showDialog());
-        submitBar.setNegativeAction(v -> disagreeConsent());
     }
 
     private void disagreeConsent() {
@@ -90,17 +135,17 @@ public class ConsentDocumentStepLayout extends LinearLayout implements StepLayou
         callbacks.onSaveStep(StepCallbacks.ACTION_END, step, stepResult);
     }
 
-    private void showDialog() {
-        new AlertDialog.Builder(getContext()).setTitle(R.string.rsb_consent_review_alert_title)
-                .setMessage(confirmationDialogBody)
-                .setCancelable(false)
-                .setPositiveButton(R.string.rsb_agree, (dialog, which) -> {
-                    stepResult.setResult(true);
-                    callbacks.onSaveStep(StepCallbacks.ACTION_NEXT, step, stepResult);
-                })
-                .setNegativeButton(R.string.rsb_consent_review_cancel, (dialog, which) -> {
-                    // Gives them a chance to read it again
-                })
+    private void showDialog(MaterialDialog.SingleButtonCallback positiveAction) {
+        new MaterialDialog.Builder(getContext())
+                .title(R.string.rsb_consent_review_alert_title)
+                .content(confirmationDialogBody)
+                .theme(Theme.LIGHT)
+                .cancelable(false)
+                .positiveColor(step.getColorSecondary())
+                .negativeColor(step.getPrimaryColor())
+                .negativeText(R.string.rsb_consent_review_cancel)
+                .positiveText(R.string.rsb_agree)
+                .onPositive(positiveAction)
                 .show();
     }
 }

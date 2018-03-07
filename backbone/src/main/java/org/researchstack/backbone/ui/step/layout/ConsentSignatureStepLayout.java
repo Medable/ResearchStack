@@ -2,6 +2,7 @@ package org.researchstack.backbone.ui.step.layout;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
 import android.util.Base64;
 import android.view.LayoutInflater;
@@ -9,8 +10,6 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.jakewharton.rxbinding.view.RxView;
 
 import org.researchstack.backbone.R;
 import org.researchstack.backbone.result.StepResult;
@@ -75,16 +74,17 @@ public class ConsentSignatureStepLayout extends RelativeLayout implements StepLa
     }
 
     private void initializeStep() {
-        LayoutInflater.from(getContext())
-                .inflate(R.layout.rsb_step_layout_consent_signature, this, true);
+        LayoutInflater.from(getContext()).inflate(R.layout.rsb_step_layout_consent_signature, this, true);
 
         TextView title = (TextView) findViewById(R.id.title);
+        title.setTextColor(step.getPrincipalTextColor());
         title.setText(step.getTitle());
 
         TextView text = (TextView) findViewById(R.id.summary);
         text.setText(step.getText());
 
-        View clear = findViewById(R.id.layout_consent_review_signature_clear);
+        final AppCompatTextView clear = (AppCompatTextView) findViewById(R.id.layout_consent_review_signature_clear);
+        clear.setTextColor(step.getPrimaryColor());
 
         signatureView = (SignatureView) findViewById(R.id.layout_consent_review_signature);
         signatureView.setCallbacks(new SignatureCallbacks() {
@@ -101,8 +101,13 @@ public class ConsentSignatureStepLayout extends RelativeLayout implements StepLa
             }
         });
 
-        RxView.clicks(clear).subscribe(v -> {
-            signatureView.clearSignature();
+        clear.setOnClickListener(new OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                signatureView.clearSignature();
+            }
         });
 
         clear.setClickable(signatureView.isSignatureDrawn());
@@ -110,19 +115,28 @@ public class ConsentSignatureStepLayout extends RelativeLayout implements StepLa
         // view.setAlpha() is not working, this is kind of a hack around that
         clear.animate().alpha(signatureView.isSignatureDrawn() ? 1 : 0);
 
-        SubmitBar submitBar = (SubmitBar) findViewById(R.id.submit_bar);
+        final SubmitBar submitBar = (SubmitBar) findViewById(R.id.submit_bar);
         submitBar.getNegativeActionView().setVisibility(View.GONE);
-        submitBar.setPositiveAction(v -> {
-            if (signatureView.isSignatureDrawn()) {
-                setDataToResult();
-                callbacks.onSaveStep(StepCallbacks.ACTION_NEXT, step, result);
-            } else {
-                Toast.makeText(getContext(), R.string.rsb_error_invalid_signature, Toast.LENGTH_SHORT).show();
+        submitBar.setPositiveTitleColor(step.getColorSecondary());
+        submitBar.setPositiveTitle(R.string.rsb_done);
+        submitBar.setPositiveAction(new OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                if (signatureView.isSignatureDrawn()) {
+                    setDataToResult();
+                    callbacks.onSaveStep(StepCallbacks.ACTION_NEXT, step, result);
+                    submitBar.clearActions();
+                } else {
+                    Toast.makeText(getContext(), R.string.rsb_error_invalid_signature, Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
 
     private void setDataToResult() {
+
         String format = ((ConsentSignatureStep) step).getSignatureDateFormat();
         DateFormat signatureDateFormat = !TextUtils.isEmpty(format)
                 ? new SimpleDateFormat(format)
@@ -145,5 +159,4 @@ public class ConsentSignatureStepLayout extends RelativeLayout implements StepLa
             return null;
         }
     }
-
 }

@@ -2,43 +2,92 @@ package org.researchstack.backbone.ui;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
+
+import com.afollestad.materialdialogs.DialogAction;
+import com.afollestad.materialdialogs.MaterialDialog;
+import com.afollestad.materialdialogs.Theme;
 
 import org.researchstack.backbone.R;
 import org.researchstack.backbone.result.StepResult;
 import org.researchstack.backbone.result.TaskResult;
+import org.researchstack.backbone.step.ConsentSignatureStep;
+import org.researchstack.backbone.step.FormStep;
+import org.researchstack.backbone.step.QuestionStep;
 import org.researchstack.backbone.step.Step;
 import org.researchstack.backbone.task.Task;
 import org.researchstack.backbone.ui.callbacks.StepCallbacks;
+import org.researchstack.backbone.ui.step.layout.ConsentVisualStepLayout;
 import org.researchstack.backbone.ui.step.layout.StepLayout;
+import org.researchstack.backbone.ui.step.layout.SurveyStepLayout;
 import org.researchstack.backbone.ui.views.StepSwitcher;
 
 import java.lang.reflect.Constructor;
 import java.util.Date;
 
-public class ViewTaskActivity extends PinCodeActivity implements StepCallbacks {
+public class ViewTaskActivity extends PinCodeActivity implements StepCallbacks
+{
     public static final String EXTRA_TASK = "ViewTaskActivity.ExtraTask";
     public static final String EXTRA_TASK_RESULT = "ViewTaskActivity.ExtraTaskResult";
     public static final String EXTRA_STEP = "ViewTaskActivity.ExtraStep";
+    public static final String EXTRA_COLOR_PRIMARY = "ViewTaskActivity.ExtraColorPrimary";
+    public static final String EXTRA_COLOR_PRIMARY_DARK = "ViewTaskActivity.ExtraColorPrimaryDark";
+    public static final String EXTRA_COLOR_SECONDARY = "ViewTaskActivity.ExtraColorSecondary";
+    public static final String EXTRA_PRINCIPAL_TEXT_COLOR = "ViewTaskActivity.ExtraPrincipalTextColor";
+    public static final String EXTRA_SECONDARY_TEXT_COLOR = "ViewTaskActivity.ExtraSecondaryTextColor";
+    public static final String EXTRA_ACTION_FAILED_COLOR = "ViewTaskActivity.ExtraActionFailedColor";
 
     private StepSwitcher root;
 
     private Step currentStep;
     private Task task;
     private TaskResult taskResult;
+    private int colorPrimary;
+    private int colorPrimaryDark;
+    private int colorSecondary;
+    private int principalTextColor;
+    private int secondaryTextColor;
+    private int actionFailedColor;
+    private ActionBar actionBar;
 
     public static Intent newIntent(Context context, Task task) {
         Intent intent = new Intent(context, ViewTaskActivity.class);
         intent.putExtra(EXTRA_TASK, task);
         return intent;
+    }
+
+    public static void themeIntent(Intent intent,
+                                        int colorPrimary,
+                                        int colorPrimaryDark,
+                                        int colorSecondary,
+                                        int principalTextColor,
+                                        int secondaryTextColor,
+                                        int actionFailedColor)
+    {
+        intent.putExtra(EXTRA_COLOR_PRIMARY, colorPrimary);
+        intent.putExtra(EXTRA_COLOR_PRIMARY_DARK, colorPrimaryDark);
+        intent.putExtra(EXTRA_COLOR_SECONDARY, colorSecondary);
+        intent.putExtra(EXTRA_PRINCIPAL_TEXT_COLOR, principalTextColor);
+        intent.putExtra(EXTRA_SECONDARY_TEXT_COLOR, secondaryTextColor);
+        intent.putExtra(EXTRA_ACTION_FAILED_COLOR, actionFailedColor);
     }
 
     @Override
@@ -48,13 +97,29 @@ public class ViewTaskActivity extends PinCodeActivity implements StepCallbacks {
         super.setContentView(R.layout.rsb_activity_step_switcher);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        try
+        {
+            setSupportActionBar(toolbar);
+        } catch (Exception e)
+        {
+            //there is already an action bar
+            toolbar.setVisibility(View.GONE);
+        }
+
+        actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(false);
 
         root = (StepSwitcher) findViewById(R.id.container);
 
         if (savedInstanceState == null) {
             task = (Task) getIntent().getSerializableExtra(EXTRA_TASK);
+            colorPrimary = getIntent().getIntExtra(EXTRA_COLOR_PRIMARY, R.color.rsb_colorPrimary);
+            colorPrimaryDark = getIntent().getIntExtra(EXTRA_COLOR_PRIMARY_DARK, R.color.rsb_colorPrimaryDark);
+            colorSecondary = getIntent().getIntExtra(EXTRA_COLOR_SECONDARY, R.color.rsb_colorAccent);
+            principalTextColor = getIntent().getIntExtra(EXTRA_PRINCIPAL_TEXT_COLOR, R.color.rsb_cell_header_grey);
+            secondaryTextColor = getIntent().getIntExtra(EXTRA_SECONDARY_TEXT_COLOR, R.color.rsb_item_text_grey);
+            actionFailedColor = getIntent().getIntExtra(EXTRA_ACTION_FAILED_COLOR, R.color.rsb_error);
             taskResult = new TaskResult(task.getIdentifier());
             taskResult.setStartDate(new Date());
         } else {
@@ -77,6 +142,11 @@ public class ViewTaskActivity extends PinCodeActivity implements StepCallbacks {
         return currentStep;
     }
 
+    protected String getCurrentTaskId()
+    {
+        return task.getIdentifier();
+    }
+
     protected void showNextStep() {
         Step nextStep = task.getStepAfterStep(currentStep, taskResult);
         if (nextStep == null) {
@@ -96,8 +166,7 @@ public class ViewTaskActivity extends PinCodeActivity implements StepCallbacks {
     }
 
     private void showStep(Step step) {
-        int currentStepPosition = task.getProgressOfCurrentStep(currentStep, taskResult)
-                .getCurrent();
+        int currentStepPosition = task.getProgressOfCurrentStep(currentStep, taskResult).getCurrent();
         int newStepPosition = task.getProgressOfCurrentStep(step, taskResult).getCurrent();
 
         StepLayout stepLayout = getLayoutForStep(step);
@@ -106,6 +175,11 @@ public class ViewTaskActivity extends PinCodeActivity implements StepCallbacks {
                 newStepPosition >= currentStepPosition
                         ? StepSwitcher.SHIFT_LEFT
                         : StepSwitcher.SHIFT_RIGHT);
+        if (newStepPosition == 0) {
+            actionBar.setDisplayHomeAsUpEnabled(false);
+        } else {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
         currentStep = step;
     }
 
@@ -113,13 +187,31 @@ public class ViewTaskActivity extends PinCodeActivity implements StepCallbacks {
         // Change the title on the activity
         String title = task.getTitleForStep(this, step);
         setActionBarTitle(title);
+        step.setStepTheme(colorPrimary, colorPrimaryDark, colorSecondary, principalTextColor, secondaryTextColor, actionFailedColor);
+        setActivityTheme(colorPrimary, colorPrimaryDark);
 
         // Get result from the TaskResult, can be null
         StepResult result = taskResult.getStepResult(step.getIdentifier());
 
+        if(step instanceof FormStep)
+        {
+            for(QuestionStep questionStep : ((FormStep) step).getFormSteps())
+            {
+                questionStep.setStepTheme(step.getPrimaryColor(), step.getColorPrimaryDark(), step.getColorSecondary(),
+                        step.getPrincipalTextColor(), step.getSecondaryTextColor(), step.getActionFailedColor());
+            }
+        }
+
         // Return the Class & constructor
         StepLayout stepLayout = createLayoutFromStep(step);
-        stepLayout.initialize(step, result);
+        if (stepLayout instanceof SurveyStepLayout) {
+            ((SurveyStepLayout) stepLayout).initialize(step, result, colorPrimary, colorSecondary, principalTextColor, secondaryTextColor);
+        } else if (stepLayout instanceof ConsentVisualStepLayout) {
+            ((ConsentVisualStepLayout) stepLayout).initialize(step, result, colorPrimary, colorSecondary, principalTextColor, secondaryTextColor);
+        } else {
+            stepLayout.initialize(step, result);
+        }
+
         stepLayout.setCallbacks(this);
 
         return stepLayout;
@@ -136,7 +228,7 @@ public class ViewTaskActivity extends PinCodeActivity implements StepCallbacks {
         }
     }
 
-    private void saveAndFinish() {
+    protected void saveAndFinish() {
         taskResult.setEndDate(new Date());
         Intent resultIntent = new Intent();
         resultIntent.putExtra(EXTRA_TASK_RESULT, taskResult);
@@ -165,10 +257,35 @@ public class ViewTaskActivity extends PinCodeActivity implements StepCallbacks {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.rsb_activity_view_task_menu, menu);
+        return true;
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
             notifyStepOfBackPress();
             return true;
+        } else if (item.getItemId() == R.id.rsb_action_cancel) {
+            new MaterialDialog.Builder(this)
+                    .title(R.string.rsb_task_cancel_title)
+                    .content(R.string.rsb_task_cancel_text)
+                    .theme(Theme.LIGHT)
+                    .positiveColor(colorPrimary)
+                    .negativeColor(colorPrimary)
+                    .negativeText(R.string.rsb_cancel)
+                    .positiveText(R.string.rsb_task_cancel_positive)
+                    .onPositive(new MaterialDialog.SingleButtonCallback()
+                    {
+                        @Override
+                        public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which)
+                        {
+                            finish();
+                        }
+                    })
+                    .show();
         }
 
         return super.onOptionsItemSelected(item);
@@ -247,7 +364,14 @@ public class ViewTaskActivity extends PinCodeActivity implements StepCallbacks {
         AlertDialog alertDialog = new AlertDialog.Builder(this).setTitle(
                 "Are you sure you want to exit?")
                 .setMessage(R.string.lorem_medium)
-                .setPositiveButton("End Task", (dialog, which) -> finish())
+                .setPositiveButton("End Task", new DialogInterface.OnClickListener()
+                {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i)
+                    {
+                        finish();
+                    }
+                })
                 .setNegativeButton("Cancel", null)
                 .create();
         alertDialog.show();
@@ -264,5 +388,29 @@ public class ViewTaskActivity extends PinCodeActivity implements StepCallbacks {
         if (actionBar != null) {
             actionBar.setTitle(title);
         }
+    }
+
+    private void setActivityTheme(final int primaryColor, final int primaryColorDark) {
+        runOnUiThread(new Runnable()
+        {
+            @Override
+            public void run()
+            {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    Window window = getWindow();
+
+                    if (primaryColorDark == Color.BLACK && window.getNavigationBarColor() == Color.BLACK) {
+                        window.clearFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+                    } else {
+                        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+                    }
+                    window.setStatusBarColor(primaryColorDark);
+                }
+                ActionBar actionBar = getSupportActionBar();
+                if (actionBar != null) {
+                    actionBar.setBackgroundDrawable(new ColorDrawable(primaryColor));
+                }
+            }
+        });
     }
 }
