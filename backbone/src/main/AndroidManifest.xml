@@ -2,8 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
  package="org.researchstack.backbone">
     <application>
-        <activity android:name="org.researchstack.backbone.ui.ViewTaskActivity"/>
-        <activity android:name="org.researchstack.backbone.ui.ViewWebDocumentActivity"/>
-        <activity android:name="org.researchstack.backbone.ui.ConsentViewTaskActivity"/>
+        <activity android:name="org.researchstack.backbone.ui.ViewTaskActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name="org.researchstack.backbone.ui.ViewWebDocumentActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name="org.researchstack.backbone.ui.ConsentViewTaskActivity"
+            android:screenOrientation="portrait" />
     </application>
 </manifest>
