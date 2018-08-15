@@ -2,6 +2,11 @@
 
 ### Change log
 
+#### v1.0.11
+
+- Add translations for Spanish language
+- The old signature for getConsentPersonalInfoFormStep is deprecated. The new method signature receives context as a parameter.
+
 #### v1.0.10
 
 - Bug fixes & improvements
