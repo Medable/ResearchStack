@@ -10,13 +10,11 @@ import android.support.v7.widget.CardView;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.PieData;
-import com.jakewharton.rxbinding.view.RxView;
 
 import org.researchstack.backbone.R;
 import org.researchstack.backbone.ui.views.IconTabLayout;
@@ -24,16 +22,10 @@ import org.researchstack.backbone.ui.views.IconTabLayout;
 import java.text.NumberFormat;
 import java.util.List;
 
-import rx.Subscription;
-import rx.functions.Action1;
-
 public class ProgressChartCard extends CardView {
     private PieChart chart;
     private TabLayout tabLayout;
     private TextView titleTextView;
-    private TextView finishView;
-    private Subscription finishSub;
-
     private String titleText;
     private int titleTextColor;
     private float titleTextSize;
@@ -105,7 +97,7 @@ public class ProgressChartCard extends CardView {
         titleTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, titleTextSize);
         titleTextView.setTypeface(Typeface.create(titleTextTypeface, Typeface.NORMAL));
 
-        finishView = (TextView) findViewById(R.id.view_chart_progress_finish);
+        TextView finishView = (TextView) findViewById(R.id.view_chart_progress_finish);
         finishView.setText(finishText);
         finishView.setTextColor(finishTextColor);
 
@@ -134,19 +126,7 @@ public class ProgressChartCard extends CardView {
         titleTextView.setText(title);
     }
 
-    public void setFinishAction(Action1<Object> action) {
-        finishView.setVisibility(action == null ? View.GONE : View.VISIBLE);
-
-        if (finishSub != null) {
-            finishSub.unsubscribe();
-        }
-
-        if (action != null) {
-            finishSub = RxView.clicks(finishView).subscribe(action);
-        }
-    }
-
-    public void setData(List<PieData> dataSet) {
+    public void setData(final List<PieData> dataSet) {
         tabLayout.removeAllTabs();
 
         for (int i = 0, size = dataSet.size(); i < size; i++) {
@@ -157,12 +137,15 @@ public class ProgressChartCard extends CardView {
             tabLayout.addTab(newTab, 0);
 
             if (i == size - 1) {
-                post(() -> {
-                    int lastIndex = tabLayout.getTabCount() - 1;
-                    int right = ((ViewGroup) tabLayout.getChildAt(0)).getChildAt(lastIndex)
-                            .getRight();
-                    tabLayout.scrollTo(right, 0);
-                    tabLayout.getTabAt(lastIndex).select();
+                post(new Runnable() {
+                    @Override
+                    public void run() {
+                        int lastIndex = tabLayout.getTabCount() - 1;
+                        int right = ((ViewGroup) tabLayout.getChildAt(0)).getChildAt(lastIndex)
+                                .getRight();
+                        tabLayout.scrollTo(right, 0);
+                        tabLayout.getTabAt(lastIndex).select();
+                    }
                 });
             }
         }

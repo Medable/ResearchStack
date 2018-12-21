@@ -10,7 +10,6 @@ import android.support.v7.widget.CardView;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,19 +17,12 @@ import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.LineData;
-import com.jakewharton.rxbinding.view.RxView;
 
 import org.researchstack.backbone.R;
 
-import rx.Subscription;
-import rx.functions.Action1;
-
 public class LineChartCard extends CardView {
     private TextView titleTextView;
-    private ImageView expand;
-    private Subscription expandSub;
     private LineChart chart;
-
     private String titleText;
     private int titleTextColor;
     private float titleTextSize;
@@ -93,7 +85,7 @@ public class LineChartCard extends CardView {
         titleTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, titleTextSize);
         titleTextView.setTypeface(Typeface.create(titleTextTypeface, Typeface.NORMAL));
 
-        expand = (ImageView) findViewById(R.id.view_chart_line_expand);
+        ImageView expand = (ImageView) findViewById(R.id.view_chart_line_expand);
         if (expandTintColor != 0) {
             Drawable drawable = expand.getDrawable();
             drawable = DrawableCompat.wrap(drawable);
@@ -149,18 +141,6 @@ public class LineChartCard extends CardView {
 
     public void setTitle(String title) {
         titleTextView.setText(title);
-    }
-
-    public void setExpandAction(Action1<Object> action) {
-        expand.setVisibility(action == null ? View.GONE : View.VISIBLE);
-
-        if (expandSub != null) {
-            expandSub.unsubscribe();
-        }
-
-        if (action != null) {
-            expandSub = RxView.clicks(expand).subscribe(action);
-        }
     }
 
     public void setData(LineData data) {

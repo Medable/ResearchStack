@@ -1,14 +1,14 @@
 package org.researchstack.backbone.ui.step.body;
 
+import android.text.Editable;
 import android.text.InputFilter;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import com.jakewharton.rxbinding.widget.RxTextView;
 
 import org.researchstack.backbone.R;
 import org.researchstack.backbone.answerformat.TextAnswerFormat;
@@ -61,8 +61,19 @@ public class TextQuestionBody implements StepBody {
         }
 
         // Set result on text change
-        RxTextView.textChanges(editText).subscribe(text -> {
-            result.setResult(text.toString());
+        editText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                result.setResult(s.toString());
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
         });
 
         // Format EditText from TextAnswerFormat
