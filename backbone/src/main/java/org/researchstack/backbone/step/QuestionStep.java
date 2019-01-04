@@ -40,10 +40,10 @@ public class QuestionStep extends Step {
      *
      * @param identifier The identifier of the step (a step identifier should be unique within the
      *                   task).
-     * @param title      A localized string that represents the primary text of the question.
+     * @param question      A localized string that represents the primary text of the question.
      */
-    public QuestionStep(String identifier, String title) {
-        super(identifier, title);
+    public QuestionStep(String identifier, String question) {
+        super(identifier, question);
     }
 
     /**
