@@ -1,31 +1,25 @@
 package org.researchstack.backbone.ui.step.layout;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.annotation.StringRes;
-import android.text.Html;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import org.researchstack.backbone.R;
-import org.researchstack.backbone.ResourcePathManager;
 import org.researchstack.backbone.result.StepResult;
 import org.researchstack.backbone.step.QuestionStep;
 import org.researchstack.backbone.step.Step;
-import org.researchstack.backbone.ui.ViewWebDocumentActivity;
 import org.researchstack.backbone.ui.callbacks.StepCallbacks;
 import org.researchstack.backbone.ui.step.body.BodyAnswer;
 import org.researchstack.backbone.ui.step.body.StepBody;
 import org.researchstack.backbone.ui.views.FixedSubmitBarLayout;
 import org.researchstack.backbone.ui.views.SubmitBar;
 import org.researchstack.backbone.utils.LogExt;
-import org.researchstack.backbone.utils.TextUtils;
 
 import java.lang.reflect.Constructor;
 
@@ -132,12 +126,8 @@ public class SurveyStepLayout extends FixedSubmitBarLayout implements StepLayout
     public void initStepLayout() {
         LogExt.i(getClass(), "initStepLayout()");
 
-        container = (LinearLayout) findViewById(R.id.rsb_survey_content_container);
-        TextView title = (TextView) findViewById(R.id.rsb_survey_title);
-        title.setTextColor(principalTextColor);
-        TextView summary = (TextView) findViewById(R.id.rsb_survey_text);
-        summary.setTextColor(secondaryTextColor);
-        final SubmitBar submitBar = (SubmitBar) findViewById(R.id.rsb_submit_bar);
+        container = findViewById(R.id.rsb_survey_content_container);
+        final SubmitBar submitBar = findViewById(R.id.rsb_submit_bar);
         submitBar.setNegativeTitleColor(coloryPrimary);
         submitBar.setPositiveTitleColor(colorSecondary);
         submitBar.setPositiveAction(new OnClickListener()
@@ -153,27 +143,6 @@ public class SurveyStepLayout extends FixedSubmitBarLayout implements StepLayout
         });
 
         if (questionStep != null) {
-            if (!TextUtils.isEmpty(questionStep.getTitle())) {
-                title.setVisibility(View.VISIBLE);
-                title.setText(questionStep.getTitle());
-            }
-
-            if (!TextUtils.isEmpty(questionStep.getText())) {
-                summary.setVisibility(View.VISIBLE);
-                summary.setText(Html.fromHtml(questionStep.getText()));
-                summary.setMovementMethod(new TextViewLinkHandler() {
-                    @Override
-                    public void onLinkClick(String url) {
-                        String path = ResourcePathManager.getInstance().
-                                generateAbsolutePath(ResourcePathManager.Resource.TYPE_HTML, url);
-                        Intent intent = ViewWebDocumentActivity.newIntentForPath(getContext(),
-                                questionStep.getTitle(),
-                                path);
-                        getContext().startActivity(intent);
-                    }
-                });
-            }
-
             if (questionStep.isOptional()) {
                 submitBar.setNegativeTitle(R.string.rsb_step_skip);
                 submitBar.setNegativeAction(v -> onSkipClicked());
