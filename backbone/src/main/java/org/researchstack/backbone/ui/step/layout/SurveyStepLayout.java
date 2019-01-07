@@ -21,6 +21,7 @@ import org.researchstack.backbone.step.Step;
 import org.researchstack.backbone.ui.ViewWebDocumentActivity;
 import org.researchstack.backbone.ui.callbacks.StepCallbacks;
 import org.researchstack.backbone.ui.step.body.BodyAnswer;
+import org.researchstack.backbone.ui.step.body.FormBody;
 import org.researchstack.backbone.ui.step.body.StepBody;
 import org.researchstack.backbone.ui.views.FixedSubmitBarLayout;
 import org.researchstack.backbone.ui.views.SubmitBar;
@@ -132,12 +133,12 @@ public class SurveyStepLayout extends FixedSubmitBarLayout implements StepLayout
     public void initStepLayout() {
         LogExt.i(getClass(), "initStepLayout()");
 
-        container = (LinearLayout) findViewById(R.id.rsb_survey_content_container);
-        TextView title = (TextView) findViewById(R.id.rsb_survey_title);
+        container = findViewById(R.id.rsb_survey_content_container);
+        TextView title = findViewById(R.id.rsb_survey_title);
         title.setTextColor(principalTextColor);
-        TextView summary = (TextView) findViewById(R.id.rsb_survey_text);
+        TextView summary = findViewById(R.id.rsb_survey_text);
         summary.setTextColor(secondaryTextColor);
-        final SubmitBar submitBar = (SubmitBar) findViewById(R.id.rsb_submit_bar);
+        final SubmitBar submitBar = findViewById(R.id.rsb_submit_bar);
         submitBar.setNegativeTitleColor(coloryPrimary);
         submitBar.setPositiveTitleColor(colorSecondary);
         submitBar.setPositiveAction(new OnClickListener()
@@ -153,12 +154,12 @@ public class SurveyStepLayout extends FixedSubmitBarLayout implements StepLayout
         });
 
         if (questionStep != null) {
-            if (!TextUtils.isEmpty(questionStep.getTitle())) {
+            if (questionStep.getStepBodyClass() == FormBody.class && !TextUtils.isEmpty(questionStep.getTitle())) {
                 title.setVisibility(View.VISIBLE);
                 title.setText(questionStep.getTitle());
             }
 
-            if (!TextUtils.isEmpty(questionStep.getText())) {
+            if (questionStep.getStepBodyClass() == FormBody.class && !TextUtils.isEmpty(questionStep.getText())) {
                 summary.setVisibility(View.VISIBLE);
                 summary.setText(Html.fromHtml(questionStep.getText()));
                 summary.setMovementMethod(new TextViewLinkHandler() {
