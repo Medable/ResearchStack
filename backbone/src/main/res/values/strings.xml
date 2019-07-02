@@ -175,4 +175,31 @@
     <string name="rsb_consent_role">Participant</string>
     <string name="rsb_consent_doc_line_date_format">"MM-dd-yyyy"</string>
 
+    <!-- Active Tasks -->
+    <string name="rsb_unsupported_task_text">The %1$s Active Task is not yet supported on Android</string>
+    <string name="rsb_fitness_check_title">Fitness</string>
+    <string name="rsb_fitness_check_step1_text">This activity monitors your heart rate and measures how far you can walk in %1$d minutes.</string>
+    <string name="rsb_fitness_check_step2_text">While completing this task please keep your phone with you at all times. For the most accurate results place your phone in your pocket.</string>
+    <string name="rsb_fitness_check_step3_text">Walk outdoors at your fastest possible pace for %1$d minutes. To begin, tap Get Started.</string>
+    <string name="rsb_fitness_check_tts_directive_walk">Walk as fast as you kan for %1$s.</string><!-- 'kan' instead of 'can' for proper phonetics -->
+    <string name="rsb_fitness_check_tts_directive_rest">Now rest for %1$s.</string>
+    <string name="rsb_fitness_check_step4_text">Starting activity in</string>
+    <string name="rsb_fitness_check_step5_text">Walk as fast as you can for %1$d minutes.</string>
+    <string name="rsb_fitness_check_step6_text">Sit comfortably for %1$d seconds.</string>
+    <string name="rsb_fitness_check_step7_text">Your data will be analyzed and you will be notified when your results are ready.</string>
+    <string name="rsb_fitness_check_position_indicator_text">%1$d of %2$d</string>
+    <string name="rsb_fitness_check_countdown_timer_text" translatable="false">%1$d:%2$s</string>
+    <string name="rsb_fitness_check_task_complete">Activity Complete</string>
+    <string name="rsb_and">, and </string>
+    <plurals
+        name="rsb_minutes">
+        <item quantity="one"> minute</item>
+        <item quantity="other"> minutes</item>
+    </plurals>
+    <plurals
+        name="rsb_seconds">
+        <item quantity="one"> second</item>
+        <item quantity="other"> seconds</item>
+    </plurals>
+
 </resources>

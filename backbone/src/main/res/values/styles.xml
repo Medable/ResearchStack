@@ -129,4 +129,34 @@
         <item name="android:gravity">center_vertical</item>
     </style>
 
+    <style name="Backbone.ActiveTask.Title" parent="">
+        <item name="android:layout_marginTop">@dimen/rsb_margin_top</item>
+        <item name="android:paddingLeft">@dimen/rsb_margin_left</item>
+        <item name="android:paddingRight">@dimen/rsb_margin_right</item>
+        <item name="android:paddingBottom">@dimen/rsb_padding_wedge</item>
+        <item name="android:textColor">@color/rsb_black</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textSize">@dimen/rsb_text_size_title</item>
+    </style>
+
+    <style name="Backbone.ActiveTask.Summary.Light" parent="">
+        <item name="android:layout_marginBottom">@dimen/rsb_padding_small</item>
+        <item name="android:paddingLeft">@dimen/rsb_margin_left</item>
+        <item name="android:paddingRight">@dimen/rsb_margin_right</item>
+        <item name="android:paddingBottom">@dimen/rsb_padding_small</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:textColor">@color/rsb_black</item>
+    </style>
+
+    <style name="Backbone.ActiveTask.Countdown" parent="">
+        <item name="android:layout_marginBottom">@dimen/rsb_padding_small</item>
+        <item name="android:paddingLeft">@dimen/rsb_margin_left</item>
+        <item name="android:paddingRight">@dimen/rsb_margin_right</item>
+        <item name="android:paddingBottom">@dimen/rsb_padding_small</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textColor">@color/rsb_black</item>
+    </style>
+
 </resources>

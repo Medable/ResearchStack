@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/rsb_fitness_check_back_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:paddingStart="@dimen/rsb_padding_wedge"
+        android:paddingTop="@dimen/rsb_padding_wedge"
+        android:paddingEnd="@dimen/rsb_padding_wedge"
+        android:src="@drawable/rsb_ic_back"
+        android:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/rsb_fitness_check_position"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:paddingStart="@dimen/rsb_padding_wedge"
+        android:paddingTop="@dimen/rsb_padding_wedge"
+        android:paddingEnd="@dimen/rsb_padding_wedge"
+        android:textSize="16sp"
+        tools:text="1 of 6" />
+
+    <TextView
+        android:id="@+id/rsb_fitness_check_title"
+        style="@style/Backbone.ActiveTask.Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rsb_fitness_check_back_button"
+        android:layout_alignParentStart="true"
+        android:text="@string/rsb_fitness_check_title" />
+
+    <LinearLayout
+        android:id="@+id/rsb_active_task_bottom_buttons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/rsb_padding_small"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="@dimen/rsb_padding_small"
+            android:background="@color/rsb_submit_bar_gray" />
+
+        <Button
+            android:id="@+id/rsb_fitness_check_done_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/rsb_padding_actve_task_buttons"
+            android:layout_marginEnd="@dimen/rsb_padding_actve_task_buttons"
+            android:text="@string/rsb_done"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/rsb_fitness_check_next_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/rsb_padding_actve_task_buttons"
+            android:layout_marginEnd="@dimen/rsb_padding_actve_task_buttons"
+            android:text="@string/rsb_next" />
+
+        <Button
+            android:id="@+id/rsb_fitness_check_cancel_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/rsb_padding_actve_task_buttons"
+            android:layout_marginEnd="@dimen/rsb_padding_actve_task_buttons"
+            android:background="@null"
+            android:text="@string/rsb_cancel" />
+
+    </LinearLayout>
+
+    <ViewFlipper
+        android:id="@+id/rsb_viewflipper_fitness_check"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/rsb_active_task_bottom_buttons"
+        android:layout_below="@id/rsb_fitness_check_title">
+
+        <RelativeLayout
+            android:id="@+id/rsb_viewflipper_fitness_step1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/rsb_fitness_check_step1_text"
+                style="@style/Backbone.ActiveTask.Summary.Light"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/rsb_padding_wedge"
+                android:text="@string/rsb_fitness_check_step1_text" />
+
+            <ImageView
+                android:id="@+id/rsb_fitness_check_step1_heart"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_below="@id/rsb_fitness_check_step1_text"
+                android:layout_centerInParent="true"
+                app:srcCompat="@drawable/rsb_ic_fitness_heart" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rsb_viewflipper_fitness_step2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/rsb_fitness_check_step2_text"
+                style="@style/Backbone.ActiveTask.Summary.Light"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/rsb_padding_wedge"
+                android:text="@string/rsb_fitness_check_step2_text" />
+
+            <ImageView
+                android:id="@+id/rsb_fitness_check_step2_pocket_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_below="@id/rsb_fitness_check_step2_text"
+                android:layout_centerInParent="true"
+                app:srcCompat="@drawable/rsb_ic_fitness_pocket_phone" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rsb_viewflipper_fitness_step3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/rsb_fitness_check_step3_text"
+                style="@style/Backbone.ActiveTask.Summary.Light"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/rsb_padding_wedge"
+                android:text="@string/rsb_fitness_check_step3_text" />
+
+            <ImageView
+                android:id="@+id/rsb_fitness_check_step3_walker"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_below="@id/rsb_fitness_check_step3_text"
+                android:layout_centerInParent="true"
+                app:srcCompat="@drawable/rsb_ic_fitness_walker" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rsb_viewflipper_fitness_step4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true">
+
+                <ProgressBar
+                    android:id="@+id/rsb_fitness_check_step4_progressbar"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="260dp"
+                    android:layout_height="260dp"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center_horizontal|center"
+                    android:indeterminate="false"
+                    android:progressDrawable="@drawable/rsb_circleshape_timerview" />
+
+                <TextView
+                    android:id="@+id/rsb_fitness_check_step4_text"
+                    style="@style/Backbone.ActiveTask.Summary.Light"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="@dimen/rsb_padding_wedge"
+                    android:text="@string/rsb_fitness_check_step4_text" />
+
+                <TextView
+                    android:id="@+id/rsb_fitness_check_step4_counter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:gravity="center_horizontal"
+                    android:text="@string/rsb_fitness_check_step4_text"
+                    android:textColor="@color/rsb_black"
+                    android:textSize="50sp" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rsb_viewflipper_fitness_step5"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/rsb_fitness_check_step5_text"
+                style="@style/Backbone.ActiveTask.Summary.Light"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/rsb_padding_wedge"
+                android:text="@string/rsb_fitness_check_step5_text" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_below="@id/rsb_fitness_check_step5_text"
+                android:layout_centerInParent="true">
+
+                <ImageView
+                    android:id="@+id/rsb_fitness_check_step5_walker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    app:srcCompat="@drawable/rsb_ic_fitness_walker" />
+
+                <TextView
+                    android:id="@+id/rsb_fitness_check_step5_countdown_text"
+                    style="@style/Backbone.ActiveTask.Countdown"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@id/rsb_fitness_check_step5_walker"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/rsb_padding_wedge"
+                    android:layout_marginBottom="@dimen/rsb_padding_small"
+                    android:text="@string/rsb_fitness_check_step5_text"
+                    android:textSize="35sp" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rsb_viewflipper_fitness_step6"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/rsb_fitness_check_step6_text"
+                style="@style/Backbone.ActiveTask.Summary.Light"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/rsb_padding_wedge"
+                android:text="@string/rsb_fitness_check_step6_text" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_below="@id/rsb_fitness_check_step6_text"
+                android:layout_centerInParent="true">
+
+                <ImageView
+                    android:id="@+id/rsb_fitness_check_step6_sitter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    app:srcCompat="@drawable/rsb_ic_fitness_sitter" />
+
+                <TextView
+                    android:id="@+id/rsb_fitness_check_step6_countdown_text"
+                    style="@style/Backbone.ActiveTask.Countdown"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@id/rsb_fitness_check_step6_sitter"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/rsb_padding_wedge"
+                    android:layout_marginBottom="@dimen/rsb_padding_small"
+                    android:text="@string/rsb_fitness_check_step6_text"
+                    android:textSize="35sp" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rsb_viewflipper_fitness_step7"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/rsb_fitness_check_step7_text"
+                style="@style/Backbone.ActiveTask.Summary.Light"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/rsb_padding_wedge"
+                android:text="@string/rsb_fitness_check_step7_text" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_below="@id/rsb_fitness_check_step7_text"
+                android:layout_centerInParent="true">
+
+                <FrameLayout
+                    android:id="@+id/rsb_fitness_check_completion_checkmark"
+                    android:layout_width="@dimen/rsb_completion_step_circle_background_size"
+                    android:layout_height="@dimen/rsb_completion_step_circle_background_size"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center_horizontal">
+
+                    <ImageView
+                        android:id="@+id/checkmark_background"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:srcCompat="@drawable/rsb_check_mark_background" />
+
+                    <ImageView
+                        android:id="@+id/checkmark_success"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:visibility="gone"
+                        app:srcCompat="@drawable/rsb_completion_checkmark_success" />
+
+                </FrameLayout>
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </ViewFlipper>
+
+</RelativeLayout>

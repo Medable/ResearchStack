@@ -139,4 +139,30 @@
     <string name="rsb_consent_role">Participante</string>
     <string name="rsb_consent_doc_line_date_format">"dd/MM/yyyy"</string>
 
+    <!-- Active Tasks -->
+    <string name="rsb_unsupported_task_text">La tarea activa %1$s todavía no es compatible con Android</string>
+    <string name="rsb_fitness_check_title">Aptitud</string>
+    <string name="rsb_fitness_check_step1_text">Esta actividad controla su ritmo cardíaco y mide la distancia que puede caminar en %1$d minutos.</string>
+    <string name="rsb_fitness_check_step2_text">Mientras completa esta tarea, mantenga su teléfono con usted en todo momento. Para obtener los resultados más precisos, coloque su teléfono en su bolsillo.</string>
+    <string name="rsb_fitness_check_step3_text">Camine al aire libre a su ritmo más rápido posible durante %1$d minutos. Para comenzar, presiona Comenzar.</string>
+    <string name="rsb_fitness_check_tts_directive_walk">Camina tan rápido como puedas por %1$s.</string>
+    <string name="rsb_fitness_check_tts_directive_rest">Ahora descansa por %1$s.</string>
+    <string name="rsb_fitness_check_step4_text">Comenzando en</string>
+    <string name="rsb_fitness_check_step5_text">Camina tan rápido como puedas durante %1$d minutos.</string>
+    <string name="rsb_fitness_check_step6_text">Siéntate cómodamente durante %1$d segundos.</string>
+    <string name="rsb_fitness_check_step7_text">Se analizarán sus datos y se le notificará cuando sus resultados estén listos.</string>
+    <string name="rsb_fitness_check_position_indicator_text">%1$d de %2$d</string>
+    <string name="rsb_fitness_check_task_complete">Actividad Completa</string>
+    <string name="rsb_and">, y </string>
+    <plurals
+        name="rsb_minutes">
+        <item quantity="one"> minuto</item>
+        <item quantity="other"> minutos</item>
+    </plurals>
+    <plurals
+        name="rsb_seconds">
+        <item quantity="one"> segundo</item>
+        <item quantity="other"> segundos</item>
+    </plurals>
+
 </resources>

@@ -1,10 +1,20 @@
 package org.researchstack.backbone.utils;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.RippleDrawable;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.StateListDrawable;
+import android.graphics.drawable.shapes.RoundRectShape;
+import android.os.Build;
+import android.support.v4.content.ContextCompat;
 import android.util.TypedValue;
 
+import java.util.Arrays;
 import org.researchstack.backbone.R;
 
 import java.lang.reflect.Method;
@@ -63,5 +73,52 @@ public class ThemeUtils {
         }
         return 0;
     }
-}
 
+    public static Drawable getPrincipalColorButtonDrawable(Context context, int colorPrimary) {
+        return getAdaptiveRippleDrawable(colorPrimary, ContextCompat.getColor(context, android.R.color.white));
+    }
+
+    private static Drawable getAdaptiveRippleDrawable(int normalColor, int pressedColor) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            return new RippleDrawable(ColorStateList.valueOf(pressedColor),
+                    getRippleMask(normalColor), null);
+        } else {
+            return getStateListDrawable(normalColor, pressedColor);
+        }
+    }
+
+    private static Drawable getRippleMask(int color) {
+        float[] outerRadii = new float[8];
+        Arrays.fill(outerRadii, 10);
+
+        RoundRectShape r = new RoundRectShape(outerRadii, null, null);
+        ShapeDrawable shapeDrawable = new ShapeDrawable(r);
+        shapeDrawable.getPaint().setColor(color);
+        return shapeDrawable;
+    }
+
+    private static StateListDrawable getStateListDrawable(int normalColor, int pressedColor) {
+        StateListDrawable states = new StateListDrawable();
+        states.addState(new int[] {android.R.attr.state_pressed},
+                new ColorDrawable(pressedColor));
+        states.addState(new int[] {android.R.attr.state_focused},
+                new ColorDrawable(pressedColor));
+        states.addState(new int[] {android.R.attr.state_activated},
+                new ColorDrawable(pressedColor));
+        states.addState(new int[] {},
+                new ColorDrawable(normalColor));
+        return states;
+    }
+
+    public static ColorStateList getWhiteToSecondaryColorStateList(Context context, int textColor) {
+        return new ColorStateList(
+                new int[][] {
+                        new int[] {android.R.attr.state_pressed},
+                        new int[] {}
+                },
+                new int[] {
+                        textColor,
+                        ContextCompat.getColor(context, android.R.color.white)
+                });
+    }
+}

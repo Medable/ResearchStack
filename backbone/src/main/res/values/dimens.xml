@@ -6,6 +6,7 @@
     <dimen name="rsb_padding_wedge">12dp</dimen>
     <dimen name="rsb_padding_medium">16dp</dimen>
     <dimen name="rsb_padding_large">24dp</dimen>
+    <dimen name="rsb_padding_actve_task_buttons">40dp</dimen>
 
     <!-- Item Height -->
     <dimen name="rsb_item_size_small">48dp</dimen>
@@ -21,5 +22,7 @@
     <!-- Text Size -->
     <dimen name="rsb_text_size_title">35sp</dimen>
     <dimen name="rsb_text_size_summary">18sp</dimen>
+
+    <dimen name="rsb_completion_step_circle_background_size">100dp</dimen>
 
 </resources>
