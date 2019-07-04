@@ -34,6 +34,7 @@ public class Step implements Serializable {
     private int principalTextColor;
     private int secondaryTextColor;
     private int actionFailedColor;
+    private boolean hideStep;
 
     // The following fields are in RK but not implemented in ResearchStack
     // These options can be developed as needed or removed if we find they are not necessary
@@ -270,5 +271,13 @@ public class Step implements Serializable {
      */
     public int getActionFailedColor() {
         return actionFailedColor;
+    }
+
+    public boolean hideStep() {
+        return hideStep;
+    }
+
+    public void hideStep(boolean hideStep) {
+        this.hideStep = hideStep;
     }
 }
