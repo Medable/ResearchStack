@@ -7,10 +7,10 @@ import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.graphics.drawable.Animatable;
 import android.media.AudioManager;
+import android.media.ToneGenerator;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.speech.tts.TextToSpeech;
-import android.support.annotation.NonNull;
 import android.support.v4.widget.ImageViewCompat;
 import android.util.Log;
 import android.view.View;
@@ -30,10 +30,10 @@ import com.google.android.gms.fitness.data.DataType;
 import com.google.android.gms.fitness.data.Field;
 import com.google.android.gms.fitness.request.DataReadRequest;
 import com.google.android.gms.fitness.result.DataReadResponse;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.Writer;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -42,6 +42,9 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.researchstack.backbone.R;
 import org.researchstack.backbone.result.StepResult;
 import org.researchstack.backbone.result.TaskResult;
@@ -53,16 +56,19 @@ import org.researchstack.backbone.utils.ThemeUtils;
 public class FitnessCheckActivity extends PinCodeActivity {
 
     private static final String TAG = "FitnessCheckActivity";
-    public static final String EXTRA_TASK = "FitnessCheckActivity.ExtraTask";
+    private static final String EXTRA_TASK = "FitnessCheckActivity.ExtraTask";
     public static final String EXTRA_TASK_RESULT = "FitnessCheckActivity.ExtraTaskResult";
-    public static final String EXTRA_COLOR_PRIMARY = "FitnessCheckActivity.ExtraColorPrimary";
-    public static final String EXTRA_COLOR_PRIMARY_DARK = "FitnessCheckActivity.ExtraColorPrimaryDark";
-    public static final String EXTRA_COLOR_SECONDARY = "FitnessCheckActivity.ExtraColorSecondary";
-    public static final String EXTRA_PRINCIPAL_TEXT_COLOR = "FitnessCheckActivity.ExtraPrincipalTextColor";
-    public static final String EXTRA_SECONDARY_TEXT_COLOR = "FitnessCheckActivity.ExtraSecondaryTextColor";
-    public static final String EXTRA_ACTION_FAILED_COLOR = "FitnessCheckActivity.ExtraActionFailedColor";
+    private static final String EXTRA_COLOR_PRIMARY = "FitnessCheckActivity.ExtraColorPrimary";
+    private static final String EXTRA_COLOR_PRIMARY_DARK = "FitnessCheckActivity.ExtraColorPrimaryDark";
+    private static final String EXTRA_COLOR_SECONDARY = "FitnessCheckActivity.ExtraColorSecondary";
+    private static final String EXTRA_PRINCIPAL_TEXT_COLOR = "FitnessCheckActivity.ExtraPrincipalTextColor";
+    private static final String EXTRA_SECONDARY_TEXT_COLOR = "FitnessCheckActivity.ExtraSecondaryTextColor";
+    private static final String EXTRA_ACTION_FAILED_COLOR = "FitnessCheckActivity.ExtraActionFailedColor";
 
     private static final int TIMER_PRECOUNTDOWN_DURATION = 5000;
+    private static final int ONE_SECOND = 1000;
+    private static final int ONE_MINUTE = 60000;
+    private static final int TONE_DURATION = 400;
 
     private FitnessCheckActiveTask task;
     private TaskResult taskResult;
@@ -99,6 +105,7 @@ public class FitnessCheckActivity extends PinCodeActivity {
     private boolean isTtsAvailable;
     private boolean endOfTaskReached;
     private Button nextButton;
+    private ToneGenerator toneGenerator;
 
     public static Intent newIntent(Context context, FitnessCheckActiveTask task) {
         Intent intent = new Intent(context, FitnessCheckActivity.class);
@@ -128,6 +135,7 @@ public class FitnessCheckActivity extends PinCodeActivity {
         super.setContentView(R.layout.rsb_activity_fitness_check);
 
         final AudioManager audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+        toneGenerator = new ToneGenerator(AudioManager.STREAM_NOTIFICATION, TONE_DURATION);
 
         if (savedInstanceState == null) {
             task = (FitnessCheckActiveTask) getIntent().getSerializableExtra(EXTRA_TASK);
@@ -152,49 +160,34 @@ public class FitnessCheckActivity extends PinCodeActivity {
         doneButton = findViewById(R.id.rsb_fitness_check_done_button);
         doneButton.setBackground(ThemeUtils.getPrincipalColorButtonDrawable(this, colorPrimary));
         doneButton.setTextColor(ThemeUtils.getWhiteToSecondaryColorStateList(this, secondaryTextColor));
-        doneButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                taskResult.setEndDate(new Date());
-                Intent resultIntent = new Intent();
-                resultIntent.putExtra(EXTRA_TASK_RESULT, taskResult);
-                resultIntent.putExtra("TEST_FOR_REST", "wtflolbbq");
-                setResult(RESULT_OK, resultIntent);
-                finish();
-            }
+        doneButton.setOnClickListener(view -> {
+            taskResult.setEndDate(new Date());
+            Intent resultIntent = new Intent();
+            resultIntent.putExtra(EXTRA_TASK_RESULT, taskResult);
+            setResult(RESULT_OK, resultIntent);
+            finish();
         });
 
         nextButton = findViewById(R.id.rsb_fitness_check_next_button);
         nextButton.setBackground(ThemeUtils.getPrincipalColorButtonDrawable(this, colorPrimary));
         nextButton.setTextColor(ThemeUtils.getWhiteToSecondaryColorStateList(this, secondaryTextColor));
-        nextButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                viewFlipper.setInAnimation(FitnessCheckActivity.this, R.anim.rsb_slide_in_right);
-                viewFlipper.setOutAnimation(FitnessCheckActivity.this, R.anim.rsb_slide_out_left);
-                viewFlipper.showNext();
-                updateTaskProgressIndicator();
-            }
+        nextButton.setOnClickListener(view -> {
+            viewFlipper.setInAnimation(FitnessCheckActivity.this, R.anim.rsb_slide_in_right);
+            viewFlipper.setOutAnimation(FitnessCheckActivity.this, R.anim.rsb_slide_out_left);
+            viewFlipper.showNext();
+            updateTaskProgressIndicator();
         });
 
         final ImageView backButton = findViewById(R.id.rsb_fitness_check_back_button);
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                viewFlipper.setInAnimation(FitnessCheckActivity.this, R.anim.rsb_slide_in_left);
-                viewFlipper.setOutAnimation(FitnessCheckActivity.this, R.anim.rsb_slide_out_right);
-                viewFlipper.showPrevious();
-                updateTaskProgressIndicator();
-            }
+        backButton.setOnClickListener(view -> {
+            viewFlipper.setInAnimation(FitnessCheckActivity.this, R.anim.rsb_slide_in_left);
+            viewFlipper.setOutAnimation(FitnessCheckActivity.this, R.anim.rsb_slide_out_right);
+            viewFlipper.showPrevious();
+            updateTaskProgressIndicator();
         });
 
         Button cancelButton = findViewById(R.id.rsb_fitness_check_cancel_button);
-        cancelButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+        cancelButton.setOnClickListener(view -> finish());
 
         int walkingMinutes = task.getWalkDuration() / 60;
 
@@ -205,15 +198,15 @@ public class FitnessCheckActivity extends PinCodeActivity {
             step1Text.setText(task.getIntendedUse());
         }
 
-        ImageViewCompat.setImageTintList(((ImageView) findViewById(R.id.rsb_fitness_check_step1_heart)),
+        ImageViewCompat.setImageTintList((findViewById(R.id.rsb_fitness_check_step1_heart)),
                 ColorStateList.valueOf(colorPrimary));
-        ImageViewCompat.setImageTintList(((ImageView) findViewById(R.id.rsb_fitness_check_step2_pocket_phone)),
+        ImageViewCompat.setImageTintList((findViewById(R.id.rsb_fitness_check_step2_pocket_phone)),
                 ColorStateList.valueOf(colorPrimary));
-        ImageViewCompat.setImageTintList(((ImageView) findViewById(R.id.rsb_fitness_check_step3_walker)),
+        ImageViewCompat.setImageTintList((findViewById(R.id.rsb_fitness_check_step3_walker)),
                 ColorStateList.valueOf(colorPrimary));
-        ImageViewCompat.setImageTintList(((ImageView) findViewById(R.id.rsb_fitness_check_step5_walker)),
+        ImageViewCompat.setImageTintList((findViewById(R.id.rsb_fitness_check_step5_walker)),
                 ColorStateList.valueOf(colorPrimary));
-        ImageViewCompat.setImageTintList(((ImageView) findViewById(R.id.rsb_fitness_check_step6_sitter)),
+        ImageViewCompat.setImageTintList((findViewById(R.id.rsb_fitness_check_step6_sitter)),
                 ColorStateList.valueOf(colorPrimary));
 
         TextView step3Text = findViewById(R.id.rsb_fitness_check_step3_text);
@@ -244,7 +237,7 @@ public class FitnessCheckActivity extends PinCodeActivity {
             @Override
             public void onTick(long millisUntilFinished) {
                 isPrecounterRunning = true;
-                long seconds = millisUntilFinished / 1000;
+                long seconds = millisUntilFinished / ONE_SECOND;
                 double progressValue = ((double) millisUntilFinished / TIMER_PRECOUNTDOWN_DURATION) * 100;
                 step4CounterProgress.setProgress((int) progressValue);
                 step4CounterText.setText(String.valueOf(seconds + 1));
@@ -258,12 +251,12 @@ public class FitnessCheckActivity extends PinCodeActivity {
             }
         };
 
-        fitnessCountdownTimer = new CountDownTimer(task.getWalkDuration() * 1000, 1000) {
+        fitnessCountdownTimer = new CountDownTimer(task.getWalkDuration() * ONE_SECOND, ONE_SECOND) {
             @Override
             public void onTick(long millisUntilFinished) {
                 isFitnessCounterRunning = true;
-                long min = (millisUntilFinished / 60000) % 60;
-                long sec = (millisUntilFinished / 1000) % 60;
+                long min = (millisUntilFinished / ONE_MINUTE) % 60;
+                long sec = (millisUntilFinished / ONE_SECOND) % 60;
                 step5CountdownText.setText(getString(R.string.rsb_fitness_check_countdown_timer_text, min,
                         String.format(Locale.US, "%02d", sec)));
             }
@@ -280,12 +273,12 @@ public class FitnessCheckActivity extends PinCodeActivity {
             }
         };
 
-        restCountdownTimer = new CountDownTimer(task.getRestDuration() * 1000, 1000) {
+        restCountdownTimer = new CountDownTimer(task.getRestDuration() * ONE_SECOND, ONE_SECOND) {
             @Override
             public void onTick(long millisUntilFinished) {
                 isRestCounterRunning = true;
-                long min = (millisUntilFinished / 60000) % 60;
-                long sec = (millisUntilFinished / 1000) % 60;
+                long min = (millisUntilFinished / ONE_MINUTE) % 60;
+                long sec = (millisUntilFinished / ONE_SECOND) % 60;
                 if (task.getRestDuration() <= 60) {
                     step6CountdownText.setText(String.valueOf(sec));
                 } else {
@@ -303,72 +296,73 @@ public class FitnessCheckActivity extends PinCodeActivity {
         };
 
         viewFlipper = findViewById(R.id.rsb_viewflipper_fitness_check);
-        viewFlipper.addOnLayoutChangeListener(new View.OnLayoutChangeListener() {
-            @Override
-            public void onLayoutChange(View v, int left, int top, int right, int bottom, int leftPrevious,
-                                       int topPrevious, int rightPrevious, int bottomPrevious) {
+        viewFlipper.addOnLayoutChangeListener((v, left, top, right, bottom, leftPrevious, topPrevious, rightPrevious,
+                                               bottomPrevious) -> {
 
-                nextButton.setText(viewFlipper.getCurrentView() == fitnessCheckPage2 ? getString(R.string.rsb_next) : getString(R.string.rsb_get_started));
+            nextButton.setText(viewFlipper.getCurrentView() == fitnessCheckPage2 ? getString(R.string.rsb_next) :
+                    getString(R.string.rsb_get_started));
 
 
-                if (viewFlipper.getCurrentView() == fitnessCheckPage4) {
-                    if (!isPrecounterRunning) {
-                        preCountdownTimer.start();
-                    }
-                } else if (viewFlipper.getCurrentView() == fitnessCheckPage5) {
-                    // start realdeal countdown
-                    if (!isFitnessCounterRunning) {
-                        if (isTtsAvailable) {
-                            if (audioManager.getRingerMode() == AudioManager.RINGER_MODE_NORMAL) {
-                                textToSpeech.speak(getString(R.string.rsb_fitness_check_tts_directive_walk,
-                                        getTimeFromSeconds(task.getWalkDuration())),
-                                        TextToSpeech.QUEUE_FLUSH, null);
-                            }
+            if (viewFlipper.getCurrentView() == fitnessCheckPage4) {
+                if (!isPrecounterRunning) {
+                    preCountdownTimer.start();
+                }
+            } else if (viewFlipper.getCurrentView() == fitnessCheckPage5) {
+                // start realdeal countdown
+                if (!isFitnessCounterRunning) {
+                    if (isTtsAvailable) {
+                        if (audioManager.getRingerMode() == AudioManager.RINGER_MODE_NORMAL) {
+                            toneGenerator.startTone(ToneGenerator.TONE_PROP_ACK);
+                            textToSpeech.speak(getString(R.string.rsb_fitness_check_tts_directive_walk,
+                                    getTimeFromSeconds(task.getWalkDuration())),
+                                    TextToSpeech.QUEUE_FLUSH, null);
                         }
-                        fitnessCountdownTimer.start();
                     }
-                } else if (viewFlipper.getCurrentView() == fitnessCheckPage6) {
-                    // start rest countdown
-                    if (!isRestCounterRunning) {
-                        if (isTtsAvailable) {
-                            if (audioManager.getRingerMode() == AudioManager.RINGER_MODE_NORMAL) {
-                                textToSpeech.speak(getString(R.string.rsb_fitness_check_tts_directive_rest,
-                                        getTimeFromSeconds(task.getRestDuration())),
-                                        TextToSpeech.QUEUE_FLUSH, null);
-                            }
+                    fitnessCountdownTimer.start();
+                }
+            } else if (viewFlipper.getCurrentView() == fitnessCheckPage6) {
+                // start rest countdown
+                if (!isRestCounterRunning) {
+                    if (isTtsAvailable) {
+                        if (audioManager.getRingerMode() == AudioManager.RINGER_MODE_NORMAL) {
+                            toneGenerator.startTone(ToneGenerator.TONE_PROP_ACK);
+                            textToSpeech.speak(getString(R.string.rsb_fitness_check_tts_directive_rest,
+                                    getTimeFromSeconds(task.getRestDuration())),
+                                    TextToSpeech.QUEUE_FLUSH, null);
                         }
-                        restCountdownTimer.start();
                     }
-                } else if (viewFlipper.getCurrentView() == fitnessCheckPage7) {
-                    if (!endOfTaskReached) {
-                        endOfTaskReached = true;
-                        initTimeRange(task.getWalkDuration());
-                        readFitnessDataFromHistory();
-                        fitnessTitle.setText(getString(R.string.rsb_fitness_check_task_complete));
-                        doneButton.setVisibility(View.VISIBLE);
-                        animatedIndicator.setVisibility(View.VISIBLE);
-                        ((Animatable) animatedIndicator.getDrawable()).start();
-                    }
+                    restCountdownTimer.start();
                 }
+            } else if (viewFlipper.getCurrentView() == fitnessCheckPage7) {
+                if (!endOfTaskReached) {
+                    toneGenerator.startTone(ToneGenerator.TONE_PROP_ACK);
+                    endOfTaskReached = true;
+                    initTimeRange(task.getWalkDuration());
+                    readFitnessDataFromHistory();
+                    fitnessTitle.setText(getString(R.string.rsb_fitness_check_task_complete));
+                    doneButton.setVisibility(View.VISIBLE);
+                    animatedIndicator.setVisibility(View.VISIBLE);
+                    ((Animatable) animatedIndicator.getDrawable()).start();
+                }
+            }
 
-                if (viewFlipper.getCurrentView() == fitnessCheckPage2
-                        || viewFlipper.getCurrentView() == fitnessCheckPage3) {
-                    backButton.setVisibility(View.VISIBLE);
-                } else {
-                    backButton.setVisibility(View.INVISIBLE);
-                }
+            if (viewFlipper.getCurrentView() == fitnessCheckPage2
+                    || viewFlipper.getCurrentView() == fitnessCheckPage3) {
+                backButton.setVisibility(View.VISIBLE);
+            } else {
+                backButton.setVisibility(View.INVISIBLE);
+            }
 
-                if (viewFlipper.getCurrentView() == fitnessCheckPage1
-                        || viewFlipper.getCurrentView() == fitnessCheckPage2
-                        || viewFlipper.getCurrentView() == fitnessCheckPage3) {
-                    nextButton.setVisibility(View.VISIBLE);
-                } else {
-                    nextButton.setVisibility(View.GONE);
-                }
+            if (viewFlipper.getCurrentView() == fitnessCheckPage1
+                    || viewFlipper.getCurrentView() == fitnessCheckPage2
+                    || viewFlipper.getCurrentView() == fitnessCheckPage3) {
+                nextButton.setVisibility(View.VISIBLE);
+            } else {
+                nextButton.setVisibility(View.GONE);
             }
         });
 
-        ImageViewCompat.setImageTintList(((ImageView) findViewById(R.id.checkmark_background)),
+        ImageViewCompat.setImageTintList((findViewById(R.id.checkmark_background)),
                 ColorStateList.valueOf(colorSecondary));
 
         totalNumberOfTaskSteps = task.getRestDuration() > 0 ? viewFlipper.getChildCount() : viewFlipper.getChildCount
@@ -376,12 +370,8 @@ public class FitnessCheckActivity extends PinCodeActivity {
         taskProgressPosition.setText(getString(R.string.rsb_fitness_check_position_indicator_text, 1,
                 totalNumberOfTaskSteps));
 
-        textToSpeech = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
-            @Override
-            public void onInit(int status) {
-                isTtsAvailable = status != TextToSpeech.ERROR;
-            }
-        });
+        textToSpeech = new TextToSpeech(getApplicationContext(), status -> isTtsAvailable =
+                status != TextToSpeech.ERROR);
 
         buildFitnessClient();
     }
@@ -433,13 +423,12 @@ public class FitnessCheckActivity extends PinCodeActivity {
         calendar.setTime(new Date());
 
         mEndTime = calendar.getTimeInMillis();
-        calendar.add(Calendar.MINUTE, -(durationSeconds / 60));
+        if (durationSeconds < 60) {
+            calendar.add(Calendar.SECOND, -durationSeconds);
+        } else {
+            calendar.add(Calendar.MINUTE, -(durationSeconds / 60));
+        }
         mStartTime = calendar.getTimeInMillis();
-
-//        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-//        Log.e(TAG, "Range Start: " + dateFormat.format(mStartTime));
-//        Log.e(TAG, "Range End: " + dateFormat.format(mEndTime));
-
     }
 
     /**
@@ -457,7 +446,7 @@ public class FitnessCheckActivity extends PinCodeActivity {
             GoogleSignIn.requestPermissions(this, GOOGLE_FIT_PERMISSIONS_REQUEST_CODE,
                     GoogleSignIn.getLastSignedInAccount(this), fitnessOptions);
         } else {
-            setupFitnessActivity();
+            viewFlipper.setVisibility(View.VISIBLE);
         }
     }
 
@@ -465,43 +454,9 @@ public class FitnessCheckActivity extends PinCodeActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == Activity.RESULT_OK) {
             if (requestCode == GOOGLE_FIT_PERMISSIONS_REQUEST_CODE) {
-                setupFitnessActivity();
+                viewFlipper.setVisibility(View.VISIBLE);
             }
         }
-    }
-
-    private void setupFitnessActivity() {
-        subscribeFitnessRecording();
-        viewFlipper.setVisibility(View.VISIBLE);
-    }
-
-    /**
-     * Subscribe to fitness recorders
-     */
-    private void subscribeFitnessRecording() {
-
-        // Subscribe to fit recorders
-        Fitness.getRecordingClient(this, GoogleSignIn.getLastSignedInAccount(this))
-                .subscribe(DataType.TYPE_STEP_COUNT_DELTA)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-//                        Log.e(TAG, "Recording onSuccess()");
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-//                        Log.e(TAG, "Recording onFailure()", e);
-                    }
-                })
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> t) {
-//                        Log.e(TAG, "Recording onComplete()");
-                    }
-                });
-
     }
 
     /**
@@ -513,32 +468,17 @@ public class FitnessCheckActivity extends PinCodeActivity {
                 .aggregate(DataType.TYPE_STEP_COUNT_DELTA, DataType.AGGREGATE_STEP_COUNT_DELTA)
                 .aggregate(DataType.TYPE_DISTANCE_DELTA, DataType.AGGREGATE_DISTANCE_DELTA)
                 .bucketByTime(1, TimeUnit.HOURS)
-//                .read(DataType.TYPE_STEP_COUNT_DELTA)
-//                .read(DataType.TYPE_DISTANCE_DELTA)
                 .setTimeRange(mStartTime, mEndTime, TimeUnit.MILLISECONDS)
                 .build();
 
         Fitness.getHistoryClient(this, GoogleSignIn.getLastSignedInAccount(this))
                 .readData(readRequest)
-                .addOnSuccessListener(new OnSuccessListener<DataReadResponse>() {
-                    @Override
-                    public void onSuccess(DataReadResponse dataReadResponse) {
-                        Log.e(TAG, "History onSuccess()");
-                        parseData(dataReadResponse);
-                    }
+                .addOnSuccessListener(dataReadResponse -> {
+                    Log.e(TAG, "History onSuccess()");
+                    parseData(dataReadResponse);
                 })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.e(TAG, "History onFailure()", e);
-                    }
-                })
-                .addOnCompleteListener(new OnCompleteListener<DataReadResponse>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DataReadResponse> task) {
-                        Log.d(TAG, "History onComplete()");
-                    }
-                });
+                .addOnFailureListener(e -> Log.e(TAG, "History onFailure()", e))
+                .addOnCompleteListener(task -> Log.d(TAG, "History onComplete()"));
 
     }
 
@@ -546,7 +486,6 @@ public class FitnessCheckActivity extends PinCodeActivity {
         // If the DataReadRequest object specified aggregated data, dataReadResult will be returned as buckets
         // containing DataSets, instead of just DataSets.
         if (dataReadResult.getBuckets().size() > 0) {
-            Log.d(TAG, "Number of returned buckets of DataSets is: " + dataReadResult.getBuckets().size());
             for (Bucket bucket : dataReadResult.getBuckets()) {
                 List<DataSet> dataSets = bucket.getDataSets();
                 for (DataSet dataSet : dataSets) {
@@ -554,7 +493,6 @@ public class FitnessCheckActivity extends PinCodeActivity {
                 }
             }
         } else if (dataReadResult.getDataSets().size() > 0) {
-            Log.d(TAG, "Number of returned DataSets is: " + dataReadResult.getDataSets().size());
             for (DataSet dataSet : dataReadResult.getDataSets()) {
                 dumpDataSet(dataSet);
             }
@@ -563,36 +501,63 @@ public class FitnessCheckActivity extends PinCodeActivity {
             Toast.makeText(this, "No step data was collected!", Toast.LENGTH_SHORT).show();
         }
 
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
+
+        JSONObject fitnessCheckResults = new JSONObject();
+        try {
+            JSONObject fitnessCheckResultData = new JSONObject();
+            fitnessCheckResultData.put("floorsAscended", 0);
+            fitnessCheckResultData.put("floorsDescended", 0);
+            fitnessCheckResultData.put("endDate", sdf.format(new Date(mEndTime)));
+            fitnessCheckResultData.put("startDate", sdf.format(new Date(mStartTime)));
+            if (resultsMap.get("steps") != null) {
+                fitnessCheckResultData.put("numberOfSteps", Integer.parseInt(resultsMap.get("steps")));
+            } else {
+                fitnessCheckResultData.put("numberOfSteps", 0);
+            }
+            if (resultsMap.get("distance") != null) {
+                fitnessCheckResultData.put("distance", Float.parseFloat(resultsMap.get("distance")));
+            } else {
+                fitnessCheckResultData.put("distance", 0);
+            }
+
+            JSONArray fitnessCheckResultArray = new JSONArray();
+            fitnessCheckResultArray.put(fitnessCheckResultData);
+
+            fitnessCheckResults.put("items", fitnessCheckResultArray);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        writeDataToFile(fitnessCheckResults.toString());
+
         StepResult result = new StepResult(new Step(task.getIdentifier()));
-        result.setResult(resultsMap);
-//        taskResult.setResults(resultsMap);
+        result.setResult(getFilePath());
         taskResult.setStepResultForStepIdentifier(task.getIdentifier(), result);
     }
 
-    /**
-     * Get steps count from data points
-     *
-     * @param dataSet
-     */
     private void dumpDataSet(DataSet dataSet) {
-
-        Log.d(TAG, "Data returned for Data type: " + dataSet.getDataType().getName());
-//        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US);
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-
         for (DataPoint dp : dataSet.getDataPoints()) {
-//            int stepCount = 0;
-            Log.d(TAG, "Data point:");
-            Log.d(TAG, "\tType: " + dp.getDataType().getName());
-            Log.d(TAG, "\tStart: " + dateFormat.format(dp.getStartTime(TimeUnit.MILLISECONDS)));
-            Log.d(TAG, "\tEnd: " + dateFormat.format(dp.getEndTime(TimeUnit.MILLISECONDS)));
             for (Field field : dp.getDataType().getFields()) {
-
-//                stepCount = dp.getValue(field).asInt();
-
-                Log.d(TAG, "\tField: " + field.getName() + " Value: " + dp.getValue(field));
                 resultsMap.put(field.getName(), dp.getValue(field).toString());
             }
         }
+    }
+
+    private void writeDataToFile(String jsonData) {
+        try {
+            Writer output;
+            File file = new File(getFilePath());
+            output = new BufferedWriter(new FileWriter(file));
+            output.write(jsonData);
+            output.close();
+        } catch (Exception e) {
+            Toast.makeText(getBaseContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+        }
+    }
+
+    private String getFilePath() {
+        return task.getGeneralOutputDirectory() + "/" + task.getIdentifier() + ".txt";
     }
 }

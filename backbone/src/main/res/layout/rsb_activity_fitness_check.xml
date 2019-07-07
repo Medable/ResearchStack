@@ -46,12 +46,6 @@
         android:layout_marginBottom="@dimen/rsb_padding_small"
         android:orientation="vertical">
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginBottom="@dimen/rsb_padding_small"
-            android:background="@color/rsb_submit_bar_gray" />
-
         <Button
             android:id="@+id/rsb_fitness_check_done_button"
             android:layout_width="match_parent"
@@ -276,7 +270,6 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="@dimen/rsb_padding_wedge"
                     android:layout_marginBottom="@dimen/rsb_padding_small"
-                    android:text="@string/rsb_fitness_check_step6_text"
                     android:textSize="35sp" />
 
             </RelativeLayout>
