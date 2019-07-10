@@ -6,7 +6,6 @@
         <activity android:name="org.researchstack.backbone.ui.ViewWebDocumentActivity"/>
         <activity android:name="org.researchstack.backbone.ui.ConsentViewTaskActivity"/>
         <activity android:name="org.researchstack.backbone.ui.activetasks.FitnessCheckActivity"
-            android:keepScreenOn="true"
             android:screenOrientation="portrait"/>
         <activity android:name="org.researchstack.backbone.ui.activetasks.UnsupportedActivity"
             android:screenOrientation="portrait"/>
