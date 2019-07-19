@@ -207,32 +207,31 @@
                 android:layout_marginBottom="@dimen/rsb_padding_wedge"
                 android:text="@string/rsb_fitness_check_step5_text" />
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_below="@id/rsb_fitness_check_step5_text"
-                android:layout_centerInParent="true">
-
-                <ImageView
-                    android:id="@+id/rsb_fitness_check_step5_walker"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    app:srcCompat="@drawable/rsb_ic_fitness_walker" />
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/rsb_fitness_check_step5_countdown_text"
                     style="@style/Backbone.ActiveTask.Countdown"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_above="@id/rsb_fitness_check_step5_walker"
-                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center_horizontal"
                     android:layout_marginTop="@dimen/rsb_padding_wedge"
                     android:layout_marginBottom="@dimen/rsb_padding_small"
-                    android:text="@string/rsb_fitness_check_step5_text"
-                    android:textSize="35sp" />
+                    android:textSize="35sp"
+                    tools:text="5:59" />
 
-            </RelativeLayout>
+                <ImageView
+                    android:id="@+id/rsb_fitness_check_step5_walker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    app:srcCompat="@drawable/rsb_ic_fitness_walker" />
+
+            </LinearLayout>
 
         </RelativeLayout>
 
