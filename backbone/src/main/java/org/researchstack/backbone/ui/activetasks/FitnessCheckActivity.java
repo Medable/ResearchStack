@@ -106,6 +106,7 @@ public class FitnessCheckActivity extends PinCodeActivity {
     private boolean endOfTaskReached;
     private Button nextButton;
     private ToneGenerator toneGenerator;
+    private boolean taskIsCancelled;
 
     public static Intent newIntent(Context context, FitnessCheckActiveTask task) {
         Intent intent = new Intent(context, FitnessCheckActivity.class);
@@ -187,7 +188,10 @@ public class FitnessCheckActivity extends PinCodeActivity {
         });
 
         Button cancelButton = findViewById(R.id.rsb_fitness_check_cancel_button);
-        cancelButton.setOnClickListener(view -> finish());
+        cancelButton.setOnClickListener(view -> {
+            taskIsCancelled = true;
+            finish();
+        });
 
         int walkingMinutes = task.getWalkDuration() / 60;
 
@@ -309,8 +313,7 @@ public class FitnessCheckActivity extends PinCodeActivity {
                 }
             } else if (viewFlipper.getCurrentView() == fitnessCheckPage5) {
                 // start realdeal countdown
-                if (!isFitnessCounterRunning) {
-                    if (isTtsAvailable) {
+                if (!isFitnessCounterRunning && isTtsAvailable && !taskIsCancelled) {
                         if (audioManager.getRingerMode() == AudioManager.RINGER_MODE_NORMAL) {
                             toneGenerator.startTone(ToneGenerator.TONE_PROP_ACK);
                             textToSpeech.speak(getString(R.string.rsb_fitness_check_tts_directive_walk,
@@ -319,11 +322,9 @@ public class FitnessCheckActivity extends PinCodeActivity {
                         }
                     }
                     fitnessCountdownTimer.start();
-                }
             } else if (viewFlipper.getCurrentView() == fitnessCheckPage6) {
                 // start rest countdown
-                if (!isRestCounterRunning) {
-                    if (isTtsAvailable) {
+                if (!isRestCounterRunning && isTtsAvailable && !taskIsCancelled) {
                         if (audioManager.getRingerMode() == AudioManager.RINGER_MODE_NORMAL) {
                             toneGenerator.startTone(ToneGenerator.TONE_PROP_ACK);
                             textToSpeech.speak(getString(R.string.rsb_fitness_check_tts_directive_rest,
@@ -332,10 +333,11 @@ public class FitnessCheckActivity extends PinCodeActivity {
                         }
                     }
                     restCountdownTimer.start();
-                }
             } else if (viewFlipper.getCurrentView() == fitnessCheckPage7) {
                 if (!endOfTaskReached) {
-                    toneGenerator.startTone(ToneGenerator.TONE_PROP_ACK);
+                    if (!taskIsCancelled) {
+                        toneGenerator.startTone(ToneGenerator.TONE_PROP_ACK);
+                    }
                     endOfTaskReached = true;
                     initTimeRange(task.getWalkDuration());
                     readFitnessDataFromHistory();
