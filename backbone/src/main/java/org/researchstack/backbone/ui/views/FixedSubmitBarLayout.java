@@ -5,10 +5,10 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
+
 import org.researchstack.backbone.R;
 import org.researchstack.backbone.ui.step.layout.StepLayout;
-
-import androidx.constraintlayout.widget.ConstraintLayout;
 
 public abstract class FixedSubmitBarLayout extends ConstraintLayout implements StepLayout {
     public FixedSubmitBarLayout(Context context) {

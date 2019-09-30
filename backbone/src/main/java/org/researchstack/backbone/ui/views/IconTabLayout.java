@@ -4,9 +4,11 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
-import androidx.annotation.Nullable;
-import com.google.android.material.tabs.TabLayout;
 import android.util.AttributeSet;
+
+import androidx.annotation.Nullable;
+
+import com.google.android.material.tabs.TabLayout;
 
 import org.researchstack.backbone.R;
 

@@ -21,6 +21,7 @@ import java.io.Serializable;
  * subclass StepLayout and implement your user interface.
  */
 public class Step implements Serializable {
+    protected boolean isCompletionStep = false;
     private String identifier;
     private Class stepLayoutClass;
     private int stepTitle;
@@ -36,7 +37,6 @@ public class Step implements Serializable {
     private int secondaryTextColor;
     private int actionFailedColor;
     private String hiddenDefaultValue = null;
-
     // The following fields are in RK but not implemented in ResearchStack
     // These options can be developed as needed or removed if we find they are not necessary
     private boolean restorable;
@@ -45,7 +45,6 @@ public class Step implements Serializable {
     private boolean showsProgress;
     private boolean allowsBackNavigation;
     private boolean useSurveyMode;
-    protected boolean isCompletionStep = false;
 
     /**
      * Returns a new step initialized with the specified identifier.
@@ -265,12 +264,12 @@ public class Step implements Serializable {
     /**
      * Sets the theme for the step.
      *
-     * @param colorPrimary the primary color for the step
-     * @param colorPrimaryDark the primary dark color for the step
-     * @param colorSecondary the accent color for the step
+     * @param colorPrimary       the primary color for the step
+     * @param colorPrimaryDark   the primary dark color for the step
+     * @param colorSecondary     the accent color for the step
      * @param principalTextColor the principal text color for the step
      * @param secondaryTextColor the secondary text color for the step
-     * @param actionFailedColor the action failed color for the step
+     * @param actionFailedColor  the action failed color for the step
      */
     public void setStepTheme(int colorPrimary, int colorPrimaryDark, int colorSecondary, int principalTextColor, int secondaryTextColor, int actionFailedColor) {
         this.colorPrimary = colorPrimary;
@@ -323,14 +322,14 @@ public class Step implements Serializable {
         return actionFailedColor;
     }
 
-
-    public void setHiddenDefaultValue(String defaultValue) {
-        this.hiddenDefaultValue = defaultValue;
-    }
     /**
      * Gets the default value use when the step is hide
      */
     public String getHiddenDefaultValue() {
         return hiddenDefaultValue;
+    }
+
+    public void setHiddenDefaultValue(String defaultValue) {
+        this.hiddenDefaultValue = defaultValue;
     }
 }

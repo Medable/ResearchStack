@@ -3,9 +3,6 @@ package org.researchstack.backbone.ui.views;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import androidx.annotation.DrawableRes;
-import androidx.annotation.StringRes;
-import androidx.core.graphics.drawable.DrawableCompat;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -16,6 +13,10 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.DrawableRes;
+import androidx.annotation.StringRes;
+import androidx.core.graphics.drawable.DrawableCompat;
 
 import org.researchstack.backbone.R;
 

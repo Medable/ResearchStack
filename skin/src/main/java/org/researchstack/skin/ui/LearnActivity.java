@@ -1,8 +1,9 @@
 package org.researchstack.skin.ui;
 
 import android.os.Bundle;
-import androidx.appcompat.widget.Toolbar;
 import android.view.MenuItem;
+
+import androidx.appcompat.widget.Toolbar;
 
 import org.researchstack.backbone.ui.PinCodeActivity;
 import org.researchstack.skin.R;

@@ -1,13 +1,14 @@
 package org.researchstack.backbone.ui.step.body;
 
-import androidx.core.content.ContextCompat;
-import androidx.appcompat.widget.AppCompatCheckBox;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+
+import androidx.appcompat.widget.AppCompatCheckBox;
+import androidx.core.content.ContextCompat;
 
 import org.researchstack.backbone.R;
 import org.researchstack.backbone.answerformat.ChoiceAnswerFormat;

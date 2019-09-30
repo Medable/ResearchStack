@@ -2,12 +2,13 @@ package org.researchstack.skin.ui.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import androidx.viewpager.widget.PagerAdapter;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.viewpager.widget.PagerAdapter;
 
 import org.researchstack.backbone.ui.ViewVideoActivity;
 import org.researchstack.backbone.ui.views.LocalWebView;

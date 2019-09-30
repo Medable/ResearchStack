@@ -22,8 +22,7 @@ public class LocaleUtils {
         return new ContextWrapper(newContext);
     }
 
-    public static Locale getLocaleFromString(String localeString)
-    {
+    public static Locale getLocaleFromString(String localeString) {
         String[] parts;
         if (localeString.contains("_")) {
             parts = localeString.split("_");

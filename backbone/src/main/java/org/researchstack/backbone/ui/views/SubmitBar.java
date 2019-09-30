@@ -2,13 +2,13 @@ package org.researchstack.backbone.ui.views;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
 
 import org.researchstack.backbone.R;
 
@@ -58,18 +58,15 @@ public class SubmitBar extends LinearLayout {
     }
 
     public void setPositiveAction(final OnClickListener action) {
-        positiveView.setOnClickListener(new OnClickListener()
-        {
+        positiveView.setOnClickListener(new OnClickListener() {
             @Override
-            public void onClick(View view)
-            {
+            public void onClick(View view) {
                 action.onClick(view);
             }
         });
     }
 
-    public void clearActions()
-    {
+    public void clearActions() {
         positiveView.setOnClickListener(null);
         negativeView.setOnClickListener(null);
     }
@@ -108,11 +105,9 @@ public class SubmitBar extends LinearLayout {
     }
 
     public void setNegativeAction(final OnClickListener action) {
-        negativeView.setOnClickListener(new OnClickListener()
-        {
+        negativeView.setOnClickListener(new OnClickListener() {
             @Override
-            public void onClick(View view)
-            {
+            public void onClick(View view) {
                 action.onClick(view);
             }
         });

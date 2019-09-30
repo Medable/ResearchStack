@@ -6,6 +6,7 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
@@ -53,47 +54,90 @@ public class ConsentViewTaskActivity extends ViewTaskActivity implements StepCal
         return intent;
     }
 
+    /**
+     * Returns the personal form steps related with the consent view task.
+     * <p>
+     * This method doesn't support multilanguage. If used, it will just print the filed names in English.
+     * Please use the method with the new signature
+     * {@link #getConsentPersonalInfoFormStep(Context context, boolean requiresName, boolean requiresBirthDate) getConsentPersonalInfoFormStep}
+     */
+    @Deprecated
+    public static @Nullable
+    FormStep getConsentPersonalInfoFormStep(boolean requiresName, boolean requiresBirthDate) {
+        return getConsentPersonalInfoFormStep(null, requiresName, requiresBirthDate);
+    }
+
+    /**
+     * Returns the personal form steps related with the consent view task.
+     * <p>
+     * This new version is prepared to work with multilanguage.
+     * Please use this method instead of
+     * {@link #getConsentPersonalInfoFormStep(boolean requiresName, boolean requiresBirthDate) getConsentPersonalInfoFormStep}
+     */
+    public static @Nullable
+    FormStep getConsentPersonalInfoFormStep(Context context, boolean requiresName,
+                                            boolean requiresBirthDate) {
+        if (requiresName || requiresBirthDate) {
+            List<QuestionStep> formSteps = new ArrayList<>();
+            if (requiresName) {
+                String firstName = (context != null) ? LocaleUtils.getLocalizedString(context, R.string.rsb_name_first) : "First Name";
+                formSteps.add(new QuestionStep(ID_FORM_FIRST_NAME, firstName, new TextAnswerFormat()));
+
+                String lastName = (context != null) ? LocaleUtils.getLocalizedString(context, R.string.rsb_name_last) : "Last Name";
+                formSteps.add(new QuestionStep(ID_FORM_LAST_NAME, lastName, new TextAnswerFormat()));
+            }
+
+            if (requiresBirthDate) {
+                Calendar maxDate = Calendar.getInstance();
+                maxDate.add(Calendar.YEAR, -18);
+
+                DateAnswerFormat dobFormat = new BirthDateAnswerFormat(null, 18, 0);
+                String dobText = (context != null) ? LocaleUtils.getLocalizedString(context, R.string.rsb_consent_dob_full) : "Date of birth";
+                formSteps.add(new QuestionStep(ID_FORM_DOB, dobText, dobFormat));
+            }
+
+            String formTitle = (context != null) ? LocaleUtils.getLocalizedString(context, R.string.rsb_consent) : "Consent";
+            FormStep formStep = new FormStep(ID_FORM, formTitle, "");
+            formStep.setOptional(false);
+            formStep.setFormSteps(formSteps);
+
+            return formStep;
+        }
+
+        return null;
+    }
+
     @Override
     public void onSaveStep(int action, Step step, StepResult result) {
 
-        if(step instanceof FormStep && step.getIdentifier().equalsIgnoreCase(ID_FORM))
-        {
-            for (QuestionStep question : ((FormStep) step).getFormSteps())
-            {
-                if(question.getIdentifier().equalsIgnoreCase(ID_FORM_FIRST_NAME))
-                {
+        if (step instanceof FormStep && step.getIdentifier().equalsIgnoreCase(ID_FORM)) {
+            for (QuestionStep question : ((FormStep) step).getFormSteps()) {
+                if (question.getIdentifier().equalsIgnoreCase(ID_FORM_FIRST_NAME)) {
                     StepResult nameResult = (StepResult) result.getResultForIdentifier(ID_FORM_FIRST_NAME);
-                    if(nameResult != null && nameResult.getResult() != null)
-                    {
+                    if (nameResult != null && nameResult.getResult() != null) {
                         firstName = (String) nameResult.getResult();
                     }
                 }
-                if(question.getIdentifier().equalsIgnoreCase(ID_FORM_LAST_NAME))
-                {
+                if (question.getIdentifier().equalsIgnoreCase(ID_FORM_LAST_NAME)) {
                     StepResult nameResult = (StepResult) result.getResultForIdentifier(ID_FORM_LAST_NAME);
-                    if(nameResult != null && nameResult.getResult() != null)
-                    {
+                    if (nameResult != null && nameResult.getResult() != null) {
                         lastName = (String) nameResult.getResult();
                     }
                 }
             }
         }
-        if(step instanceof ConsentSignatureStep)
-        {
+        if (step instanceof ConsentSignatureStep) {
             signatureBase64 = (String) result.getResultForIdentifier(KEY_SIGNATURE);
-        }
-        else if(step instanceof ConsentDocumentStep)
-        {
+        } else if (step instanceof ConsentDocumentStep) {
             consentHtml = ((ConsentDocumentStep) step).getConsentHTML();
         }
 
         super.onSaveStep(action, step, result);
     }
 
-    private String getFormalName(String firstName, String lastName)
-    {
+    private String getFormalName(String firstName, String lastName) {
         String completeName = null;
-        if(lastName != null && firstName != null) completeName = lastName+", "+firstName;
+        if (lastName != null && firstName != null) completeName = lastName + ", " + firstName;
         else if (firstName != null) completeName = firstName;
         else completeName = lastName;
         return completeName;
@@ -124,62 +168,6 @@ public class ConsentViewTaskActivity extends ViewTaskActivity implements StepCal
                     ConsentViewTaskActivity.super.saveAndFinish();
                 }
         );
-    }
-
-
-    /**
-     * Returns the personal form steps related with the consent view task.
-     *
-     * This method doesn't support multilanguage. If used, it will just print the filed names in English.
-     * Please use the method with the new signature
-     * {@link #getConsentPersonalInfoFormStep(Context context, boolean requiresName, boolean requiresBirthDate) getConsentPersonalInfoFormStep}
-     */
-    @Deprecated
-    public static @Nullable FormStep getConsentPersonalInfoFormStep(boolean requiresName, boolean requiresBirthDate) {
-        return getConsentPersonalInfoFormStep(null, requiresName, requiresBirthDate);
-    }
-
-    /**
-     * Returns the personal form steps related with the consent view task.
-     *
-     * This new version is prepared to work with multilanguage.
-     * Please use this method instead of
-     * {@link #getConsentPersonalInfoFormStep(boolean requiresName, boolean requiresBirthDate) getConsentPersonalInfoFormStep}
-     */
-    public static @Nullable FormStep getConsentPersonalInfoFormStep(Context context, boolean requiresName,
-                                                                    boolean requiresBirthDate)
-    {
-        if (requiresName || requiresBirthDate)
-        {
-            List<QuestionStep> formSteps = new ArrayList<>();
-            if (requiresName)
-            {
-                String firstName = (context != null) ? LocaleUtils.getLocalizedString(context, R.string.rsb_name_first) : "First Name";
-                formSteps.add(new QuestionStep(ID_FORM_FIRST_NAME, firstName, new TextAnswerFormat()));
-
-                String lastName = (context != null) ? LocaleUtils.getLocalizedString(context,R.string.rsb_name_last) : "Last Name";
-                formSteps.add(new QuestionStep(ID_FORM_LAST_NAME, lastName, new TextAnswerFormat()));
-            }
-
-            if (requiresBirthDate)
-            {
-                Calendar maxDate = Calendar.getInstance();
-                maxDate.add(Calendar.YEAR, -18);
-
-                DateAnswerFormat dobFormat = new BirthDateAnswerFormat(null, 18, 0);
-                String dobText = (context != null) ? LocaleUtils.getLocalizedString(context, R.string.rsb_consent_dob_full) : "Date of birth";
-                formSteps.add(new QuestionStep(ID_FORM_DOB, dobText, dobFormat));
-            }
-
-            String formTitle = (context != null) ?  LocaleUtils.getLocalizedString(context, R.string.rsb_consent) : "Consent";
-            FormStep formStep = new FormStep(ID_FORM, formTitle, "");
-            formStep.setOptional(false);
-            formStep.setFormSteps(formSteps);
-
-            return formStep;
-        }
-
-        return null;
     }
 
     private String getSignatureHtmlContent(@Nullable String completeName, @NonNull String role, @Nullable String signatureB64,
@@ -243,7 +231,7 @@ public class ConsentViewTaskActivity extends ViewTaskActivity implements StepCal
 
     class PDFWriteExposer extends RSHTMLPDFWriter {
         protected void printPdfFile(Activity context, final String taskId, String htmlConsentDocument, String assetsFolder,
-                PDFFileReadyCallback callback) {
+                                    PDFFileReadyCallback callback) {
             super.printPdfFile(context, taskId, htmlConsentDocument, assetsFolder, callback);
         }
     }

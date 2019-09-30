@@ -3,10 +3,11 @@ package org.researchstack.skin.ui.layout;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Handler;
-import androidx.core.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+
+import androidx.core.content.ContextCompat;
 
 import com.jakewharton.rxbinding.widget.RxTextView;
 

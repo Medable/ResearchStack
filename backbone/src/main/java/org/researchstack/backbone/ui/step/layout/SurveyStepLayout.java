@@ -1,12 +1,8 @@
 package org.researchstack.backbone.ui.step.layout;
 
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MediatorLiveData;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Parcelable;
-import androidx.annotation.NonNull;
-import androidx.annotation.StringRes;
 import android.text.Html;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -14,6 +10,11 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.StringRes;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MediatorLiveData;
 
 import org.researchstack.backbone.R;
 import org.researchstack.backbone.ResourcePathManager;
@@ -147,13 +148,10 @@ public class SurveyStepLayout extends FixedSubmitBarLayout implements StepLayout
         submitBar = findViewById(R.id.rsb_submit_bar);
         submitBar.setNegativeTitleColor(coloryPrimary);
         submitBar.setPositiveTitleColor(colorSecondary);
-        submitBar.setPositiveAction(new OnClickListener()
-        {
+        submitBar.setPositiveAction(new OnClickListener() {
             @Override
-            public void onClick(View view)
-            {
-                if(onNextClicked())
-                {
+            public void onClick(View view) {
+                if (onNextClicked()) {
                     submitBar.clearActions();
                 }
             }
@@ -272,7 +270,7 @@ public class SurveyStepLayout extends FixedSubmitBarLayout implements StepLayout
     }
 
     private void isStepEmpty(boolean isEmpty) {
-        if (!isEmpty || allStepsAreOptional)  {
+        if (!isEmpty || allStepsAreOptional) {
             submitBar.setPositiveActionEnabled(getStep().getColorSecondary());
         } else {
             submitBar.setPositiveActionDisabled();

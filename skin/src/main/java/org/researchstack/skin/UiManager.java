@@ -3,13 +3,13 @@ package org.researchstack.skin;
 import android.app.Application;
 import android.content.Context;
 
+import androidx.fragment.app.Fragment;
+
 import org.researchstack.backbone.result.StepResult;
 import org.researchstack.backbone.step.Step;
 import org.researchstack.skin.notification.TaskNotificationReceiver;
 
 import java.util.List;
-
-import androidx.fragment.app.Fragment;
 
 /**
  * UiManager is responsible for providing an a way to define certain aspects of the UI that cannot

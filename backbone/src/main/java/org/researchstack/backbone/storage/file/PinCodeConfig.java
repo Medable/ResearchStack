@@ -18,12 +18,14 @@ public class PinCodeConfig {
     private Type type;
     private long autoLockTime;
     private int length;
+
     /**
      * Constructs the default pin config, 4 digits and 5 minute lockout time
      */
     public PinCodeConfig() {
         this(5 * DateUtils.MINUTE_IN_MILLIS);
     }
+
     /**
      * Constructs a pin config with 4 digits and the provided lockout time
      *

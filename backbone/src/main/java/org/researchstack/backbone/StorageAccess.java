@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
+
 import androidx.annotation.MainThread;
 
 import org.researchstack.backbone.storage.database.AppDatabase;

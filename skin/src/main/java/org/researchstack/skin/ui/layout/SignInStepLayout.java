@@ -1,7 +1,6 @@
 package org.researchstack.skin.ui.layout;
 
 import android.content.Context;
-import androidx.appcompat.widget.AppCompatEditText;
 import android.util.AttributeSet;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -10,6 +9,8 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.widget.AppCompatEditText;
 
 import com.jakewharton.rxbinding.view.RxView;
 

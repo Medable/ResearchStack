@@ -1,13 +1,14 @@
 package org.researchstack.backbone.ui.step.layout;
 
 import android.content.Context;
-import androidx.annotation.NonNull;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.LinearLayout;
+
+import androidx.annotation.NonNull;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -84,28 +85,22 @@ public class ConsentDocumentStepLayout extends LinearLayout implements StepLayou
 
         WebView pdfView = (WebView) findViewById(R.id.webview);
 
-        pdfView.setWebViewClient(new WebViewClient()
-        {
+        pdfView.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 return false;
             }
 
             @Override
-            public void onPageFinished(WebView view, String url)
-            {
+            public void onPageFinished(WebView view, String url) {
                 final SubmitBar submitBar = (SubmitBar) findViewById(R.id.submit_bar);
                 submitBar.setPositiveTitleColor(step.getColorSecondary());
-                submitBar.setPositiveAction(new OnClickListener()
-                {
+                submitBar.setPositiveAction(new OnClickListener() {
                     @Override
-                    public void onClick(View view)
-                    {
-                        showDialog(new MaterialDialog.SingleButtonCallback()
-                        {
+                    public void onClick(View view) {
+                        showDialog(new MaterialDialog.SingleButtonCallback() {
                             @Override
-                            public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which)
-                            {
+                            public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
                                 stepResult.setResult(true);
                                 callbacks.onSaveStep(StepCallbacks.ACTION_NEXT, step, stepResult);
                                 submitBar.clearActions();
@@ -114,11 +109,9 @@ public class ConsentDocumentStepLayout extends LinearLayout implements StepLayou
                     }
                 });
                 submitBar.setNegativeTitleColor(step.getPrimaryColor());
-                submitBar.setNegativeAction(new OnClickListener()
-                {
+                submitBar.setNegativeAction(new OnClickListener() {
                     @Override
-                    public void onClick(View view)
-                    {
+                    public void onClick(View view) {
                         disagreeConsent();
                     }
                 });

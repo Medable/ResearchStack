@@ -16,7 +16,6 @@ import org.researchstack.backbone.step.Step;
 import org.researchstack.backbone.utils.LocaleUtils;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyObject;
 
 @RunWith(MockitoJUnitRunner.class)

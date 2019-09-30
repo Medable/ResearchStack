@@ -29,9 +29,7 @@ public class SmartSurveyTaskTest {
     SmartSurveyTask testTask;
 
     @Before
-    public void setUp() throws Exception
-
-    {
+    public void setUp() throws Exception {
         elements = new ArrayList<TaskModel.StepModel>();
         //elements.add("sup1");
         taskModel = new TaskModel();

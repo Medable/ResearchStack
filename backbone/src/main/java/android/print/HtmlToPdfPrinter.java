@@ -8,14 +8,8 @@ import java.io.File;
 
 public class HtmlToPdfPrinter {
 
-    public interface  PrintReadyCallback
-    {
-        void onPrintFinished();
-    }
-
     private static final String TAG = HtmlToPdfPrinter.class.getSimpleName();
     private final PrintAttributes printAttributes;
-
     public HtmlToPdfPrinter(PrintAttributes printAttributes) {
         this.printAttributes = printAttributes;
     }
@@ -28,8 +22,7 @@ public class HtmlToPdfPrinter {
                     @Override
                     public void onWriteFinished(PageRange[] pages) {
                         super.onWriteFinished(pages);
-                        if(callback != null)
-                        {
+                        if (callback != null) {
                             callback.onPrintFinished();
                         }
                     }
@@ -50,5 +43,9 @@ public class HtmlToPdfPrinter {
             Log.e(TAG, "Failed to open ParcelFileDescriptor", e);
         }
         return null;
+    }
+
+    public interface PrintReadyCallback {
+        void onPrintFinished();
     }
 }

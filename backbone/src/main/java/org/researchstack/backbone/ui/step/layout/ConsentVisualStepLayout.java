@@ -3,11 +3,12 @@ package org.researchstack.backbone.ui.step.layout;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
-import androidx.core.graphics.drawable.DrawableCompat;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.core.graphics.drawable.DrawableCompat;
 
 import org.researchstack.backbone.R;
 import org.researchstack.backbone.model.ConsentSection;
@@ -96,21 +97,16 @@ public class ConsentVisualStepLayout extends FixedSubmitBarLayout implements Ste
 
         if (imageResId != 0) {
             drawable = getResources().getDrawable(imageResId);
-        }
-        else if(imageName != null && imageResId == 0)
-        {
+        } else if (imageName != null && imageResId == 0) {
             drawable = Drawable.createFromPath(imageName);
         }
 
-        if (drawable != null)
-        {
+        if (drawable != null) {
             drawable = DrawableCompat.wrap(drawable);
             DrawableCompat.setTint(drawable, colorSecondary);
             imageView.setImageDrawable(drawable);
             imageView.setVisibility(View.VISIBLE);
-        }
-        else
-        {
+        } else {
             imageView.setVisibility(View.GONE);
         }
 
@@ -130,14 +126,10 @@ public class ConsentVisualStepLayout extends FixedSubmitBarLayout implements Ste
         // Set more info
         TextView moreInfoView = (TextView) findViewById(R.id.more_info);
 
-        if (data.getContentUrl() != null || !TextUtils.isEmpty(data.getContent()) || !TextUtils.isEmpty(data.getHtmlContent()))
-        {
-            if (!TextUtils.isEmpty(data.getCustomLearnMoreButtonTitle()))
-            {
+        if (data.getContentUrl() != null || !TextUtils.isEmpty(data.getContent()) || !TextUtils.isEmpty(data.getHtmlContent())) {
+            if (!TextUtils.isEmpty(data.getCustomLearnMoreButtonTitle())) {
                 moreInfoView.setText(data.getCustomLearnMoreButtonTitle());
-            }
-            else
-            {
+            } else {
                 moreInfoView.setText(LocaleUtils.getLocalizedString(moreInfoView.getContext(), data.getType().getMoreInfoResId()));
             }
 
@@ -145,12 +137,9 @@ public class ConsentVisualStepLayout extends FixedSubmitBarLayout implements Ste
                 String webTitle = LocaleUtils.getLocalizedString(moreInfoView.getContext(), R.string.rsb_consent_section_more_info);
                 URL contentUrl = data.getContentUrl();
                 Intent webDoc;
-                if(contentUrl != null)
-                {
-                     webDoc = ViewWebDocumentActivity.newIntentForContent(getContext(), webTitle, contentUrl, true);
-                }
-                else
-                {
+                if (contentUrl != null) {
+                    webDoc = ViewWebDocumentActivity.newIntentForContent(getContext(), webTitle, contentUrl, true);
+                } else {
                     webDoc = ViewWebDocumentActivity.newIntentForContent(getContext(), webTitle,
                             !TextUtils.isEmpty(data.getHtmlContent()) ? data.getHtmlContent() : data.getContent());
                 }
@@ -167,15 +156,13 @@ public class ConsentVisualStepLayout extends FixedSubmitBarLayout implements Ste
         submitBar.setPositiveTitle(LocaleUtils.getLocalizedString(getContext(), step.getNextButtonString()));
         submitBar.setNegativeTitleColor(colorPrimary);
         submitBar.setPositiveTitleColor(colorSecondary);
-        submitBar.setPositiveAction(new OnClickListener()
-                                    {
-                                        @Override
-                                        public void onClick(View view)
-                                        {
-                                            callbacks.onSaveStep(StepCallbacks.ACTION_NEXT, step, null);
-                                            submitBar.clearActions();
-                                        }
-                                    });
+        submitBar.setPositiveAction(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                callbacks.onSaveStep(StepCallbacks.ACTION_NEXT, step, null);
+                submitBar.clearActions();
+            }
+        });
         submitBar.getNegativeActionView().setVisibility(View.GONE);
     }
 }

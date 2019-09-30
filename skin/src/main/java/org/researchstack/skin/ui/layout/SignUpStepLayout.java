@@ -1,7 +1,6 @@
 package org.researchstack.skin.ui.layout;
 
 import android.content.Context;
-import androidx.appcompat.widget.AppCompatEditText;
 import android.util.AttributeSet;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -9,6 +8,8 @@ import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
+
+import androidx.appcompat.widget.AppCompatEditText;
 
 import org.researchstack.backbone.result.StepResult;
 import org.researchstack.backbone.step.Step;

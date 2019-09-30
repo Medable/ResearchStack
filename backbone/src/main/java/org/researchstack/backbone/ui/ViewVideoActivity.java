@@ -4,9 +4,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
 import android.view.WindowManager;
 import android.widget.MediaController;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import org.researchstack.backbone.R;
 import org.researchstack.backbone.ui.views.AssetVideoView;
@@ -49,7 +50,7 @@ public class ViewVideoActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE,WindowManager.LayoutParams.FLAG_SECURE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
 
         if (videoView.isPlaying()) {
             videoView.pause();

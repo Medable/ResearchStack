@@ -2,7 +2,6 @@ package org.researchstack.backbone.ui.permissions;
 
 import android.Manifest;
 
-
 import org.junit.Test;
 import org.robolectric.util.Pair;
 
@@ -63,15 +62,15 @@ public class PermissionResultTest {
         List<Pair<String, Integer>> pairs = new ArrayList<>();
 
         public ResultBuilder add(String permission, boolean isGranted) {
-            pairs.add(Pair.create(permission, isGranted? PERMISSION_GRANTED : PERMISSION_DENIED));
+            pairs.add(Pair.create(permission, isGranted ? PERMISSION_GRANTED : PERMISSION_DENIED));
             return this;
         }
 
         public PermissionResult build() {
-            String [] permissions = new String[pairs.size()];
-            int [] grantResults = new int[pairs.size()];
+            String[] permissions = new String[pairs.size()];
+            int[] grantResults = new int[pairs.size()];
 
-            for(int i=0; i < permissions.length; i++) {
+            for (int i = 0; i < permissions.length; i++) {
                 permissions[i] = pairs.get(i).first;
                 grantResults[i] = pairs.get(i).second;
             }

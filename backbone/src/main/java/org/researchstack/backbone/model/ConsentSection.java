@@ -133,7 +133,9 @@ public class ConsentSection implements Serializable {
         return formalTitle;
     }
 
-    public void setFormalTitle(String title) { this.formalTitle = title; }
+    public void setFormalTitle(String title) {
+        this.formalTitle = title;
+    }
 
     public Type getType() {
         return type;
@@ -151,8 +153,7 @@ public class ConsentSection implements Serializable {
         return customImageName;
     }
 
-    public void setCustomImageName(String imageName)
-    {
+    public void setCustomImageName(String imageName) {
         customImageName = imageName;
     }
 
@@ -165,13 +166,11 @@ public class ConsentSection implements Serializable {
         this.escapedContent = null;
     }
 
-    public URL getContentUrl()
-    {
+    public URL getContentUrl() {
         return contentUrl;
     }
 
-    public void setContentUrl(URL url)
-    {
+    public void setContentUrl(URL url) {
         contentUrl = url;
     }
 

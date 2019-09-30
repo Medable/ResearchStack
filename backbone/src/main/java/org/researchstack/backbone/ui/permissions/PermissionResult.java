@@ -2,10 +2,10 @@ package org.researchstack.backbone.ui.permissions;
 
 import android.content.pm.PackageManager;
 
+import androidx.annotation.NonNull;
+
 import java.util.HashMap;
 import java.util.Map;
-
-import androidx.annotation.NonNull;
 
 public class PermissionResult {
 

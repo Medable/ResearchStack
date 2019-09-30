@@ -16,6 +16,7 @@ public class FormatHelper {
     public static final SimpleDateFormat SIMPLE_FORMAT_DATE = new SimpleDateFormat(
             DATE_FORMAT_SIMPLE_DATE,
             Locale.getDefault());
+
     private FormatHelper() {
     }
 

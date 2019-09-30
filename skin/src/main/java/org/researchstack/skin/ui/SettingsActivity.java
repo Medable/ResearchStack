@@ -1,8 +1,9 @@
 package org.researchstack.skin.ui;
 
 import android.os.Bundle;
-import androidx.appcompat.widget.Toolbar;
 import android.view.MenuItem;
+
+import androidx.appcompat.widget.Toolbar;
 
 import org.researchstack.skin.R;
 import org.researchstack.skin.ui.fragment.SettingsFragment;

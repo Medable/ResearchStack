@@ -2,7 +2,6 @@ package org.researchstack.backbone.ui.step.layout;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import androidx.appcompat.widget.AppCompatTextView;
 import android.util.AttributeSet;
 import android.util.Base64;
 import android.view.LayoutInflater;
@@ -10,6 +9,8 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.widget.AppCompatTextView;
 
 import org.researchstack.backbone.R;
 import org.researchstack.backbone.result.StepResult;
@@ -101,11 +102,9 @@ public class ConsentSignatureStepLayout extends RelativeLayout implements StepLa
             }
         });
 
-        clear.setOnClickListener(new OnClickListener()
-        {
+        clear.setOnClickListener(new OnClickListener() {
             @Override
-            public void onClick(View view)
-            {
+            public void onClick(View view) {
                 signatureView.clearSignature();
             }
         });
@@ -119,11 +118,9 @@ public class ConsentSignatureStepLayout extends RelativeLayout implements StepLa
         submitBar.getNegativeActionView().setVisibility(View.GONE);
         submitBar.setPositiveTitleColor(step.getColorSecondary());
         submitBar.setPositiveTitle(R.string.rsb_done);
-        submitBar.setPositiveAction(new OnClickListener()
-        {
+        submitBar.setPositiveAction(new OnClickListener() {
             @Override
-            public void onClick(View view)
-            {
+            public void onClick(View view) {
                 if (signatureView.isSignatureDrawn()) {
                     setDataToResult();
                     callbacks.onSaveStep(StepCallbacks.ACTION_NEXT, step, result);

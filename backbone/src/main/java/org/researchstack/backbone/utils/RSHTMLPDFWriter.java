@@ -13,10 +13,6 @@ import java.io.File;
 
 public class RSHTMLPDFWriter {
 
-    public interface PDFFileReadyCallback {
-        void onPrintFileReady();
-    }
-
     private static String SIGNED_PDF_FILENAME = "consent-signed.pdf";
 
     public static File getPDFFilePath(Context context) {
@@ -24,7 +20,7 @@ public class RSHTMLPDFWriter {
     }
 
     public static String getPDFFileName(String taskId) {
-        return taskId+"_"+SIGNED_PDF_FILENAME;
+        return taskId + "_" + SIGNED_PDF_FILENAME;
     }
 
     public static String getPDFPath(Context context, String taskId) {
@@ -54,7 +50,7 @@ public class RSHTMLPDFWriter {
         sb.append("<HTML><HEAD><LINK href=\"consent.css\" type=\"text/css\" rel=\"stylesheet\"/></HEAD><body>");
         sb.append(htmlConsentDocument);
         sb.append("</body></HTML>");
-        
+
         String folder = "file://" + assetsFolder + "/";
 
         webView.loadDataWithBaseURL(folder, sb.toString(), "text/html", "utf-8", null);
@@ -80,5 +76,9 @@ public class RSHTMLPDFWriter {
         } else {
             pdfPrint.print(webView.createPrintDocumentAdapter(), path, ouput, printReadyCallback);
         }
+    }
+
+    public interface PDFFileReadyCallback {
+        void onPrintFileReady();
     }
 }

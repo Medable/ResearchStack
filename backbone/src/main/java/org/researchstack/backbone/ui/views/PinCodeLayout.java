@@ -1,7 +1,6 @@
 package org.researchstack.backbone.ui.views;
 
 import android.content.Context;
-import androidx.annotation.CallSuper;
 import android.text.InputFilter;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -10,6 +9,8 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import androidx.annotation.CallSuper;
 
 import org.researchstack.backbone.R;
 import org.researchstack.backbone.StorageAccess;
