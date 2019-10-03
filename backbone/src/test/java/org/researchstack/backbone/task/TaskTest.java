@@ -38,7 +38,7 @@ public class TaskTest {
         Mockito.when(mockResources.getConfiguration()).thenReturn(mockConfiguration);
         Mockito.when(mockContext.createConfigurationContext(anyObject())).thenReturn(mockContext);
         Mockito.when(mockContext.getSharedPreferences(LocaleUtils.LOCALE_PREFERENCES, Context.MODE_PRIVATE)).thenReturn(mockSp);
-        Mockito.when(mockSp.getString(LocaleUtils.PREFERRED_LOCALE_FIELD, null)).thenReturn("en_US");
+        Mockito.when(mockSp.getString(LocaleUtils.PREFERRED_LOCALE_FIELD, "")).thenReturn("en_US");
         Mockito.when(mockResources.getString(R.string.app_name)).thenReturn("title");
 
         Step mockStepWithTitle = Mockito.mock(Step.class);
