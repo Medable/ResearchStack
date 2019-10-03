@@ -61,6 +61,6 @@ public class LocaleUtils {
 
     public static String getPreferredLocale(Context context) {
         SharedPreferences sharedPrefs = context.getSharedPreferences(LOCALE_PREFERENCES, MODE_PRIVATE);
-        return sharedPrefs.getString(PREFERRED_LOCALE_FIELD, null);
+        return sharedPrefs.getString(PREFERRED_LOCALE_FIELD, "");
     }
 }
