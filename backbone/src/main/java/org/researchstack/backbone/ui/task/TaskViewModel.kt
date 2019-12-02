@@ -28,7 +28,7 @@ internal class TaskViewModel(context: Application, intent: Intent) : AndroidView
     var currentStep: Step? = null
 
 
-    var startEditStep: Step? = null
+    var firstStep: Step
 
     val currentTaskResult: TaskResult
         get() {
@@ -58,6 +58,7 @@ internal class TaskViewModel(context: Application, intent: Intent) : AndroidView
                 ?: TaskResult(task.identifier).apply { startDate = Date() }
 
         task.validateParameters()
+        firstStep = task.getStepAfterStep(null, taskResult)
     }
 
     fun showCurrentStep() {
@@ -67,7 +68,6 @@ internal class TaskViewModel(context: Application, intent: Intent) : AndroidView
     }
 
     fun nextStep() {
-        var currentBeforeUpdate = currentStep
         if (editing) {
             if (clonedTaskResult == null) {
                 clonedTaskResult = TaskResult(taskResult.identifier)
@@ -85,7 +85,7 @@ internal class TaskViewModel(context: Application, intent: Intent) : AndroidView
                 }
             }
 
-            // var currentTest = currentStep
+
             var nextStep = task.getStepAfterStep(currentStep, currentTaskResult)
 
             // Current step with branches?
@@ -113,14 +113,13 @@ internal class TaskViewModel(context: Application, intent: Intent) : AndroidView
                 clonedTaskResult = null
                 editing = false
                 stack.clear()
-                moveReviewStep.postValue(StepNavigationEvent(nextStep))
-                startEditStep = null
+                moveReviewStep.postValue(StepNavigationEvent(step = nextStep))
+                //   firstStep = null
             } else {
                 //TODO: remove
                 //   stack.push(currentStep)
-                currentStepEvent.value = StepNavigationEvent(nextStep)
+                currentStepEvent.value = StepNavigationEvent(step = nextStep)
             }
-
 
 
         } else {
@@ -136,7 +135,7 @@ internal class TaskViewModel(context: Application, intent: Intent) : AndroidView
                     setHiddenStepResult(nextStep)
                     nextStep()
                 } else {
-                    currentStepEvent.value = StepNavigationEvent(nextStep)
+                    currentStepEvent.value = StepNavigationEvent(step = nextStep)
                 }
             }
         }
@@ -148,7 +147,7 @@ internal class TaskViewModel(context: Application, intent: Intent) : AndroidView
         Log.d(TAG, "1. CURRENT STEP: $currentStep")
         if (editing) {
             currentStep = stack.pop()
-            currentStepEvent.value = StepNavigationEvent(currentStep!!,false)
+            currentStepEvent.value = StepNavigationEvent(step = currentStep!!, isMovingForward = false)
 
             editing = stack.isEmpty().not()
 
@@ -157,14 +156,16 @@ internal class TaskViewModel(context: Application, intent: Intent) : AndroidView
             if (previousStep == null) {
                 close()
             } else {
-                currentStep = previousStep
 
                 if (previousStep.isHidden) {
                     // The previous step was a hidden one so we go previousStep again
                     previousStep()
                 } else {
-                    currentStepEvent.value = StepNavigationEvent(previousStep, false)
+                    currentStepEvent.value = StepNavigationEvent(previousStep = currentStep, step = previousStep, isMovingForward = false)
                 }
+
+                currentStep = previousStep
+
             }
         }
         Log.d(TAG, "2. CURRENT STEP: $currentStep")
@@ -176,7 +177,6 @@ internal class TaskViewModel(context: Application, intent: Intent) : AndroidView
     fun edit(step: Step) {
         stack.empty()
         stack.push(currentStep)
-        startEditStep = step
         currentStep = step
         editing = true
         editStep.postValue(step)
@@ -218,7 +218,7 @@ internal class TaskViewModel(context: Application, intent: Intent) : AndroidView
 
 
     private fun convertResults(): TaskResult {
-        var completedStingId : MutableList<String> = mutableListOf()
+        var completedStingId: MutableList<String> = mutableListOf()
         val clonedTaskResult2 = TaskResult(clonedTaskResult!!.identifier)
         task.steps.forEach {
             val result = clonedTaskResult!!.getStepAndResult(it.identifier).second

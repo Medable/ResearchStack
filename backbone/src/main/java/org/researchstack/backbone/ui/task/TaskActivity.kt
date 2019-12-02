@@ -52,11 +52,12 @@ class TaskActivity : PinCodeActivity(), PermissionMediator {
         observe(viewModel.currentStepEvent) { showStep(it) }
         observe(viewModel.taskCompleted) { close(it) }
         observe(viewModel.moveReviewStep) {
-            navController.navigate(it.step.destinationId, null,
-                    NavOptions.Builder().setPopUpTo(
-                            it.step.destinationId,
-                            true
-                    ).build())
+                navController.navigate(it.step.destinationId, null,
+                        NavOptions.Builder().setPopUpTo(
+                                viewModel.firstStep!!.destinationId,
+                                true
+                        ).build())
+
         }
 
         observe(viewModel.editStep) {
@@ -178,10 +179,17 @@ class TaskActivity : PinCodeActivity(), PermissionMediator {
     }
 
     private fun showStep(navigationEvent: StepNavigationEvent) {
-        if (navigationEvent.isMovingForward) {
+        navigationEvent.previousStep?.let {
+            navController.navigate(navigationEvent.step.destinationId, null,
+                    NavOptions.Builder().setPopUpTo(
+                            it.destinationId,
+                            true
+                    ).build())
+        }
+
+
+        if (navigationEvent.previousStep == null) {
             navController.navigate(navigationEvent.step.destinationId)
-        } else {
-            navController.popBackStack()
         }
         supportActionBar?.title = viewModel.task.getTitleForStep(this, navigationEvent.step)
         setActivityTheme(viewModel.colorPrimary, viewModel.colorPrimaryDark)
