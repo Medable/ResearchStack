@@ -29,6 +29,7 @@ import java.util.List;
  */
 public abstract class Task implements Serializable {
     private String identifier;
+    public List<Step> steps;
 
     /**
      *
