@@ -17,12 +17,8 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
-import androidx.navigation.NavController
-import androidx.navigation.NavDestination
 import androidx.navigation.NavOptions
-import androidx.navigation.NavOptionsBuilder
 import androidx.navigation.Navigation
-import androidx.navigation.get
 import androidx.navigation.ui.NavigationUI
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.Theme
@@ -55,20 +51,23 @@ class TaskActivity : PinCodeActivity(), PermissionMediator {
 
         observe(viewModel.currentStepEvent) { showStep(it) }
         observe(viewModel.taskCompleted) { close(it) }
+        observe(viewModel.moveReviewStep) {
+            navController.navigate(it.step.destinationId, null,
+                    NavOptions.Builder().setPopUpTo(
+                            it.step.destinationId,
+                            true
+                    ).build())
+        }
 
         observe(viewModel.editStep) {
             navController.navigate(it.destinationId)
         }
 
         NavigationUI.setupActionBarWithNavController(this, navController)
-
-        navController.addOnDestinationChangedListener(object: NavController.OnDestinationChangedListener {
-            override fun onDestinationChanged(controller: NavController, destination: NavDestination, arguments: Bundle?) {
-                Log.d("TaskActivity", "current fragment ${destination.label}")
-            }
-
+        navController.addOnDestinationChangedListener { controller, destination, arguments ->
+            Log.d("TaskActivity", "current fragment ${destination.label}")
         }
-        )
+
     }
 
     override fun onPause() {
@@ -85,15 +84,15 @@ class TaskActivity : PinCodeActivity(), PermissionMediator {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.rsb_action_cancel) {
             MaterialDialog.Builder(this)
-                .title(R.string.rsb_task_cancel_title)
-                .content(R.string.rsb_task_cancel_text)
-                .theme(Theme.LIGHT)
-                .positiveColor(viewModel.colorPrimary)
-                .negativeColor(viewModel.colorPrimary)
-                .negativeText(R.string.rsb_cancel)
-                .positiveText(R.string.rsb_task_cancel_positive)
-                .onPositive { _, _ -> finish() }
-                .show()
+                    .title(R.string.rsb_task_cancel_title)
+                    .content(R.string.rsb_task_cancel_text)
+                    .theme(Theme.LIGHT)
+                    .positiveColor(viewModel.colorPrimary)
+                    .negativeColor(viewModel.colorPrimary)
+                    .negativeText(R.string.rsb_cancel)
+                    .positiveText(R.string.rsb_task_cancel_positive)
+                    .onPositive { _, _ -> finish() }
+                    .show()
         }
 
         return super.onOptionsItemSelected(item)
@@ -179,15 +178,11 @@ class TaskActivity : PinCodeActivity(), PermissionMediator {
     }
 
     private fun showStep(navigationEvent: StepNavigationEvent) {
-
         if (navigationEvent.isMovingForward) {
-            //val navOptions = NavOptionsBuilder().apply { launchSingleTop = true }.build()
-
             navController.navigate(navigationEvent.step.destinationId)
         } else {
-            navController.popBackStack(navigationEvent.step.destinationId, false)
+            navController.popBackStack()
         }
-
         supportActionBar?.title = viewModel.task.getTitleForStep(this, navigationEvent.step)
         setActivityTheme(viewModel.colorPrimary, viewModel.colorPrimaryDark)
     }
@@ -254,13 +249,13 @@ class TaskActivity : PinCodeActivity(), PermissionMediator {
         }
 
         fun themeIntent(
-            intent: Intent,
-            colorPrimary: Int,
-            colorPrimaryDark: Int,
-            colorSecondary: Int,
-            principalTextColor: Int,
-            secondaryTextColor: Int,
-            actionFailedColor: Int
+                intent: Intent,
+                colorPrimary: Int,
+                colorPrimaryDark: Int,
+                colorSecondary: Int,
+                principalTextColor: Int,
+                secondaryTextColor: Int,
+                actionFailedColor: Int
         ) {
             with(intent) {
                 putExtra(EXTRA_COLOR_PRIMARY, colorPrimary)

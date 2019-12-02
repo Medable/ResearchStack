@@ -170,4 +170,9 @@ public class OrderedTask extends Task implements Serializable {
     public List<Step> getSteps() {
         return new ArrayList<>(steps);
     }
+
+    //do nothing
+    @Override
+    public void resetCompletedTask(List<String> list) {
+    }
 }
