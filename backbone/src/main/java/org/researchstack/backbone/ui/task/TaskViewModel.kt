@@ -67,7 +67,6 @@ internal class TaskViewModel(context: Application, intent: Intent) : AndroidView
     }
 
     fun nextStep() {
-        var currentBeforeUpdate = currentStep
         if (editing) {
             if (clonedTaskResult == null) {
                 clonedTaskResult = TaskResult(taskResult.identifier)
