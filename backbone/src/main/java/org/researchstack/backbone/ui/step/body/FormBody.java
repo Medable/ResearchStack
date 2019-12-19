@@ -1,6 +1,6 @@
 package org.researchstack.backbone.ui.step.body;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,9 +52,10 @@ public class FormBody implements StepBody {
         // list to iterate over (e.g. within getStepResult())
         for (QuestionStep questionStep : questionSteps) {
             StepBody stepBody = createStepBody(questionStep);
-            View bodyView = stepBody.getBodyView(VIEW_TYPE_COMPACT, inflater, body);
-            body.addView(bodyView);
-
+            if(!questionStep.isHidden()) {
+                View bodyView = stepBody.getBodyView(VIEW_TYPE_COMPACT, inflater, body);
+                body.addView(bodyView);
+            }
             formStepChildren.add(stepBody);
         }
 

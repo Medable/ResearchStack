@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?><!-- Change to RelativeLayout for preview to work -->
+
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:filterTouchesWhenObscured="true">
 
     <TextView
         android:id="@+id/title"
@@ -45,7 +47,7 @@
         android:layout_alignParentBottom="true" />
 
 
-    <android.support.v7.widget.AppCompatTextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/layout_consent_review_signature_clear"
         style="@style/Widget.AppCompat.Button.Borderless.Colored"
         android:layout_width="wrap_content"
