@@ -1,22 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Debug -->
-    <string name="lorem_name" tools:ignore="ResourceName" translatable="false">Lorem Ipsum</string>
-    <string name="lorem_short" tools:ignore="ResourceName" translatable="false">Lorem ipsum dolor sit amet, consectetur
-        adipiscing elit.
-    </string>
-    <string name="lorem_medium" tools:ignore="ResourceName" translatable="false">Lorem ipsum dolor sit amet, consectetur
-        adipiscing elit sed do
-        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim.
-    </string>
-    <string name="lorem_long" tools:ignore="ResourceName" translatable="false">Lorem ipsum dolor sit amet, consectetur
-        adipiscing elit, sed do
-        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-        nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-        irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
-        anim id est laborum.
-    </string>
-
+<resources>
     <!-- Consent Section -->
     <string name="rsb_consent">Consent</string>
     <string name="rsb_consent_section_welcome">Welcome</string>
@@ -27,7 +9,7 @@
     <string name="rsb_consent_section_study_survey">Study Survey</string>
     <string name="rsb_consent_section_study_tasks">Study Tasks</string>
     <string name="rsb_consent_section_withdrawing">Withdrawing</string>
-    <string name="rsb_consent_learn_more">Learn More</string>
+    <string name="rsb_consent_learn_more">Learn more</string>
 
     <!-- Consent section learn more -->
     <string name="rsb_consent_section_more_info">Learn more</string>
@@ -89,7 +71,7 @@
     <string name="rsb_name">Name</string>
     <string name="rsb_name_first">First Name</string>
     <string name="rsb_name_last">Last Name</string>
-    <string name="rsb_email">Email</string>
+    <string name="rsb_email">EMAIL</string>
     <string name="rsb_disagree">Disagree</string>
     <string name="rsb_agree">Agree</string>
     <string name="rsb_ok">OK</string>
@@ -109,7 +91,7 @@
     <string name="rsb_invalid_answer_default">Invalid answer, try again!</string>
     <string name="rsb_invalid_answer_date_over">Invalid answer, date must be before %1$s</string>
     <string name="rsb_invalid_answer_date_under">Invalid answer, date must be after %1$s</string>
-    <string name="rsb_invalid_answer_integer_over">Invalid answer, your value must be %1$s or lower</string>
+    <string name="rsb_invalid_answer_integer_over">Invalid answer, date must be after %1$s</string>
     <string name="rsb_invalid_answer_integer_under">Invalid answer, your value must be %1$s or higher</string>
     <string name="rsb_invalid_answer_choice">Please select a value!</string>
     <string name="rsb_invalid_answer_date_none">Please choose a date.</string>
@@ -152,6 +134,5 @@
     <string name="rsb_consent_doc_line_signature">%1$s\'s Signature</string>
     <string name="rsb_consent_doc_line_date">Date</string>
     <string name="rsb_consent_role">Participant</string>
-    <string name="rsb_consent_doc_line_date_format">"MM-dd-yyyy"</string>
 
 </resources>
