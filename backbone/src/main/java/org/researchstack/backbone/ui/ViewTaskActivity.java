@@ -26,7 +26,6 @@ import com.afollestad.materialdialogs.Theme;
 import org.researchstack.backbone.R;
 import org.researchstack.backbone.result.StepResult;
 import org.researchstack.backbone.result.TaskResult;
-import org.researchstack.backbone.step.ConsentSignatureStep;
 import org.researchstack.backbone.step.FormStep;
 import org.researchstack.backbone.step.QuestionStep;
 import org.researchstack.backbone.step.Step;
@@ -40,9 +39,11 @@ import org.researchstack.backbone.ui.step.layout.ConsentVisualStepLayout;
 import org.researchstack.backbone.ui.step.layout.StepLayout;
 import org.researchstack.backbone.ui.step.layout.SurveyStepLayout;
 import org.researchstack.backbone.ui.views.StepSwitcher;
+import org.researchstack.backbone.utils.ViewUtils;
 
 import java.lang.reflect.Constructor;
 import java.util.Date;
+import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -60,6 +61,8 @@ public class ViewTaskActivity extends PinCodeActivity implements StepCallbacks, 
     public static final String EXTRA_PRINCIPAL_TEXT_COLOR = "ViewTaskActivity.ExtraPrincipalTextColor";
     public static final String EXTRA_SECONDARY_TEXT_COLOR = "ViewTaskActivity.ExtraSecondaryTextColor";
     public static final String EXTRA_ACTION_FAILED_COLOR = "ViewTaskActivity.ExtraActionFailedColor";
+
+    private static final int STEP_PERMISSION_REQUEST = 44;
 
     private StepSwitcher root;
 
@@ -292,14 +295,6 @@ public class ViewTaskActivity extends PinCodeActivity implements StepCallbacks, 
             for (QuestionStep questionStep : ((FormStep) step).getFormSteps()) {
                 questionStep.setStepTheme(step.getPrimaryColor(), step.getColorPrimaryDark(), step.getColorSecondary(),
                         step.getPrincipalTextColor(), step.getSecondaryTextColor(), step.getActionFailedColor());
-                if (step.getTitle().equals("Sign Up")) {
-                    if (questionStep.getTitle().equals("First Name")
-                            || questionStep.getTitle().equals("Last Name")
-                            || questionStep.getTitle().equals("Mobile Phone")
-                            || questionStep.getTitle().equals("Date of Birth")) {
-                        questionStep.hideStep(true);
-                    }
-                }
             }
         }
 
