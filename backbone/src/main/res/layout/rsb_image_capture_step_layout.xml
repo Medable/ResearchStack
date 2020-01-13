@@ -45,6 +45,8 @@
         style="@style/rsb_image_capture_step_style"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageCaptureStepQuestionItself"
+        android:focusable="true"
+        android:contentDescription="@null"
         app:srcCompat="@drawable/rsb_ic_circle_8dp" />
 
     <include layout="@layout/rsb_review_step_edit_button_layout" />
