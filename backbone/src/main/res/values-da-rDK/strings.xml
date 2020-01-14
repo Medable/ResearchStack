@@ -152,4 +152,13 @@
     <string name="rsb_edit_step_alert_step_skip_content">[da-DK] Your original response will be discarded.</string>
     <string name="rsb_edit_step_alert_step_skip_discard">[da-DK] NO, DON\'T SKIP</string>
     <string name="rsb_edit_step_alert_step_skip_positive">[da-DK] Yes, skip</string>
+
+    <!-- ReviewStep Accessibility -->
+    <string name="rsb_reviewstep_edit_accessibility">[da-rDK] Edit</string>
+    <string name="rsb_reviewstep_edit_title_accessibility">[da-rDK] Edit %s</string>
+    <string name="rsb_reviewstep_captured_image_accessibility">[da-rDK] Captured image</string>
+    <string name="rsb_reviewstep_captured_image_title_accessibility">[da-rDK] Captured image for %s</string>
+    <string name="rsb_reviewstep_selected_image_accessibility">[da-rDK] Selected image</string>
+    <string name="rsb_reviewstep_selected_image_title_accessibility">[da-rDK] Selected image for %s</string>
+
 </resources>

@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:paddingEnd="9dp"
         android:paddingStart="9dp"
-        android:contentDescription="Edit"
+        android:contentDescription="@string/rsb_reviewstep_edit_accessibility"
         android:src="@drawable/rsb_ic_edit"
         android:tint="@android:color/darker_gray"
         app:layout_constrainedWidth="true"

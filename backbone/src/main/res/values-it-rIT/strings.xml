@@ -153,4 +153,11 @@
     <string name="rsb_edit_step_alert_step_skip_discard">[it-IT] NO, DON\'T SKIP</string>
     <string name="rsb_edit_step_alert_step_skip_positive">[it-IT] Yes, skip</string>
 
+    <!-- ReviewStep Accessibility -->
+    <string name="rsb_reviewstep_edit_accessibility">[it-rIT] Edit</string>
+    <string name="rsb_reviewstep_edit_title_accessibility">[it-rIT] Edit %s</string>
+    <string name="rsb_reviewstep_captured_image_accessibility">[it-rIT] Captured image</string>
+    <string name="rsb_reviewstep_captured_image_title_accessibility">[it-rIT] Captured image for %s</string>
+    <string name="rsb_reviewstep_selected_image_accessibility">[it-rIT] Selected image</string>
+    <string name="rsb_reviewstep_selected_image_title_accessibility">[it-rIT] Selected image for %s</string>
 </resources>
