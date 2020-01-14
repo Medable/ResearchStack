@@ -6,6 +6,7 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -22,6 +23,7 @@ import org.researchstack.backbone.step.QuestionStep;
 import org.researchstack.backbone.step.Step;
 import org.researchstack.backbone.task.Task;
 import org.researchstack.backbone.ui.callbacks.StepCallbacks;
+import org.researchstack.backbone.utils.LocalBroadcaster;
 import org.researchstack.backbone.utils.LocaleUtils;
 import org.researchstack.backbone.utils.RSHTMLPDFWriter;
 
@@ -31,6 +33,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import kotlin.Unit;
 import static org.researchstack.backbone.ui.step.layout.ConsentSignatureStepLayout.KEY_SIGNATURE;
 import static org.researchstack.backbone.ui.task.TaskActivity.EXTRA_TASK;
 
@@ -239,5 +242,14 @@ public class ConsentViewTaskActivity extends ViewTaskActivity implements StepCal
                                     PDFFileReadyCallback callback) {
             super.printPdfFile(context, taskId, htmlConsentDocument, assetsFolder, callback);
         }
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        new LocalBroadcaster(this, this, integer -> {
+            getWindow().setStatusBarColor(integer);
+            return Unit.INSTANCE;
+        });
     }
 }

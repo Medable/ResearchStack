@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.view.ContextThemeWrapper;
@@ -36,7 +37,7 @@ import static org.researchstack.backbone.utils.LocaleUtils.getLocaleFromString;
 import static org.researchstack.backbone.utils.LocaleUtils.getPreferredLocale;
 import static org.researchstack.backbone.utils.LocaleUtils.wrapLocaleContext;
 
-public class PinCodeActivity extends BaseActivity implements StorageAccessListener {
+public class PinCodeActivity extends AppCompatActivity implements StorageAccessListener {
 
     private PinCodeLayout pinCodeLayout;
     private Action1<Boolean> toggleKeyboardAction;

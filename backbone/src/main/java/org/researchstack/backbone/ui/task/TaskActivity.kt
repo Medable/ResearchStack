@@ -36,6 +36,7 @@ import org.researchstack.backbone.ui.permissions.PermissionResult
 import org.researchstack.backbone.ui.step.fragments.BaseStepFragment
 import org.researchstack.backbone.ui.step.layout.StepLayout
 import org.researchstack.backbone.ui.step.layout.SurveyStepLayout
+import org.researchstack.backbone.utils.LocalBroadcaster
 import org.researchstack.backbone.utils.ViewUtils
 
 class TaskActivity : PinCodeActivity(), PermissionMediator {
@@ -127,7 +128,9 @@ class TaskActivity : PinCodeActivity(), PermissionMediator {
             }
         }
 
-
+        LocalBroadcaster(this, this) {
+            window.statusBarColor = it
+        }
     }
 
     override fun onPause() {
