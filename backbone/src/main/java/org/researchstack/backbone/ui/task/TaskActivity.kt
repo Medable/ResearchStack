@@ -128,8 +128,9 @@ class TaskActivity : PinCodeActivity(), PermissionMediator {
             }
         }
 
-        LocalBroadcaster(this, this) {
-            window.statusBarColor = it
+        LocalBroadcaster(this, this) {currentColor ->
+            viewModel.colorPrimaryDark = currentColor
+            window.statusBarColor = currentColor
         }
     }
 

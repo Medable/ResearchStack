@@ -247,8 +247,9 @@ public class ConsentViewTaskActivity extends ViewTaskActivity implements StepCal
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        new LocalBroadcaster(this, this, integer -> {
-            getWindow().setStatusBarColor(integer);
+        new LocalBroadcaster(this, this, currentColor -> {
+            colorPrimaryDark = currentColor;
+            getWindow().setStatusBarColor(currentColor);
             return Unit.INSTANCE;
         });
     }

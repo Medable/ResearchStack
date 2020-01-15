@@ -72,7 +72,7 @@ public class ViewTaskActivity extends PinCodeActivity implements StepCallbacks, 
     private Task task;
     private TaskResult taskResult;
     private int colorPrimary;
-    private int colorPrimaryDark;
+    protected int colorPrimaryDark;
     private int colorSecondary;
     private int principalTextColor;
     private int secondaryTextColor;
