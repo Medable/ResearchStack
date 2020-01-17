@@ -50,6 +50,7 @@ internal class TaskViewModel(val context: Application, intent: Intent) : Android
     val secondaryTextColor = intent.getIntExtra(EXTRA_SECONDARY_TEXT_COLOR, R.color.rsb_item_text_grey)
     val actionFailedColor = intent.getIntExtra(EXTRA_ACTION_FAILED_COLOR, R.color.rsb_error)
 
+    var updatedColorPrimaryDark = MutableLiveData<Int>()
     val taskCompleted = SingleLiveEvent<Boolean>()
     val currentStepEvent = MutableLiveData<StepNavigationEvent>()
     val moveReviewStep = MutableLiveData<StepNavigationEvent>()
@@ -72,8 +73,7 @@ internal class TaskViewModel(val context: Application, intent: Intent) : Android
     private val stack = Stack<Step>()
 
     init {
-        taskResult = intent.extras?.get(EXTRA_TASK_RESULT) as TaskResult?
-                ?: TaskResult(task.identifier).apply { startDate = Date() }
+        taskResult = intent.extras?.get(EXTRA_TASK_RESULT) as TaskResult? ?: TaskResult(task.identifier).apply { startDate = Date() }
 
         task.validateParameters()
     }
@@ -363,4 +363,10 @@ internal class TaskViewModel(val context: Application, intent: Intent) : Android
     fun revertToOriginalStepResult(originalStepResult: StepResult<*>) {
         currentTaskResult.getStepResult(currentStep?.identifier).result = originalStepResult.result
     }
+
+    fun changeColor(color: Int) {
+        updatedColorPrimaryDark.postValue(color)
+    }
+
+    fun getStatusBarColor(): Int = updatedColorPrimaryDark.value ?: colorPrimaryDark
 }

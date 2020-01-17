@@ -131,9 +131,12 @@ open class TaskActivity : PinCodeActivity(), PermissionMediator {
             }
         }
 
-        LocalBroadcaster(this, this) {currentColor ->
-            viewModel.colorPrimaryDark = currentColor
-            window.statusBarColor = currentColor
+        LocalBroadcaster(this, this) { currentColor ->
+            viewModel.changeColor( currentColor )
+        }
+
+        observe(viewModel.updatedColorPrimaryDark){
+            window.statusBarColor = it
         }
     }
 
@@ -317,7 +320,7 @@ open class TaskActivity : PinCodeActivity(), PermissionMediator {
                 window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
             }
 
-            window.statusBarColor = primaryColorDark
+            window.statusBarColor = viewModel.getStatusBarColor()
         }
 
         supportActionBar?.setBackgroundDrawable(ColorDrawable(primaryColor))

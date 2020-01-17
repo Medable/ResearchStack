@@ -6,15 +6,17 @@ import android.content.Intent
 import android.content.IntentFilter
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
-import androidx.lifecycle.Lifecycle.Event.ON_DESTROY
 import androidx.lifecycle.Lifecycle.Event.ON_START
+import androidx.lifecycle.Lifecycle.Event.ON_STOP
 import androidx.lifecycle.LifecycleOwner
-import androidx.localbroadcastmanager.content.LocalBroadcastManager
 
-class LocalBroadcaster(private val appContext: Context, lifecycleOwner: LifecycleOwner,
-                       colorChangeCallback: (color: Int) -> Unit) : LifecycleObserver {
-    private val OBJECT = "object"
-    private val STATUS_BAR_COLOR_CHANGE = "status_bar_color_change"
+class LocalBroadcaster(private val context: Context, lifecycleOwner: LifecycleOwner,
+                       colorChangeCallback: ((color: Int) -> Unit)) : LifecycleObserver {
+
+    companion object Constant {
+        const val OBJECT = "object"
+        const val STATUS_BAR_COLOR_CHANGE = "status_bar_color_change"
+    }
 
     init {
         lifecycleOwner.lifecycle.addObserver(this)
@@ -24,11 +26,11 @@ class LocalBroadcaster(private val appContext: Context, lifecycleOwner: Lifecycl
     fun start() {
         val filter = IntentFilter()
         filter.addAction(STATUS_BAR_COLOR_CHANGE)
-        LocalBroadcastManager.getInstance(appContext).registerReceiver(receiver, filter)
+        StickyLocalBroadcastManager.getInstance(context).registerReceiver(receiver, filter)
     }
 
-    @OnLifecycleEvent(ON_DESTROY)
-    fun stop() = LocalBroadcastManager.getInstance(appContext).unregisterReceiver(receiver)
+    @OnLifecycleEvent(ON_STOP)
+    fun stop() = StickyLocalBroadcastManager.getInstance(context).unregisterReceiver(receiver)
 
     private val receiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
