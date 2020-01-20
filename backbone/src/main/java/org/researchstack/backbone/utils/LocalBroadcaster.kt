@@ -9,10 +9,11 @@ import androidx.lifecycle.OnLifecycleEvent
 import androidx.lifecycle.Lifecycle.Event.ON_START
 import androidx.lifecycle.Lifecycle.Event.ON_STOP
 import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.MutableLiveData
 
-class LocalBroadcaster(private val context: Context, lifecycleOwner: LifecycleOwner,
-                       colorChangeCallback: ((color: Int) -> Unit)) : LifecycleObserver {
+class LocalBroadcaster(private val context: Context,  lifecycleOwner: LifecycleOwner) : LifecycleObserver {
 
+    var updatedColor = MutableLiveData<Int>()
     companion object Constant {
         const val OBJECT = "object"
         const val STATUS_BAR_COLOR_CHANGE = "status_bar_color_change"
@@ -35,7 +36,7 @@ class LocalBroadcaster(private val context: Context, lifecycleOwner: LifecycleOw
     private val receiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
             val statusBarColor = intent?.extras?.get(OBJECT) as Int
-            colorChangeCallback(statusBarColor)
+            updatedColor.postValue(statusBarColor)
         }
     }
 }

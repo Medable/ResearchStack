@@ -24,6 +24,7 @@ import androidx.navigation.Navigation
 import androidx.preference.PreferenceManager
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.Theme
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 import org.researchstack.backbone.R
@@ -42,6 +43,7 @@ import org.researchstack.backbone.utils.ViewUtils
 open class TaskActivity : PinCodeActivity(), PermissionMediator {
 
     private val viewModel: TaskViewModel by viewModel { parametersOf(intent) }
+    private val localBroadcaster: LocalBroadcaster by inject { parametersOf( this@TaskActivity) }
     private val navController by lazy { Navigation.findNavController(this, R.id.nav_host_fragment) }
     private var currentStepLayout: StepLayout? = null
     private var stepPermissionListener: PermissionListener? = null
@@ -53,9 +55,8 @@ open class TaskActivity : PinCodeActivity(), PermissionMediator {
         setContentView(R.layout.rsb_activity_task)
 
         setSupportActionBar(findViewById(R.id.toolbar))
-
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
+        observe(localBroadcaster.updatedColor) { viewModel.changeColor( it )}
         observe(viewModel.currentStepEvent) { showStep(it) }
         observe(viewModel.taskCompleted) { close(it) }
         observe(viewModel.moveReviewStep) {
@@ -131,9 +132,6 @@ open class TaskActivity : PinCodeActivity(), PermissionMediator {
             }
         }
 
-        LocalBroadcaster(this, this) { currentColor ->
-            viewModel.changeColor( currentColor )
-        }
 
         observe(viewModel.updatedColorPrimaryDark){
             window.statusBarColor = it
