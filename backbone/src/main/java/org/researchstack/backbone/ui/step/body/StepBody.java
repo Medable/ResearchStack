@@ -13,6 +13,8 @@ public interface StepBody {
     int VIEW_TYPE_COMPACT = 1;
     MutableLiveData<Boolean> isStepEmpty = new MutableLiveData<>();
 
+    MutableLiveData<StepResult> modifiedStepResult = new MutableLiveData<>();
+
     View getBodyView(int viewType, LayoutInflater inflater, ViewGroup parent);
 
     StepResult getStepResult(boolean skipped);

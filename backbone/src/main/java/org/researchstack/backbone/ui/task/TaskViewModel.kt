@@ -336,7 +336,6 @@ internal class TaskViewModel(val context: Application, intent: Intent) : Android
         isSavedDialogAppeared = false
     }
 
-    @VisibleForTesting
     fun checkIfAnswersAreTheSame(): Boolean {
         val originalStepResult = clonedTaskResultInCaseOfEdit?.getStepResult(currentStep?.identifier)
         val modifiedStepResult = currentTaskResult.getStepResult(currentStep?.identifier)
@@ -352,6 +351,10 @@ internal class TaskViewModel(val context: Application, intent: Intent) : Android
         } else {
             originalStepResult.allValuesAreNull()!!.not() && modifiedStepResult!!.allValuesAreNull()
         }
+    }
+
+    fun getOriginalStepResultBeforeEdit(): StepResult<*>? {
+        return clonedTaskResultInCaseOfEdit?.getStepResult(currentStep?.identifier)
     }
 
     @VisibleForTesting

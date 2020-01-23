@@ -1,12 +1,8 @@
 package org.researchstack.backbone.ui.step.layout;
 
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MediatorLiveData;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Parcelable;
-import androidx.annotation.NonNull;
-import androidx.annotation.StringRes;
 import android.text.Html;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -14,6 +10,11 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.StringRes;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MediatorLiveData;
 
 import org.researchstack.backbone.R;
 import org.researchstack.backbone.ResourcePathManager;
@@ -159,6 +160,7 @@ public class SurveyStepLayout extends FixedSubmitBarLayout implements StepLayout
     public void isEditView(boolean isEditView) {
         isEditViewVisible = isEditView;
         submitBar.updateView(isEditView);
+        updateSaveButton(originalStepResult);
     }
 
     @Override
@@ -238,6 +240,7 @@ public class SurveyStepLayout extends FixedSubmitBarLayout implements StepLayout
         }
         stepBody = createStepBody(questionStep, stepResult);
         mediator.addSource(stepBody.isStepEmpty, this::isStepEmpty);
+        mediator.addSource(stepBody.modifiedStepResult, this::updateSaveButton);
 
         View body = stepBody.getBodyView(StepBody.VIEW_TYPE_DEFAULT, inflater, this);
 
@@ -328,6 +331,11 @@ public class SurveyStepLayout extends FixedSubmitBarLayout implements StepLayout
             submitBar.setPositiveActionDisabled();
         }
 
+    }
+
+    private void updateSaveButton(StepResult currentStepResult) {
+        boolean isEnabled = originalStepResult == null || !originalStepResult.equals(currentStepResult);
+        submitBar.getEditSaveViewActionView().setEnabled(isEnabled);
     }
 
     private void checkIfAllStepsAreOptional() {

@@ -70,6 +70,8 @@ internal open class BaseStepFragment(@LayoutRes contentLayoutId: Int) : Fragment
 
     private fun setupStepCallbacks(stepView: StepLayout) {
         stepView.setCallbacks(this)
+        val originalStepResult = viewModel.getOriginalStepResultBeforeEdit()
+        stepView.setOriginalStepResult(originalStepResult)
         stepView.isEditView(viewModel.editing)
         viewModel.updateCancelEditInLayout.observe(this, Observer {
             stepView.setCancelEditMode(it)

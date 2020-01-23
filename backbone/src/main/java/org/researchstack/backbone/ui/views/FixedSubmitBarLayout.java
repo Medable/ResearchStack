@@ -6,11 +6,14 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import org.researchstack.backbone.R;
+import org.researchstack.backbone.result.StepResult;
 import org.researchstack.backbone.ui.step.layout.StepLayout;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 public abstract class FixedSubmitBarLayout extends ConstraintLayout implements StepLayout {
+    protected StepResult originalStepResult;
+
     public FixedSubmitBarLayout(Context context) {
         super(context);
         init();
@@ -36,5 +39,14 @@ public abstract class FixedSubmitBarLayout extends ConstraintLayout implements S
         // Add contentContainer to the layout
         ViewGroup contentContainer = findViewById(R.id.rsb_content_container);
         inflater.inflate(getContentResourceId(), contentContainer, true);
+    }
+
+    @Override
+    public void setOriginalStepResult(StepResult originalStepResult) {
+        this.originalStepResult = originalStepResult;
+    }
+
+    public StepResult getOriginalStepResult() {
+        return originalStepResult;
     }
 }
