@@ -237,6 +237,7 @@ public class SurveyStepLayout extends FixedSubmitBarLayout implements StepLayout
         submitBar.setPositiveActionEnabled(getStep().getColorSecondary());
         if (stepBody != null) {
             mediator.removeSource(stepBody.isStepEmpty);
+            mediator.removeSource(stepBody.modifiedStepResult);
         }
         stepBody = createStepBody(questionStep, stepResult);
         mediator.addSource(stepBody.isStepEmpty, this::isStepEmpty);
