@@ -63,6 +63,7 @@ public class TextQuestionBody implements StepBody {
         // Set result on text change
         RxTextView.textChanges(editText).subscribe(text -> {
             result.setResult(text.toString());
+            modifiedStepResult.postValue(result);
         });
 
         // Format EditText from TextAnswerFormat

@@ -13,6 +13,7 @@ import org.researchstack.backbone.result.StepResult
 import org.researchstack.backbone.step.FormStep
 import org.researchstack.backbone.step.Step
 import org.researchstack.backbone.ui.callbacks.StepCallbacks
+import org.researchstack.backbone.ui.step.body.FormBody
 import org.researchstack.backbone.ui.step.layout.ConsentVisualStepLayout
 import org.researchstack.backbone.ui.step.layout.StepLayout
 import org.researchstack.backbone.ui.step.layout.SurveyStepLayout
@@ -70,9 +71,10 @@ internal open class BaseStepFragment(@LayoutRes contentLayoutId: Int) : Fragment
 
     private fun setupStepCallbacks(stepView: StepLayout) {
         stepView.setCallbacks(this)
-        val originalStepResult = viewModel.getOriginalStepResultBeforeEdit()
-        stepView.setOriginalStepResult(originalStepResult)
         stepView.isEditView(viewModel.editing)
+        val originalStepResult = viewModel.getOriginalStepResultForId(viewModel.currentStep?.identifier)
+        checkUpdateSaveButton(stepView, originalStepResult)
+        stepView.modifiedStepResultLiveData?.observe(this, Observer { checkUpdateSaveButton(stepView, it) })
         viewModel.updateCancelEditInLayout.observe(this, Observer {
             stepView.setCancelEditMode(it)
         })
@@ -80,6 +82,20 @@ internal open class BaseStepFragment(@LayoutRes contentLayoutId: Int) : Fragment
         viewModel.stepBackNavigationState.observe(this, Observer {
             stepView.setRemoveFromBackStack(it)
         })
+    }
+
+    private fun checkUpdateSaveButton(stepView: StepLayout, currentStepResult: StepResult<*>?) {
+        val originalStepResult = viewModel.getOriginalStepResultForId(viewModel.currentStep?.identifier)
+        if (currentStepResult?.identifier.equals(originalStepResult?.identifier)) {
+            updateSaveButton(stepView, currentStepResult, originalStepResult)
+        } else if (stepView is SurveyStepLayout && stepView.stepBody is FormBody) {
+            stepView.modifiedStepResultLiveData.postValue(stepView.stepBody.getStepResult(false))
+        }
+    }
+
+    private fun updateSaveButton(stepView: StepLayout, currentStepResult: StepResult<*>?, originalStepResult: StepResult<*>?) {
+        val isVisible = viewModel.editing && (originalStepResult == null || originalStepResult != currentStepResult)
+        stepView.updateSubmitBarSaveVisibility(isVisible)
     }
 
     override fun onSaveStep(action: Int, step: Step, result: StepResult<*>?) {

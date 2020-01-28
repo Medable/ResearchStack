@@ -7,6 +7,8 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.lifecycle.MutableLiveData;
+
 import org.researchstack.backbone.R;
 import org.researchstack.backbone.ResourcePathManager;
 import org.researchstack.backbone.result.StepResult;
@@ -75,6 +77,17 @@ public class InstructionStepLayout extends FixedSubmitBarLayout implements StepL
     public StepResult getStepResult() {
         // This step doesn't have a result, so we're returning null instead
         return null;
+    }
+
+    @Override
+    public MutableLiveData<StepResult> getModifiedStepResultLiveData() {
+        // This step doesn't have a result, so we're returning null LiveData instead
+        return null;
+    }
+
+    @Override
+    public void updateSubmitBarSaveVisibility(boolean visible) {
+        //no-op only when user on edit mode inside regular steps
     }
 
     @Override

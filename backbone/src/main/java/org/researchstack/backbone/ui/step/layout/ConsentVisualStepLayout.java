@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import androidx.core.graphics.drawable.DrawableCompat;
+import androidx.lifecycle.MutableLiveData;
+
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
@@ -95,6 +97,17 @@ public class ConsentVisualStepLayout extends FixedSubmitBarLayout implements Ste
     public StepResult getStepResult() {
         // This step doesn't have a result, so we're returning null instead
         return null;
+    }
+
+    @Override
+    public MutableLiveData<StepResult> getModifiedStepResultLiveData() {
+        // This step doesn't have a result, so we're returning null LiveData instead
+        return null;
+    }
+
+    @Override
+    public void updateSubmitBarSaveVisibility(boolean visible) {
+        //no-op only when user on edit mode inside regular steps
     }
 
     @Override

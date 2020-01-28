@@ -1,7 +1,9 @@
 package org.researchstack.backbone.ui.step.body;
 
 import android.content.Context;
+import android.text.Editable;
 import android.text.InputFilter;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -65,6 +67,7 @@ public class DecimalQuestionBody implements StepBody {
     private View initViewDefault(LayoutInflater inflater, ViewGroup parent) {
         editText = (EditText) inflater.inflate(R.layout.rsb_item_edit_text, parent, false);
         setFilters(parent.getContext());
+        initListeners();
 
         return editText;
     }
@@ -77,6 +80,7 @@ public class DecimalQuestionBody implements StepBody {
 
         editText = (EditText) formItemView.findViewById(R.id.value);
         setFilters(parent.getContext());
+        initListeners();
 
         return formItemView;
     }
@@ -109,6 +113,27 @@ public class DecimalQuestionBody implements StepBody {
         InputFilter.LengthFilter maxLengthFilter = new InputFilter.LengthFilter(maxLength);
         InputFilter[] newFilters = ViewUtils.addFilter(editText.getFilters(), maxLengthFilter);
         editText.setFilters(newFilters);
+    }
+
+    private void initListeners() {
+        editText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                isStepEmpty.postValue(s.length() == 0);
+                result.setResult(Float.valueOf(editText.getText().toString()));
+                modifiedStepResult.postValue(result);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
     }
 
     @Override

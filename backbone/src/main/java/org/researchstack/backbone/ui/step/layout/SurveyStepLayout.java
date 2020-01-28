@@ -15,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.StringRes;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MediatorLiveData;
+import androidx.lifecycle.MutableLiveData;
 
 import org.researchstack.backbone.R;
 import org.researchstack.backbone.ResourcePathManager;
@@ -160,7 +161,6 @@ public class SurveyStepLayout extends FixedSubmitBarLayout implements StepLayout
     public void isEditView(boolean isEditView) {
         isEditViewVisible = isEditView;
         submitBar.updateView(isEditView);
-        updateSaveButton(originalStepResult);
     }
 
     @Override
@@ -237,11 +237,9 @@ public class SurveyStepLayout extends FixedSubmitBarLayout implements StepLayout
         submitBar.setPositiveActionEnabled(getStep().getColorSecondary());
         if (stepBody != null) {
             mediator.removeSource(stepBody.isStepEmpty);
-            mediator.removeSource(stepBody.modifiedStepResult);
         }
         stepBody = createStepBody(questionStep, stepResult);
         mediator.addSource(stepBody.isStepEmpty, this::isStepEmpty);
-        mediator.addSource(stepBody.modifiedStepResult, this::updateSaveButton);
 
         View body = stepBody.getBodyView(StepBody.VIEW_TYPE_DEFAULT, inflater, this);
 
@@ -334,9 +332,14 @@ public class SurveyStepLayout extends FixedSubmitBarLayout implements StepLayout
 
     }
 
-    private void updateSaveButton(StepResult currentStepResult) {
-        boolean isEnabled = originalStepResult == null || !originalStepResult.equals(currentStepResult);
-        submitBar.getEditSaveViewActionView().setEnabled(isEnabled);
+    @Override
+    public MutableLiveData<StepResult> getModifiedStepResultLiveData() {
+        return stepBody.modifiedStepResult;
+    }
+
+    @Override
+    public void updateSubmitBarSaveVisibility(boolean visible) {
+        submitBar.getEditSaveViewActionView().setVisibility(visible ? View.VISIBLE : View.GONE);
     }
 
     private void checkIfAllStepsAreOptional() {

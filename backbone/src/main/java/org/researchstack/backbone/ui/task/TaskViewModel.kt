@@ -353,8 +353,8 @@ internal class TaskViewModel(val context: Application, intent: Intent) : Android
         }
     }
 
-    fun getOriginalStepResultBeforeEdit(): StepResult<*>? {
-        return clonedTaskResultInCaseOfEdit?.getStepResult(currentStep?.identifier)
+    fun getOriginalStepResultForId(identifier: String?): StepResult<*>? {
+        return clonedTaskResultInCaseOfEdit?.getStepResult(identifier)
     }
 
     @VisibleForTesting

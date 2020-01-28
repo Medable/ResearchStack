@@ -3,6 +3,7 @@ package org.researchstack.backbone.ui.step.body;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
@@ -92,6 +93,14 @@ public class DurationQuestionBody implements StepBody {
             hoursSpinner.setSelection(result / 60);
             minutesSpinner.setSelection(result % 60);
         }
+        AdapterView.OnItemClickListener onItemClickListener = (parent1, view, position, id) -> {
+            int hours = hoursSpinner.getSelectedItemPosition();
+            int minutes = minutesSpinner.getSelectedItemPosition();
+            this.result.setResult((hours * 60) + minutes);
+            modifiedStepResult.postValue(this.result);
+        };
+        minutesSpinner.setOnItemClickListener(onItemClickListener);
+        hoursSpinner.setOnItemClickListener(onItemClickListener);
 
         return v;
     }

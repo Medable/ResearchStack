@@ -88,6 +88,8 @@ public class SingleChoiceQuestionBody<T> implements StepBody {
         radioGroup.setOnCheckedChangeListener((group, checkedId) -> {
             Choice<T> choice = choices[checkedId];
             currentSelected = choice.getValue();
+            result.setResult(currentSelected);
+            modifiedStepResult.postValue(result);
         });
 
         return radioGroup;

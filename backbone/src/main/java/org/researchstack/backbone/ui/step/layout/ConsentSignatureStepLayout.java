@@ -3,6 +3,8 @@ package org.researchstack.backbone.ui.step.layout;
 import android.content.Context;
 import android.graphics.Bitmap;
 import androidx.appcompat.widget.AppCompatTextView;
+import androidx.lifecycle.MutableLiveData;
+
 import android.util.AttributeSet;
 import android.util.Base64;
 import android.view.LayoutInflater;
@@ -94,7 +96,13 @@ public class ConsentSignatureStepLayout extends RelativeLayout implements StepLa
     }
 
     @Override
-    public void setOriginalStepResult(StepResult originalStepResult) {
+    public MutableLiveData<StepResult> getModifiedStepResultLiveData() {
+        // This step doesn't support editing, so we're returning null LiveData
+        return null;
+    }
+
+    @Override
+    public void updateSubmitBarSaveVisibility(boolean visible) {
         // no-op: Only needed when the user is on edit mode inside regular steps
     }
 

@@ -96,6 +96,8 @@ public class MultiChoiceQuestionBody<T> implements StepBody {
                 } else {
                     currentSelected.remove(item.getValue());
                 }
+                result.setResult((T[]) currentSelected.toArray());
+                modifiedStepResult.postValue(result);
             });
         }
 

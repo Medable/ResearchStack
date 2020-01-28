@@ -104,4 +104,8 @@ public class FormBody implements StepBody {
     public List<QuestionStep> getQuestionSteps() {
         return questionSteps;
     }
+
+    public List<StepBody> getFormStepChildren() {
+        return formStepChildren;
+    }
 }

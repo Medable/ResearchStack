@@ -210,6 +210,8 @@ public class DateQuestionBody implements StepBody {
                         showTimePicker(tv);
                     }
                     isStepEmpty.postValue(false);
+                    result.setResult(calendar.getTimeInMillis());
+                    modifiedStepResult.postValue(result);
                 }
         );
         if (tv.getContext() instanceof FragmentActivity) {
@@ -228,6 +230,8 @@ public class DateQuestionBody implements StepBody {
                     // Set result to our edit text
                     String formattedResult = createFormattedResult();
                     tv.setText(formattedResult);
+                    result.setResult(calendar.getTimeInMillis());
+                    modifiedStepResult.postValue(result);
                 },
                 defaultHour,
                 defaultMinute,

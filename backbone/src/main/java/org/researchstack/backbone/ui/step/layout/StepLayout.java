@@ -2,6 +2,8 @@ package org.researchstack.backbone.ui.step.layout;
 
 import android.view.View;
 
+import androidx.lifecycle.MutableLiveData;
+
 import org.researchstack.backbone.result.StepResult;
 import org.researchstack.backbone.step.Step;
 import org.researchstack.backbone.ui.callbacks.StepCallbacks;
@@ -31,5 +33,7 @@ public interface StepLayout {
      */
     StepResult getStepResult();
 
-    void setOriginalStepResult(StepResult originalStepResult);
+    MutableLiveData<StepResult> getModifiedStepResultLiveData();
+
+    void updateSubmitBarSaveVisibility(boolean visible);
 }

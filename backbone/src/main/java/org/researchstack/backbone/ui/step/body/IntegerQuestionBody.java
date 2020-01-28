@@ -1,7 +1,9 @@
 package org.researchstack.backbone.ui.step.body;
 
 import android.content.Context;
+import android.text.Editable;
 import android.text.InputFilter;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,6 +51,27 @@ public class IntegerQuestionBody implements StepBody {
                 ViewGroup.LayoutParams.WRAP_CONTENT);
         view.setLayoutParams(layoutParams);
 
+        editText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                isStepEmpty.postValue(s.length() == 0);
+                String numString = editText.getText().toString();
+                if (!TextUtils.isEmpty(numString)) {
+                    result.setResult(Integer.valueOf(editText.getText().toString()));
+                }
+                modifiedStepResult.postValue(result);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
         return view;
     }
 

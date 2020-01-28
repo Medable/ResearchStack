@@ -2,6 +2,8 @@ package org.researchstack.backbone.ui.step.layout;
 
 import android.content.Context;
 import androidx.annotation.NonNull;
+import androidx.lifecycle.MutableLiveData;
+
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -99,7 +101,13 @@ public class ConsentDocumentStepLayout extends LinearLayout implements StepLayou
     }
 
     @Override
-    public void setOriginalStepResult(StepResult originalStepResult) {
+    public MutableLiveData<StepResult> getModifiedStepResultLiveData() {
+        // This step doesn't support editing, so we're returning null LiveData
+        return null;
+    }
+
+    @Override
+    public void updateSubmitBarSaveVisibility(boolean visible) {
         // no-op: Only needed when the user is on edit mode inside regular steps
     }
 
