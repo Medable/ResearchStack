@@ -157,6 +157,7 @@
     <string name="rsb_reviewstep_edit_title_accessibility">[uk-rUA] Edit %s</string>
     <string name="rsb_reviewstep_captured_image_accessibility">[uk-rUA] Captured image</string>
     <string name="rsb_reviewstep_captured_image_title_accessibility">[uk-rUA] Captured image for %s</string>
+    <string name="rsb_reviewstep_captured_image_fullscreen_accessibility">[uk-rUA] Full Screen</string>
     <string name="rsb_reviewstep_selected_image_accessibility">[uk-rUA] Selected image</string>
     <string name="rsb_reviewstep_selected_image_title_accessibility">[uk-rUA] Selected image for %s</string>
 

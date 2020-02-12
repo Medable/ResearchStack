@@ -60,7 +60,7 @@
         android:id="@+id/imageCaptureImageStepQuestionAnswerFullscreen"
         style="@style/rsb_image_capture_fullscreen_style"
         android:background="@null"
-        android:contentDescription="Full Screen"
+        android:contentDescription="@string/rsb_reviewstep_captured_image_fullscreen_accessibility"
         app:layout_constraintEnd_toEndOf="@+id/imageCaptureImageStepQuestionAnswer"
         app:layout_constraintTop_toTopOf="@+id/imageCaptureImageStepQuestionAnswer"
         app:srcCompat="@drawable/rsb_ic_review_step_image_fullscreen" />
