@@ -31,11 +31,6 @@
     <string name="rsb_consent_section_more_info_withdrawing">Научете повече за оттеглянето</string>
 
     <!-- Consent sharing step -->
-    <string name="rsb_consent_share_description"><![CDATA[%1$s ще получава Вашите данни от проучването от Вашето
-        участие в това проучване. \n\nСподеляйки данните за Вашето кодирано проучване по- широко  (без
-        да се споделя информация като  името Ви) може да допринесе за това и за бъдещи проучвания.<br/><br/><a href="%2$s">
-        Научете повече за споделянето на данни</a>]]>
-    </string>
 
     <!-- Consent doc step -->
     <string name="rsb_consent_review_title">Преглед</string>

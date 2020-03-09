@@ -33,11 +33,6 @@
     <string name="rsb_consent_section_more_info_withdrawing">Dowiedz się więcej o wycofaniu się   </string>
 
     <!-- Consent sharing step -->
-    <string name="rsb_consent_share_description"><![CDATA[%1$s będzie otrzymywać dane z Twojego uczestnictwa w badaniu.\n\nSzersze udostępnianie zakodowanych danych z badania (bez informacji takich jak Twoje imię i nazwisko) może być korzystne zarówno dla tego, jak i przyszłych badań.
-
-            <br/><br/><a href="%2$s">
-        Dowiedz się więcej o udostępniani danych    </a>]]>
-    </string>
 
     <!-- Consent doc step -->
     <string name="rsb_consent_review_title">Przegląd</string>

@@ -22,7 +22,6 @@
     <string name="rsb_consent_section_more_info_withdrawing">Más información sobre retirarse del Estudio</string>
 
     <!-- Consent sharing step -->
-    <string name="rsb_consent_share_description"><![CDATA[%1$s recibirá sus datos del estudio de su participación en este estudio. \n\nCompartir sus datos codificados del estudio más ampliamente (sin información, como su nombre) puede beneficiar esta investigación e investigaciones futuras.<br/><br/><a href="%2$s">Más información sobre compartir datos</a>]]></string>
 
     <!-- Consent doc step -->
     <string name="rsb_consent_review_title">Revisar</string>

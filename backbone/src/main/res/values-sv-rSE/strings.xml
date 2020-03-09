@@ -22,7 +22,6 @@
     <string name="rsb_consent_section_more_info_withdrawing">Läs mer om återkallande</string>
 
     <!-- Consent sharing step -->
-    <string name="rsb_consent_share_description"><![CDATA[%1$s tar emot dina studieuppgifter genom ditt deltagande i denna studie. \n\n Vidare tillgängliggörande av dina kodade studieuppgifter (utom information såsom namn) kan vara till fördel för denna och framtida forskning.<br/><br/><a href="%2$s"> Läs mer om tillgängliggörande av uppgifter </a>]]></string>
 
     <!-- Consent doc step -->
     <string name="rsb_consent_review_title">Gå igenom</string>

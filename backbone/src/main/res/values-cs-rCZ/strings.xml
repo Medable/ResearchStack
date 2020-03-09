@@ -24,7 +24,6 @@
     <string name="rsb_consent_section_more_info_withdrawing">Zjistit více o odstoupení</string>
 
     <!-- Consent sharing step -->
-    <string name="rsb_consent_share_description"><![CDATA[%1$s obdrží vaše údaje studie na základě vaší účasti v této studii. \n\nSdílení vašich zakódovaných údajů studie šířeji (bez informací, jako je vaše jméno) může prospět tomuto a budoucímu výzkumu.<br/><br/><a href="%2$s">Zjistit více o sdílení údajů</a>]]></string>
 
     <!-- Consent doc step -->
     <string name="rsb_consent_review_title">Kontrola</string>

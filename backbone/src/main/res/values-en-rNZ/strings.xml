@@ -24,7 +24,6 @@
     <string name="rsb_consent_section_more_info_withdrawing">Learn more about withdrawing</string>
 
     <!-- Consent sharing step -->
-    <string name="rsb_consent_share_description"><![CDATA[%1$s will receive your study data from your participation in this study. \n\nSharing your coded study data more broadly (without information such as your name) may benefit this and future research.<br/><br/><a href="%2$s">Learn more about data sharing</a>]]></string>
 
     <!-- Consent doc step -->
     <string name="rsb_consent_review_title">Review</string>

@@ -22,7 +22,6 @@
     <string name="rsb_consent_section_more_info_withdrawing">Детальніше про передчасне виключення із дослідження</string>
 
     <!-- Consent sharing step -->
-    <string name="rsb_consent_share_description"><![CDATA[%1$s отримає Ваші дані у рамках дослідження в результаті Вашої участі в цьому дослідженні. \n\nШирше поширення кодованих даних у рамках дослідження (без зазначення такої інформації, як Ваше ім’я) може принести користь у цьому та майбутніх дослідженнях.<br/><br/><a href="%2$s">Детальніше про обмін даними</a>]]></string>
 
     <!-- Consent doc step -->
     <string name="rsb_consent_review_title">Перегляд</string>

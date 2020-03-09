@@ -22,7 +22,6 @@
     <string name="rsb_consent_section_more_info_withdrawing">Подробнее об отзыве</string>
 
     <!-- Consent sharing step -->
-    <string name="rsb_consent_share_description"><![CDATA[%1$s получит ваши данные, собранные в процессе вашего участия в исследовании. \n\nПередача ваших закодированных данных исследования более широкому кругу лиц (без такой информации, такой как ваше имя) может принести пользу этому и будущим исследованиям.<br/><br/><a href="%2$s">Подробнее о передаче данных</a>]]></string>
 
     <!-- Consent doc step -->
     <string name="rsb_consent_review_title">Обзор</string>

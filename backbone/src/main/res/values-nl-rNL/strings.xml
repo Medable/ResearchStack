@@ -24,7 +24,6 @@
     <string name="rsb_consent_section_more_info_withdrawing">Meer informatie over hoe u zich uit het onderzoek kunt terugtrekken</string>
 
     <!-- Consent sharing step -->
-    <string name="rsb_consent_share_description"><![CDATA[%1$s ontvangen uw onderzoeksgegevens in het kader van uw deelname aan dit onderzoek. \n\nIndien u uw versleutelde onderzoeksgegevens met meer betrokken partijen deelt (zonder dat daarbij informatie wordt verstrekt zoals uw naam) is dat mogelijk nuttig voor dit onderzoek en voor toekomstig onderzoek.<br/><br/><a href="%2$s">Meer informatie over het delen van gegevens</a>]]></string>
 
     <!-- Consent doc step -->
     <string name="rsb_consent_review_title">Controle</string>

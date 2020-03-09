@@ -24,7 +24,6 @@
     <string name="rsb_consent_section_more_info_withdrawing">深入瞭解退出研究</string>
 
     <!-- Consent sharing step -->
-    <string name="rsb_consent_share_description"><![CDATA[%1$s 將從您參與本研究獲得您的研究資料。 \n\n更廣泛地分享您的已編碼研究資料（不含您的姓名等資訊）可能有益於此研究和未來的研究。<br/><br/><a href="%2$s">深入瞭解資料分享</a>]]></string>
 
     <!-- Consent doc step -->
     <string name="rsb_consent_review_title">檢閱</string>

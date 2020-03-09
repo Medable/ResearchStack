@@ -29,7 +29,6 @@
     <string name="rsb_consent_section_more_info_withdrawing">철회에 대해 자세히 살펴보기</string>
 
     <!-- Consent sharing step -->
-    <string name="rsb_consent_share_description"><![CDATA[여러분의 연구 참여를 통해 ]]><![CDATA[%1$s]]><![CDATA[이 연구 데이터를 받게 됩니다.]]><![CDATA[ ]]><![CDATA[\n]]><![CDATA[\n]]><![CDATA[암호화된 연구 데이터(이름 등을 제외한 정보)를 더 폭넓게 공유하면 본 연구 및 향후 연구에 혜택을 줄 수 있습니다.<br/><br/><a href="]]><![CDATA[%2$s]]><![CDATA["> 데이터 공유에 대해 자세히 살펴보기</a>]]><![CDATA[]]></string>
 
     <!-- Consent doc step -->
     <string name="rsb_consent_review_title">리뷰</string>

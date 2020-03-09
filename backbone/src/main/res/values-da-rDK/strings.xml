@@ -24,7 +24,6 @@
     <string name="rsb_consent_section_more_info_withdrawing">Få mere at vide om tilbagetrækning</string>
 
     <!-- Consent sharing step -->
-    <string name="rsb_consent_share_description"><![CDATA[%1$s vil modtage dine undersøgelsesdata fra din deltagelse i denne undersøgelse. \n\nEn mere bred deling af dine kodede undersøgelsesdata (uden information såsom dit navn) kan gavne denne og fremtidig forskning.<br/><br/><a href="%2$s">Få mere at vide om datadeling</a>]]></string>
 
     <!-- Consent doc step -->
     <string name="rsb_consent_review_title">Gennemse</string>

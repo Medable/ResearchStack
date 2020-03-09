@@ -27,8 +27,6 @@
     <string name="rsb_consent_section_more_info_withdrawing">辞退についての詳細</string>
 
     <!-- Consent sharing step -->
-    <string name="rsb_consent_share_description"><![CDATA[あなたがスタディに参加することにより]]><![CDATA[%1$s]]><![CDATA[がデータを受け取ります。]]><![CDATA[\n]]><![CDATA[\n]]><![CDATA[あなたのコード化されたスタディデータ（名前等の情報を含まない）を広く共有することはこのリサーチと将来のリサーチに役立ちます。<br/><br/><a href="]]><![CDATA[%2$s]]><![CDATA[">データ共有についての詳細</a>]]><![CDATA[
-    ]]></string>
 
     <!-- Consent doc step -->
     <string name="rsb_consent_review_title">レビュー</string>

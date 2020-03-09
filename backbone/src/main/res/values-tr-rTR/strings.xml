@@ -22,7 +22,6 @@
     <string name="rsb_consent_section_more_info_withdrawing">Onayı geri çekme hakkında daha fazla bilgi edinin</string>
 
     <!-- Consent sharing step -->
-    <string name="rsb_consent_share_description"><![CDATA[%1$s, bu çalışmaya katılımınızın sonucu elde edilen çalışma verilerini alacak. \n\nKodlanmış çalışma verilerinizi daha geniş kitlelerle paylaşmak (adınız gibi bilgiler olmadan), bu ve gelecekteki araştırmalar için faydalı olabilir.<br/><br/><a href="%2$s">Veri paylaşımı hakkında daha fazla bilgi edinin</a>]]></string>
 
     <!-- Consent doc step -->
     <string name="rsb_consent_review_title">İnceleme</string>

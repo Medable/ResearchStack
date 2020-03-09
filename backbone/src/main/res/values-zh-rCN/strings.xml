@@ -24,7 +24,6 @@
     <string name="rsb_consent_section_more_info_withdrawing">了解有关撤销的更多信息</string>
 
     <!-- Consent sharing step -->
-    <string name="rsb_consent_share_description"><![CDATA[%1$s 将从您参与本研究中获得您的研究数据。 \n\n更广泛地共享您的编码研究数据（没有您的姓名等信息）可能有助于当前及后续研究。<br/><br/><a href="%2$s">了解有关数据共享的更多信息</a>]]></string>
 
     <!-- Consent doc step -->
     <string name="rsb_consent_review_title">评论</string>

@@ -24,7 +24,6 @@
     <string name="rsb_consent_section_more_info_withdrawing">Mehr erfahren über Zurücktreten</string>
 
     <!-- Consent sharing step -->
-    <string name="rsb_consent_share_description"><![CDATA[%1$s erhält Ihre Studiendaten von Ihrer Teilnahme an dieser Studie. \n\nDie weitere Verbreitung Ihrer kodierten Studiendaten (ohne Informationen wie Ihr Name) kann dieser und zukünftigen Forschungen zugutekommen.<br/><br/><a href="%2$s">Erfahren Sie mehr über die Datenweitergabe</a>]]></string>
 
     <!-- Consent doc step -->
     <string name="rsb_consent_review_title">Überprüfen</string>

@@ -32,11 +32,6 @@
     <string name="rsb_consent_section_more_info_withdrawing">Tudjon meg többet a kilépésről</string>
 
     <!-- Consent sharing step -->
-    <string name="rsb_consent_share_description"><![CDATA[A%1$s megkapja az Ön vizsgálati adatait egészen ebbe
-        a vizsgálatban való részvételétől kezdve. \n\nA kódolt vizsgálati adatainak megosztása szélesebb körben (olyan
-        adatok, mint például a neve nélkül) hasznos lehet ennek és más jövőbeli kutatásoknak a szempontjából.<br/><br/><a href="%2$s">
-        Tudjon meg többet az adatok</a>megosztásáról]]>
-    </string>
 
     <!-- Consent doc step -->
     <string name="rsb_consent_review_title">Áttekintés</string>

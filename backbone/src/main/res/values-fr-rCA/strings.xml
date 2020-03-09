@@ -24,7 +24,6 @@
     <string name="rsb_consent_section_more_info_withdrawing">En savoir plus au sujet du droit de retrait</string>
 
     <!-- Consent sharing step -->
-    <string name="rsb_consent_share_description"><![CDATA[%1$s recevra vos données d\'étude provenant de votre participation à cette étude. \n\nLe partage plus large de vos données codées provenant de l\'étude (sans informations telles que votre nom) peut être avantageux pour cette recherche et les recherches à venir.<br/><br/><a href="%2$s">En savoir plus sur le partage de données</a>]]></string>
 
     <!-- Consent doc step -->
     <string name="rsb_consent_review_title">Révision</string>

@@ -27,8 +27,6 @@
     <string name="rsb_consent_section_more_info_withdrawing">Узнать больше об отзыве согласия</string>
 
     <!-- Consent sharing step -->
-    <string name="rsb_consent_share_description"><![CDATA[Организация ]]><![CDATA[%1$s]]><![CDATA[ получит данные исследования на основании вашего участия в исследовании.]]><![CDATA[ ]]><![CDATA[\n]]><![CDATA[\n]]><![CDATA[Предоставление закодированных данных широкому кругу исследователей позволит улучшить данное исследование, а также будущие исследования.<br/><br/><a href="]]><![CDATA[%2$s]]><![CDATA["> Узнать больше об общем доступе к данным</a>]]><![CDATA[
-    ]]></string>
 
     <!-- Consent doc step -->
     <string name="rsb_consent_review_title">Просмотр</string>

@@ -22,7 +22,6 @@
     <string name="rsb_consent_section_more_info_withdrawing">Aprenda más acerca de cómo retirarse</string>
 
     <!-- Consent sharing step -->
-    <string name="rsb_consent_share_description"><![CDATA[%1$s recibirá los datos de su participación en este Estudio. \n\nCompartir sus datos encriptados de manera más amplia (omitiendo cierta información, como su nombre) puede beneficiar a esta investigación y a investigaciones futuras. <br/><br/><a href="%2$s">Aprenda más acerca de cómo compartir sus datos</a>]]></string>
 
     <!-- Consent doc step -->
     <string name="rsb_consent_review_title">Revisar</string>
