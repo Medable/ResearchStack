@@ -21,8 +21,6 @@
     <string name="rsb_consent_section_more_info_study_tasks">Läs mer om vilka uppgifter som ingår</string>
     <string name="rsb_consent_section_more_info_withdrawing">Läs mer om återkallande</string>
 
-    <!-- Consent sharing step -->
-
     <!-- Consent doc step -->
     <string name="rsb_consent_review_title">Gå igenom</string>
     <string name="rsb_consent_review_alert_title">Gå igenom</string>
@@ -31,13 +29,9 @@
     <string name="rsb_saving_consent">Medgivande av lagring</string>
     <string name="rsb_please_wait">Vänligen vänta&#8230;</string>
 
-    <!-- Consent form step -->
-
     <!-- Consent sig step -->
     <string name="rsb_consent_signature_placeholder">Signera här</string>
     <string name="rsb_consent_signature_clear">Rensa</string>
-
-    <!-- Quiz -->
 
     <!-- Other -->
     <string name="rsb_done">Klart</string>
@@ -65,8 +59,6 @@
     <string name="rsb_birth_date_too_old">Du får vara högst %1$s år gammal</string>
     <string name="rsb_birth_date_too_young">Du måste vara minst %1$s år gammal</string>
 
-    <!-- Pin Code -->
-
     <!-- Body Hints -->
     <string name="rsb_hint_step_body_int">Ange ett tal %1$d-%2$d</string>
     <string name="rsb_hint_step_body_dec">Ange ett tal %1$.2f-%2$.2f</string>
@@ -81,7 +73,6 @@
     <string name="rsb_chart_pie_value">%1$s&#65285;</string>
 
     <!-- AssetVideoView -->
-    <!-- Title for error alert when a video cannot be played.  it can be used by any app. -->
     <!-- Text for error alert when a video container is not valid for progressive download/playback. -->
     <string name="rsb_error_assetvideoview_invalid_progressive_playback">Denna video är inte giltig för strömning till denna enhet.</string>
     <!-- Text for error alert when a video cannot be played. it can be used by any app. -->

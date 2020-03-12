@@ -83,7 +83,6 @@
     <string name="rsb_chart_pie_value">%1$s&#65285;</string>
 
     <!-- AssetVideoView -->
-    <!-- Title for error alert when a video cannot be played.  it can be used by any app. -->
     <!-- Text for error alert when a video container is not valid for progressive download/playback. -->
     <string name="rsb_error_assetvideoview_invalid_progressive_playback">Dieses Video hat für das Streamen auf dieses Gerät keine Gültigkeit.</string>
     <!-- Text for error alert when a video cannot be played. it can be used by any app. -->

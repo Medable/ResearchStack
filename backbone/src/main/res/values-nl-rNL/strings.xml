@@ -1,6 +1,4 @@
 <resources>
-    <!-- Debug -->
-
     <!-- Consent Section -->
     <string name="rsb_consent">Toestemming</string>
     <string name="rsb_consent_section_welcome">Verzameling van gegevens</string>
@@ -23,8 +21,6 @@
     <string name="rsb_consent_section_more_info_study_tasks">Meer informatie over de te verrichten taken</string>
     <string name="rsb_consent_section_more_info_withdrawing">Meer informatie over hoe u zich uit het onderzoek kunt terugtrekken</string>
 
-    <!-- Consent sharing step -->
-
     <!-- Consent doc step -->
     <string name="rsb_consent_review_title">Controle</string>
     <string name="rsb_consent_review_alert_title">Controle</string>
@@ -33,13 +29,9 @@
     <string name="rsb_saving_consent">Bezig uw toestemming op te slaan</string>
     <string name="rsb_please_wait">Een ogenblik geduld&#8230;</string>
 
-    <!-- Consent form step -->
-
     <!-- Consent sig step -->
     <string name="rsb_consent_signature_placeholder">Hier tekenen</string>
     <string name="rsb_consent_signature_clear">Wissen</string>
-
-    <!-- Quiz -->
 
     <!-- Other -->
     <string name="rsb_done">Gereed</string>
@@ -67,8 +59,6 @@
     <string name="rsb_birth_date_too_old">U moet %1$s jaar of jonger zijn</string>
     <string name="rsb_birth_date_too_young">U moet ten minste %1$s jaar oud zijn</string>
 
-    <!-- Pin Code -->
-
     <!-- Body Hints -->
     <string name="rsb_hint_step_body_int">Voer een getal in %1$d-%2$d</string>
     <string name="rsb_hint_step_body_dec">Voer een getal in %1$.2f-%2$.2f</string>
@@ -83,7 +73,6 @@
     <string name="rsb_chart_pie_value">%1$s&#65285;</string>
 
     <!-- AssetVideoView -->
-    <!-- Title for error alert when a video cannot be played.  it can be used by any app. -->
     <!-- Text for error alert when a video container is not valid for progressive download/playback. -->
     <string name="rsb_error_assetvideoview_invalid_progressive_playback">Deze video kan niet naar dit apparaat worden gestreamd.</string>
     <!-- Text for error alert when a video cannot be played. it can be used by any app. -->

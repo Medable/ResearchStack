@@ -21,8 +21,6 @@
     <string name="rsb_consent_section_more_info_study_tasks">Подробнее о задачах</string>
     <string name="rsb_consent_section_more_info_withdrawing">Подробнее об отзыве</string>
 
-    <!-- Consent sharing step -->
-
     <!-- Consent doc step -->
     <string name="rsb_consent_review_title">Обзор</string>
     <string name="rsb_consent_review_alert_title">Обзор</string>
@@ -31,13 +29,9 @@
     <string name="rsb_saving_consent">Согласие на сохранение</string>
     <string name="rsb_please_wait">Подождите&#8230;</string>
 
-    <!-- Consent form step -->
-
     <!-- Consent sig step -->
     <string name="rsb_consent_signature_placeholder">Подпишите здесь</string>
     <string name="rsb_consent_signature_clear">Очистить</string>
-
-    <!-- Quiz -->
 
     <!-- Other -->
     <string name="rsb_done">Готово</string>
@@ -65,8 +59,6 @@
     <string name="rsb_birth_date_too_old">Вам должно быть %1$s лет или менее</string>
     <string name="rsb_birth_date_too_young">Вам должно быть не менее %1$s лет</string>
 
-    <!-- Pin Code -->
-
     <!-- Body Hints -->
     <string name="rsb_hint_step_body_int">Введите номер %1$d-%2$d</string>
     <string name="rsb_hint_step_body_dec">Введите номер %1$.2f-%2$.2f</string>
@@ -81,7 +73,6 @@
     <string name="rsb_chart_pie_value">%1$s&#65285;</string>
 
     <!-- AssetVideoView -->
-    <!-- Title for error alert when a video cannot be played.  it can be used by any app. -->
     <!-- Text for error alert when a video container is not valid for progressive download/playback. -->
     <string name="rsb_error_assetvideoview_invalid_progressive_playback">Это видео не подходит для трансляции на это устройство.</string>
     <!-- Text for error alert when a video cannot be played. it can be used by any app. -->

@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
 
     <!-- Consent Section -->
     <string name="rsb_consent">Consent</string>
@@ -30,23 +30,17 @@
     </string>
     <string name="rsb_consent_section_more_info_withdrawing">Learn more about withdrawing</string>
 
-    <!-- Consent sharing step -->
-
     <!-- Consent doc step -->
-    <string name="rsb_consent_review_title" tools:ignore="UnusedResources">Review</string>
+    <string name="rsb_consent_review_title">Review</string>
     <string name="rsb_consent_review_alert_title">Review</string>
     <string name="rsb_consent_review_cancel">Cancel</string>
 
     <string name="rsb_saving_consent">Saving Consent</string>
     <string name="rsb_please_wait">Please wait&#8230;</string>
 
-    <!-- Consent form step -->
-
     <!-- Consent sig step -->
     <string name="rsb_consent_signature_placeholder">Sign Here</string>
     <string name="rsb_consent_signature_clear">Clear</string>
-
-    <!-- Quiz -->
 
     <!-- Other -->
     <string name="rsb_done">Done</string>
@@ -74,8 +68,6 @@
     <string name="rsb_birth_date_too_old">You must be %1$s years or younger</string>
     <string name="rsb_birth_date_too_young">You must be at least %1$s years old</string>
 
-    <!-- Pin Code -->
-
     <!-- Body Hints -->
     <string name="rsb_hint_step_body_int">Enter a number %1$d-%2$d</string>
     <string name="rsb_hint_step_body_dec">Enter a number %1$.2f-%2$.2f</string>
@@ -90,7 +82,6 @@
     <string name="rsb_chart_pie_value">%1$s&#65285;</string>
 
     <!-- AssetVideoView -->
-    <!-- Title for error alert when a video cannot be played.  it can be used by any app. -->
     <!-- Text for error alert when a video container is not valid for progressive download/playback. -->
     <string name="rsb_error_assetvideoview_invalid_progressive_playback">This video isn\'t valid for streaming to this device.</string>
     <!-- Text for error alert when a video cannot be played. it can be used by any app. -->

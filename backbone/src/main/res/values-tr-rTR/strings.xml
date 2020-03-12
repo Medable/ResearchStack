@@ -21,8 +21,6 @@
     <string name="rsb_consent_section_more_info_study_tasks">İlgili görevler hakkında daha fazla bilgi edinin</string>
     <string name="rsb_consent_section_more_info_withdrawing">Onayı geri çekme hakkında daha fazla bilgi edinin</string>
 
-    <!-- Consent sharing step -->
-
     <!-- Consent doc step -->
     <string name="rsb_consent_review_title">İnceleme</string>
     <string name="rsb_consent_review_alert_title">İnceleme</string>
@@ -31,13 +29,9 @@
     <string name="rsb_saving_consent">Onam Kaydediliyor</string>
     <string name="rsb_please_wait">Lütfen bekleyin&#8230;</string>
 
-    <!-- Consent form step -->
-
     <!-- Consent sig step -->
     <string name="rsb_consent_signature_placeholder">Burayı İmzalayın</string>
     <string name="rsb_consent_signature_clear">Temizle</string>
-
-    <!-- Quiz -->
 
     <!-- Other -->
     <string name="rsb_done">Tamam</string>
@@ -65,8 +59,6 @@
     <string name="rsb_birth_date_too_old">Yaşınız %1$s veya daha küçük olmalıdır</string>
     <string name="rsb_birth_date_too_young">En az %1$s yaşında olmalısınız</string>
 
-    <!-- Pin Code -->
-
     <!-- Body Hints -->
     <string name="rsb_hint_step_body_int">%1$d-%2$d arasında bir sayı girin</string>
     <string name="rsb_hint_step_body_dec">%1$.2f-%2$.2f arasında bir sayı girin</string>
@@ -81,7 +73,6 @@
     <string name="rsb_chart_pie_value">%1$s&#65285;</string>
 
     <!-- AssetVideoView -->
-    <!-- Title for error alert when a video cannot be played.  it can be used by any app. -->
     <!-- Text for error alert when a video container is not valid for progressive download/playback. -->
     <string name="rsb_error_assetvideoview_invalid_progressive_playback">Bu video, bu cihazda çalıştırmak için geçerli değil.</string>
     <!-- Text for error alert when a video cannot be played. it can be used by any app. -->

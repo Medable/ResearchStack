@@ -1,6 +1,4 @@
 <resources>
-    <!-- Debug -->
-
     <!-- Consent Section -->
     <string name="rsb_consent">同意</string>
     <string name="rsb_consent_section_welcome">歡迎</string>
@@ -23,8 +21,6 @@
     <string name="rsb_consent_section_more_info_study_tasks">深入瞭解所涉及的任務</string>
     <string name="rsb_consent_section_more_info_withdrawing">深入瞭解退出研究</string>
 
-    <!-- Consent sharing step -->
-
     <!-- Consent doc step -->
     <string name="rsb_consent_review_title">檢閱</string>
     <string name="rsb_consent_review_alert_title">檢閱</string>
@@ -33,13 +29,9 @@
     <string name="rsb_saving_consent">儲存同意</string>
     <string name="rsb_please_wait">請稍候&#8230;</string>
 
-    <!-- Consent form step -->
-
     <!-- Consent sig step -->
     <string name="rsb_consent_signature_placeholder">請在此處簽名</string>
     <string name="rsb_consent_signature_clear">清除</string>
-
-    <!-- Quiz -->
 
     <!-- Other -->
     <string name="rsb_done">完成</string>
@@ -67,8 +59,6 @@
     <string name="rsb_birth_date_too_old">您的年齡必須小於或等於 %1$s 歲</string>
     <string name="rsb_birth_date_too_young">您的年齡必須至少為 %1$s 歲</string>
 
-    <!-- Pin Code -->
-
     <!-- Body Hints -->
     <string name="rsb_hint_step_body_int">輸入一個 %1$d-%2$d 之間的數字</string>
     <string name="rsb_hint_step_body_dec">輸入一個 %1$.2f-%2$.2f 之間的數字</string>
@@ -83,7 +73,6 @@
     <string name="rsb_chart_pie_value">%1$s&#65285;</string>
 
     <!-- AssetVideoView -->
-    <!-- Title for error alert when a video cannot be played.  it can be used by any app. -->
     <!-- Text for error alert when a video container is not valid for progressive download/playback. -->
     <string name="rsb_error_assetvideoview_invalid_progressive_playback">此影片無法有效串流到此裝置。</string>
     <!-- Text for error alert when a video cannot be played. it can be used by any app. -->

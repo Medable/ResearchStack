@@ -1,6 +1,4 @@
 <resources>
-    <!-- Debug -->
-
     <!-- Consent Section -->
     <string name="rsb_consent">Consentement</string>
     <string name="rsb_consent_section_welcome">Bienvenue</string>
@@ -83,7 +81,6 @@
     <string name="rsb_chart_pie_value">%1$s&#65285;</string>
 
     <!-- AssetVideoView -->
-    <!-- Title for error alert when a video cannot be played.  it can be used by any app. -->
     <!-- Text for error alert when a video container is not valid for progressive download/playback. -->
     <string name="rsb_error_assetvideoview_invalid_progressive_playback">Cette vidéo n’est pas valide pour la diffusion sur cet appareil.</string>
     <!-- Text for error alert when a video cannot be played. it can be used by any app. -->

@@ -26,8 +26,6 @@
     </string>
     <string name="rsb_consent_section_more_info_withdrawing">Узнать больше об отзыве согласия</string>
 
-    <!-- Consent sharing step -->
-
     <!-- Consent doc step -->
     <string name="rsb_consent_review_title">Просмотр</string>
     <string name="rsb_consent_review_alert_title">Просмотр</string>
@@ -36,13 +34,9 @@
     <string name="rsb_saving_consent">Сохранение согласия</string>
     <string name="rsb_please_wait">Подождите&#8230;</string>
 
-    <!-- Consent form step -->
-
     <!-- Consent sig step -->
     <string name="rsb_consent_signature_placeholder">Подписаться здесь</string>
     <string name="rsb_consent_signature_clear">Очистить</string>
-
-    <!-- Quiz -->
 
     <!-- Other -->
     <string name="rsb_done">Готово</string>
@@ -70,8 +64,6 @@
     <string name="rsb_birth_date_too_old">Максимальный возраст: %1$s</string>
     <string name="rsb_birth_date_too_young">Минимальный возраст: %1$s</string>
 
-    <!-- Pin Code -->
-
     <!-- Body Hints -->
     <string name="rsb_hint_step_body_int">Введите число %1$d-%2$d</string>
     <string name="rsb_hint_step_body_dec">Введите число %1$.2f-%2$.2f</string>
@@ -86,7 +78,6 @@
     <string name="rsb_chart_pie_value">%1$s&#65285;</string>
 
     <!-- AssetVideoView -->
-    <!-- Title for error alert when a video cannot be played.  it can be used by any app. -->
     <!-- Text for error alert when a video container is not valid for progressive download/playback. -->
     <string name="rsb_error_assetvideoview_invalid_progressive_playback">Невозможно воспроизвести данный видеоролик в потоковом режиме на этом устройстве.</string>
     <!-- Text for error alert when a video cannot be played. it can be used by any app. -->
