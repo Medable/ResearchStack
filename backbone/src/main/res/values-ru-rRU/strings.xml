@@ -26,25 +26,63 @@
     </string>
     <string name="rsb_consent_section_more_info_withdrawing">Узнать больше об отзыве согласия</string>
 
+    <!-- Consent sharing step -->
+    <string name="rsb_consent_share_title">Варианты общего доступа</string>
+    <string name="rsb_consent_share_widely">Предоставить мои данные организации %1$s и квалифицированным исследователям по всему миру
+    </string>
+    <string name="rsb_consent_share_no">Не предоставлять данные</string>
+    <string name="rsb_consent_share_only">Предоставить данные только организации %1$s</string>
+    <string name="rsb_consent_share_description"><![CDATA[Организация ]]><![CDATA[%1$s]]><![CDATA[ получит данные исследования на основании вашего участия в исследовании.]]><![CDATA[ ]]><![CDATA[\n]]><![CDATA[\n]]><![CDATA[Предоставление закодированных данных широкому кругу исследователей позволит улучшить данное исследование, а также будущие исследования.<br/><br/><a href="]]><![CDATA[%2$s]]><![CDATA["> Узнать больше об общем доступе к данным</a>]]><![CDATA[
+    ]]></string>
+
     <!-- Consent doc step -->
     <string name="rsb_consent_review_title">Просмотр</string>
     <string name="rsb_consent_review_alert_title">Просмотр</string>
+    <string name="rsb_consent_review_reason">Соглашаясь, вы подтверждаете, что ознакомились с информацией и хотите принять участие в данном исследовании.
+    </string>
+    <string name="rsb_consent_review_instruction">Просмотрите форму ниже и нажмите "Согласиться", если готовы продолжить.
+    </string>
     <string name="rsb_consent_review_cancel">Отмена</string>
 
     <string name="rsb_saving_consent">Сохранение согласия</string>
     <string name="rsb_please_wait">Подождите&#8230;</string>
 
+    <!-- Consent form step -->
+    <string name="rsb_consent_form_title">Согласие</string>
+    <string name="rsb_consent_name_full">Полное имя</string>
+    <string name="rsb_consent_dob_full">Дата рождения</string>
+    <string name="rsb_consent_name_placeholder">Обязательно</string>
+
     <!-- Consent sig step -->
+    <string name="rsb_consent_signature_title">Подпись</string>
+    <string name="rsb_consent_signature_content">Соглашаясь, вы подтверждаете, что прочитали согласие и хотите принять участие в этом исследовании.
+    </string>
+    <string name="rsb_consent_signature_instruction">Подпишитесь с помощью пальца в строке ниже.
+    </string>
     <string name="rsb_consent_signature_placeholder">Подписаться здесь</string>
     <string name="rsb_consent_signature_clear">Очистить</string>
 
+    <!-- Quiz -->
+    <string name="rsb_quiz">Опрос</string>
+    <string name="rsb_quiz_evaluation">Оценка опроса</string>
+    <string name="rsb_quiz_evaluation_try_again">Заново</string>
+    <string name="rsb_quiz_evaluation_review_consent">Просмотреть согласие</string>
+    <string name="rsb_quiz_evaluation_retake">Пройти опрос заново</string>
+    <string name="rsb_quiz_evaluation_great_job">Отлично!</string>
+
     <!-- Other -->
+    <string name="rsb_submit">Отправить</string>
+    <string name="rsb_exit">Выход</string>
+    <string name="rsb_get_started">Начать</string>
     <string name="rsb_done">Готово</string>
     <string name="rsb_step_skip">Пропустить</string>
     <string name="rsb_next">далее</string>
+    <string name="rsb_email">Адрес электронной почты</string>
     <string name="rsb_disagree">Не согласен</string>
     <string name="rsb_agree">Согласен</string>
     <string name="rsb_cancel">Отмена</string>
+    <string name="rsb_yes">Да</string>
+    <string name="rsb_no">Нет</string>
     <string name="rsb_format_step_title">Этап %1$s из %2$s</string>
     <string name="rsb_hours">Часов</string>
     <string name="rsb_minutes">Минут</string>
@@ -63,6 +101,10 @@
     <string name="rsb_invalid_answer_date_none">Выберите дату.</string>
     <string name="rsb_birth_date_too_old">Максимальный возраст: %1$s</string>
     <string name="rsb_birth_date_too_young">Минимальный возраст: %1$s</string>
+
+    <!-- Pin Code -->
+    <string name="rsb_pincode_enter_title">Введите код</string>
+    <string name="rsb_pincode_enter_summary">Введите код %1$d-%2$s для проверки личности.</string>
 
     <!-- Body Hints -->
     <string name="rsb_hint_step_body_int">Введите число %1$d-%2$d</string>

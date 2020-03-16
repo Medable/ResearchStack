@@ -4,7 +4,7 @@
     <string name="lorem_short" tools:ignore="ResourceName" translatable="false">Lorem ipsum dolor sit amet, consectetur
         adipiscing elit.
     </string>
-    <string name="lorem_medium" tools:ignore="ResourceName" translatable="false">Lorem ipsum dolor sit amet, consectetur
+    <string name="lorem_medium" tools:ignore="ReourceName" translatable="false">Lorem ipsum dolor sit amet, consectetur
         adipiscing elit sed do
         eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim.
     </string>

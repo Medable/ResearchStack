@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Debug -->
-
     <!-- Consent Section -->
     <string name="rsb_consent">Consentimiento</string>
     <string name="rsb_consent_section_welcome">Bienvenido/a</string>
@@ -33,30 +31,69 @@
     <string name="rsb_consent_section_more_info_withdrawing">Saber más acerca de retirarse</string>
 
     <!-- Consent sharing step -->
+    <string name="rsb_consent_share_title">Opciones de uso compartido</string>
+    <string name="rsb_consent_share_widely">Compartir mis datos con %1$s e investigadores cualificados
+        de todo el mundo
+    </string>
+    <string name="rsb_consent_share_no">No compartiendo sus datos</string>
+    <string name="rsb_consent_share_only">Solo compartir mis datos con %1$s</string>
+    <string name="rsb_consent_share_description"><![CDATA[%1$s recibirá los datos de su estudio de su
+        participación en este estudio. \n\nCompartir sus datos codificados del estudio más ampliamente (sin
+        información como su nombre ) puede beneficiar esta investigación e investigaciones futuras.<br/><br/><a href="%2$s">
+        Saber más acerca del uso compartido de datos</a>]]>
+    </string>
 
     <!-- Consent doc step -->
     <string name="rsb_consent_review_title">Revisar</string>
     <string name="rsb_consent_review_alert_title">Revisar</string>
+    <string name="rsb_consent_review_reason">Al aceptar, usted confirma que ha leído la información
+        y que desea participar en este estudio de investigación  .
+    </string>
+    <string name="rsb_consent_review_instruction">Revise el formulario siguiente, y toque Acepto si está
+        preparado/a para continuar.
+    </string>
     <string name="rsb_consent_review_cancel">Cancelar</string>
 
     <string name="rsb_saving_consent">Guardando consentimiento</string>
     <string name="rsb_please_wait">Espere&#8230;</string>
 
     <!-- Consent form step -->
+    <string name="rsb_consent_form_title">Consentimiento</string>
+    <string name="rsb_consent_name_full">Nombre completo</string>
+    <string name="rsb_consent_dob_full">Fecha de nacimiento</string>
+    <string name="rsb_consent_name_placeholder">Obligatorio</string>
 
     <!-- Consent sig step -->
+    <string name="rsb_consent_signature_title">Firma</string>
+    <string name="rsb_consent_signature_content">Al aceptar, usted confirma que ha leído el consentimiento
+        y que desea participar en este estudio de investigación  .
+    </string>
+    <string name="rsb_consent_signature_instruction">Firme usando su dedo en la línea de debajo.
+    </string>
     <string name="rsb_consent_signature_placeholder">Firmar aquí</string>
     <string name="rsb_consent_signature_clear">Borrar</string>
 
     <!-- Quiz -->
+    <string name="rsb_quiz">Cuestionario</string>
+    <string name="rsb_quiz_evaluation">Evaluación de cuestionario</string>
+    <string name="rsb_quiz_evaluation_try_again">Vuelva a intentarlo</string>
+    <string name="rsb_quiz_evaluation_review_consent">Revisar consentimiento</string>
+    <string name="rsb_quiz_evaluation_retake">Volver a hacer el cuestionario</string>
+    <string name="rsb_quiz_evaluation_great_job">Buen trabajo.</string>
 
     <!-- Other -->
+    <string name="rsb_submit">Enviar</string>
+    <string name="rsb_exit">Salir</string>
+    <string name="rsb_get_started">Primeros pasos</string>
     <string name="rsb_done">Hecho</string>
     <string name="rsb_step_skip">Omitir</string>
     <string name="rsb_next">siguiente</string>
+    <string name="rsb_email">Correo Electrónico</string>
     <string name="rsb_disagree">No estoy de acuerdo</string>
     <string name="rsb_agree">Estoy de acuerdo</string>
     <string name="rsb_cancel">Cancelar</string>
+    <string name="rsb_yes">Sí</string>
+    <string name="rsb_no">No</string>
     <string name="rsb_format_step_title">Paso %1$s de %2$s</string>
     <string name="rsb_hours">Horas</string>
     <string name="rsb_minutes">Minutos</string>
@@ -77,6 +114,8 @@
     <string name="rsb_birth_date_too_young">Debe tener al menos  %1$s años de edad</string>
 
     <!-- Pin Code -->
+    <string name="rsb_pincode_enter_title">Introduzca su código de acceso</string>
+    <string name="rsb_pincode_enter_summary">Introduzca su código %1$d-%2$s para  confirmar su identidad.</string>
 
     <!-- Body Hints -->
     <string name="rsb_hint_step_body_int">Introduzca un número %1$d-%2$d</string>

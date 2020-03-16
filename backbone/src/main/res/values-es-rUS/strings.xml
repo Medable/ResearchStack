@@ -22,30 +22,56 @@
     <string name="rsb_consent_section_more_info_withdrawing">Más información sobre retirarse del Estudio</string>
 
     <!-- Consent sharing step -->
+    <string name="rsb_consent_share_title">Opciones sobre compartir datos</string>
+    <string name="rsb_consent_share_widely">Compartir mis datos con %1$s e investigadores calificados en todo el mundo</string>
+    <string name="rsb_consent_share_no">No compartir sus datos</string>
+    <string name="rsb_consent_share_only">Solo compartir mis datos con %1$s</string>
+    <string name="rsb_consent_share_description"><![CDATA[%1$s recibirá sus datos del estudio de su participación en este estudio. \n\nCompartir sus datos codificados del estudio más ampliamente (sin información, como su nombre) puede beneficiar esta investigación e investigaciones futuras.<br/><br/><a href="%2$s">Más información sobre compartir datos</a>]]></string>
 
     <!-- Consent doc step -->
     <string name="rsb_consent_review_title">Revisar</string>
     <string name="rsb_consent_review_alert_title">Revisar</string>
+    <string name="rsb_consent_review_reason">Al aceptar, confirma que leyó la información y que desea formar parte de este estudio de investigación.</string>
+    <string name="rsb_consent_review_instruction">Revise el siguiente formulario y toque Aceptar si está listo para continuar.</string>
     <string name="rsb_consent_review_cancel">Cancelar</string>
 
     <string name="rsb_saving_consent">Guardando Consentimiento</string>
     <string name="rsb_please_wait">Espere&#8230;</string>
 
     <!-- Consent form step -->
+    <string name="rsb_consent_form_title">Consentimiento</string>
+    <string name="rsb_consent_name_full">Nombre completo</string>
+    <string name="rsb_consent_dob_full">Fecha de nacimiento</string>
+    <string name="rsb_consent_name_placeholder">Requerido</string>
 
     <!-- Consent sig step -->
+    <string name="rsb_consent_signature_title">Firma</string>
+    <string name="rsb_consent_signature_content">Al aceptar, confirma que leyó el consentimiento y que desea formar parte de este estudio de investigación.</string>
+    <string name="rsb_consent_signature_instruction">Por favor, firme con su dedo en la línea de abajo.</string>
     <string name="rsb_consent_signature_placeholder">Firme aquí</string>
     <string name="rsb_consent_signature_clear">Limpiar</string>
 
     <!-- Quiz -->
+    <string name="rsb_quiz">Cuestionario</string>
+    <string name="rsb_quiz_evaluation">Evaluación de cuestionario</string>
+    <string name="rsb_quiz_evaluation_try_again">Volver a intentarlo</string>
+    <string name="rsb_quiz_evaluation_review_consent">Revisar consentimiento</string>
+    <string name="rsb_quiz_evaluation_retake">Volver a realizar el cuestionario</string>
+    <string name="rsb_quiz_evaluation_great_job">¡Excelente trabajo!</string>
 
     <!-- Other -->
+    <string name="rsb_submit">Enviar</string>
+    <string name="rsb_exit">Salir</string>
+    <string name="rsb_get_started">Comenzar</string>
     <string name="rsb_done">Listo</string>
     <string name="rsb_step_skip">Omitir</string>
     <string name="rsb_next">siguiente</string>
+    <string name="rsb_email">Correo electrónico</string>
     <string name="rsb_disagree">No estoy de acuerdo</string>
     <string name="rsb_agree">Estoy de acuerdo</string>
     <string name="rsb_cancel">Cancelar</string>
+    <string name="rsb_yes">Sí</string>
+    <string name="rsb_no">No</string>
     <string name="rsb_format_step_title">Paso %1$s de %2$s</string>
     <string name="rsb_hours">Horas</string>
     <string name="rsb_minutes">Minutos</string>
@@ -66,6 +92,8 @@
     <string name="rsb_birth_date_too_young">Debe tener al menos %1$s años</string>
 
     <!-- Pin Code -->
+    <string name="rsb_pincode_enter_title">Ingrese su contraseña</string>
+    <string name="rsb_pincode_enter_summary">Ingrese su código %1$d-%2$s para confirmar su identidad.</string>
 
     <!-- Body Hints -->
     <string name="rsb_hint_step_body_int">Ingrese un número %1$d-%2$d</string>

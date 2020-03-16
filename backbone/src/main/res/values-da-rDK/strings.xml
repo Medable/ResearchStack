@@ -1,6 +1,4 @@
 <resources>
-    <!-- Debug -->
-
     <!-- Consent Section -->
     <string name="rsb_consent">Samtykke</string>
     <string name="rsb_consent_section_welcome">Velkommen</string>
@@ -24,30 +22,56 @@
     <string name="rsb_consent_section_more_info_withdrawing">Få mere at vide om tilbagetrækning</string>
 
     <!-- Consent sharing step -->
+    <string name="rsb_consent_share_title">Indstillinger for deling</string>
+    <string name="rsb_consent_share_widely">Del mine data med %1$s og kvalificerede forskere verden over</string>
+    <string name="rsb_consent_share_no">Deler ikke dine data</string>
+    <string name="rsb_consent_share_only">Del kun mine data med %1$s</string>
+    <string name="rsb_consent_share_description"><![CDATA[%1$s vil modtage dine undersøgelsesdata fra din deltagelse i denne undersøgelse. \n\nEn mere bred deling af dine kodede undersøgelsesdata (uden information såsom dit navn) kan gavne denne og fremtidig forskning.<br/><br/><a href="%2$s">Få mere at vide om datadeling</a>]]></string>
 
     <!-- Consent doc step -->
     <string name="rsb_consent_review_title">Gennemse</string>
     <string name="rsb_consent_review_alert_title">Gennemse</string>
+    <string name="rsb_consent_review_reason">Odsouhlasením potvrzujete, že jste si přečetli informace a že si přejete zúčastnit se této výzkumné studie.</string>
+    <string name="rsb_consent_review_instruction">Zkontrolujte formulář níže a klepněte na Souhlasím, pokud jste připraveni pokračovat.</string>
     <string name="rsb_consent_review_cancel">Annullér</string>
 
     <string name="rsb_saving_consent">Gemmer samtykke</string>
     <string name="rsb_please_wait">Vent venligst&#8230;</string>
 
     <!-- Consent form step -->
+    <string name="rsb_consent_form_title">Samtykke</string>
+    <string name="rsb_consent_name_full">Fulde navn</string>
+    <string name="rsb_consent_dob_full">Fødselsdato</string>
+    <string name="rsb_consent_name_placeholder">Påkrævet</string>
 
     <!-- Consent sig step -->
+    <string name="rsb_consent_signature_title">Underskrift</string>
+    <string name="rsb_consent_signature_content">Ved at acceptere bekræfter du, at du har læst samtykkeaftalen, og at du ønsker at deltage i denne forskningsundersøgelse.</string>
+    <string name="rsb_consent_signature_instruction">Underskriv med din finger på linjen nedenfor.</string>
     <string name="rsb_consent_signature_placeholder">Underskriv her</string>
     <string name="rsb_consent_signature_clear">Ryd</string>
 
     <!-- Quiz -->
+    <string name="rsb_quiz">Quiz</string>
+    <string name="rsb_quiz_evaluation">Quizevaluering</string>
+    <string name="rsb_quiz_evaluation_try_again">Prøv igen</string>
+    <string name="rsb_quiz_evaluation_review_consent">Gennemse samtykke</string>
+    <string name="rsb_quiz_evaluation_retake">Tag quiz igen</string>
+    <string name="rsb_quiz_evaluation_great_job">Godt gået!</string>
 
     <!-- Other -->
+    <string name="rsb_submit">Indsend</string>
+    <string name="rsb_exit">Afslut</string>
+    <string name="rsb_get_started">Kom i gang</string>
     <string name="rsb_done">Færdig</string>
     <string name="rsb_step_skip">Spring over</string>
     <string name="rsb_next">næste</string>
+    <string name="rsb_email">E-MAIL</string>
     <string name="rsb_disagree">Uenig</string>
     <string name="rsb_agree">Enig</string>
     <string name="rsb_cancel">Annullér</string>
+    <string name="rsb_yes">Ja</string>
+    <string name="rsb_no">Nej</string>
     <string name="rsb_format_step_title">Trin %1$s af %2$s</string>
     <string name="rsb_hours">Timer</string>
     <string name="rsb_minutes">Minutter</string>
@@ -68,6 +92,8 @@
     <string name="rsb_birth_date_too_young">Du skal være mindst %1$s år gammel</string>
 
     <!-- Pin Code -->
+    <string name="rsb_pincode_enter_title">Indtast din adgangskode</string>
+    <string name="rsb_pincode_enter_summary">Indtast din %1$d-%2$s-kode for at bekræfte din identitet.</string>
 
     <!-- Body Hints -->
     <string name="rsb_hint_step_body_int">Indtast et nummer %1$d-%2$d</string>

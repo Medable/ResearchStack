@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <!-- Consent Section -->
     <string name="rsb_consent">Hozzájárulás</string>
     <string name="rsb_consent_section_welcome">Üdvözüljük</string>
@@ -32,26 +31,69 @@
     <string name="rsb_consent_section_more_info_withdrawing">Tudjon meg többet a kilépésről</string>
 
     <!-- Consent sharing step -->
+    <string name="rsb_consent_share_title">Megosztási opciók</string>
+    <string name="rsb_consent_share_widely">Ossza meg az adataimat ezzel: %1$s és a szakképzett
+        kutatókkal világszerte
+    </string>
+    <string name="rsb_consent_share_no">Nem osztja meg az adatait</string>
+    <string name="rsb_consent_share_only">Adataimat csak ezzel osztom meg: %1$s</string>
+    <string name="rsb_consent_share_description"><![CDATA[A%1$s megkapja az Ön vizsgálati adatait egészen ebbe
+        a vizsgálatban való részvételétől kezdve. \n\nA kódolt vizsgálati adatainak megosztása szélesebb körben (olyan
+        adatok, mint például a neve nélkül) hasznos lehet ennek és más jövőbeli kutatásoknak a szempontjából.<br/><br/><a href="%2$s">
+        Tudjon meg többet az adatok</a>megosztásáról]]>
+    </string>
 
     <!-- Consent doc step -->
     <string name="rsb_consent_review_title">Áttekintés</string>
     <string name="rsb_consent_review_alert_title">Áttekintés</string>
+    <string name="rsb_consent_review_reason">Ha egyetért, azzal megerősíti, hogy elolvasta az információkat, és
+        részt kíván venni ebben a kutatásban.
+    </string>
+    <string name="rsb_consent_review_instruction">Tekintse át a lenti űrlapot, majd koppintson az Agree (egyetértek)\'
+        pontra, ha készen áll a folytatásra.
+    </string>
     <string name="rsb_consent_review_cancel">Mégse</string>
 
     <string name="rsb_saving_consent">Hozzájárulás mentése</string>
     <string name="rsb_please_wait">Kérjük, várjon&#8230;</string>
 
+    <!-- Consent form step -->
+    <string name="rsb_consent_form_title">Hozzájárulás</string>
+    <string name="rsb_consent_name_full">Teljes név</string>
+    <string name="rsb_consent_dob_full">Születési idő </string>
+    <string name="rsb_consent_name_placeholder">Szükséges</string>
+
     <!-- Consent sig step -->
+    <string name="rsb_consent_signature_title">Aláírás</string>
+    <string name="rsb_consent_signature_content">Beleegyezésével megerősíti, hogy elolvasta a hozzájárulást, és részt kíván venni
+        ebben a kutatásban.
+    </string>
+    <string name="rsb_consent_signature_instruction">Kérjük, írja alá az ujjával a vonalon lent.
+    </string>
     <string name="rsb_consent_signature_placeholder">Írja alá itt</string>
     <string name="rsb_consent_signature_clear">Törlés</string>
 
+    <!-- Quiz -->
+    <string name="rsb_quiz">Kvíz</string>
+    <string name="rsb_quiz_evaluation">A kvíz értékelése</string>
+    <string name="rsb_quiz_evaluation_try_again">Próbálja újra</string>
+    <string name="rsb_quiz_evaluation_review_consent">Hozzájárulás áttekintése</string>
+    <string name="rsb_quiz_evaluation_retake">Kvíz ismétlése</string>
+    <string name="rsb_quiz_evaluation_great_job">Remek munka!</string>
+
     <!-- Other -->
+    <string name="rsb_submit">Elküldés</string>
+    <string name="rsb_exit">Kilépés</string>
+    <string name="rsb_get_started">Indítás </string>
     <string name="rsb_done">Kész</string>
     <string name="rsb_step_skip">Kihagyás</string>
     <string name="rsb_next">következő</string>
+    <string name="rsb_email">E-mail-cím</string>
     <string name="rsb_disagree">Nem ért egyet</string>
     <string name="rsb_agree">Egyetért</string>
     <string name="rsb_cancel">Mégse</string>
+    <string name="rsb_yes">Igen</string>
+    <string name="rsb_no">Nem</string>
     <string name="rsb_format_step_title"> %1$s / %2$slépés</string>
     <string name="rsb_hours">Óra</string>
     <string name="rsb_minutes">Perc</string>
@@ -70,6 +112,10 @@
     <string name="rsb_invalid_answer_date_none">Válasszon ki egy dátumot.</string>
     <string name="rsb_birth_date_too_old">Önnek   %1$s évesnek vagy fiatalabbnak kell lennie</string>
     <string name="rsb_birth_date_too_young">Önnek legalább    %1$s évesnek kell lennie</string>
+
+    <!-- Pin Code -->
+    <string name="rsb_pincode_enter_title">Adja meg jelkódját</string>
+    <string name="rsb_pincode_enter_summary">Adja meg %1$d-%2$s kódját a személyazonossága megerősítéséhez. </string>
 
     <!-- Body Hints -->
     <string name="rsb_hint_step_body_int">Adjon meg egy számot %1$d-%2$d</string>
