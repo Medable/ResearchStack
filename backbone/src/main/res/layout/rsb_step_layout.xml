@@ -28,10 +28,14 @@
         tools:visibility="visible" />
 
     <View
+        android:id="@+id/rsb_survey_divider"
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:background="@color/rsb_black_87"
         android:alpha="0.16"
+        android:layout_marginTop="@dimen/rsb_margin_top_small"
+        android:visibility="gone"
+        tools:visibility="visible"
         />
 
     <Space

@@ -183,14 +183,17 @@ public class SurveyStepLayout extends FixedSubmitBarLayout implements StepLayout
             }
         });
 
+        View divider = findViewById(R.id.rsb_survey_divider);
         if (questionStep != null) {
             if (!TextUtils.isEmpty(questionStep.getTitle())) {
                 title.setVisibility(View.VISIBLE);
+                divider.setVisibility(View.VISIBLE);
                 title.setText(HtmlCompat.fromHtml(questionStep.getTitle(), HtmlCompat.FROM_HTML_MODE_LEGACY));
             }
 
             if (!TextUtils.isEmpty(questionStep.getText())) {
                 summary.setVisibility(View.VISIBLE);
+                divider.setVisibility(View.VISIBLE);
                 summary.setText(HtmlCompat.fromHtml(questionStep.getText(),HtmlCompat.FROM_HTML_MODE_LEGACY));
                 summary.setMovementMethod(new TextViewLinkHandler() {
                     @Override

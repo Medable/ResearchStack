@@ -1,11 +1,9 @@
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="ResourceName">
 
     <style name="Backbone.Survey.Title" parent="">
-        <item name="android:layout_marginTop">@dimen/rsb_margin_top</item>
+        <item name="android:layout_marginTop">@dimen/rsb_margin_top_large</item>
         <item name="android:paddingLeft">@dimen/rsb_margin_left</item>
         <item name="android:paddingRight">@dimen/rsb_margin_right</item>
-        <item name="android:paddingTop">@dimen/rsb_padding_wedge</item>
-        <item name="android:paddingBottom">@dimen/rsb_padding_wedge</item>
         <item name="android:textSize">@dimen/rsb_text_size_title</item>
         <item name="android:fontFamily">sans-serif</item>
         <item name="android:textStyle">normal</item>
@@ -14,10 +12,9 @@
 
 
     <style name="Backbone.Survey.Summary" parent="">
-        <item name="android:layout_marginBottom">@dimen/rsb_padding_small</item>
+        <item name="android:layout_marginTop">@dimen/rsb_margin_top_medium</item>
         <item name="android:paddingLeft">@dimen/rsb_margin_left</item>
         <item name="android:paddingRight">@dimen/rsb_margin_right</item>
-        <item name="android:paddingBottom">@dimen/rsb_padding_small</item>
         <item name="android:textSize">@dimen/rsb_text_size_summary</item>
         <item name="android:fontFamily">sans-serif</item>
         <item name="android:textStyle">normal</item>
