@@ -238,13 +238,15 @@
         <item name="android:lineSpacingExtra">12sp</item>
         <item name="android:textColor">@color/black_60</item>
     </style>
-
     <style name="TextStyle4">
         <item name="android:textSize">20sp</item>
         <item name="android:fontFamily">sans-serif</item>
         <item name="android:textStyle">normal</item>
         <item name="android:letterSpacing">0.01</item>
         <item name="android:textColor">@color/black_87</item>
+        <item name="android:layout_marginEnd">@dimen/rsb_margin_left</item>
+        <item name="android:layout_marginStart">@dimen/rsb_margin_right</item>
+        <item name="android:layout_marginTop">@dimen/rsb_margin_top</item>
     </style>
 
     <style name="TextStyle11">
