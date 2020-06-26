@@ -5,6 +5,7 @@
     <dimen name="rsb_padding_wedge">12dp</dimen>
     <dimen name="rsb_padding_medium">16dp</dimen>
     <dimen name="rsb_padding_large">24dp</dimen>
+    <dimen name="rsb_padding_omron_bp_bottom">42dp</dimen>
     <!-- Item Height -->
     <dimen name="rsb_item_size_small">48dp</dimen>
     <dimen name="rsb_item_size_medium">56dp</dimen>
@@ -17,6 +18,7 @@
     <!-- Text Size -->
     <dimen name="rsb_text_size_title">35sp</dimen>
     <dimen name="rsb_text_size_summary">18sp</dimen>
+    <dimen name="rsb_text_size_omron_preload">16sp</dimen>
     <!-- ReviewStep Dimensions -->
     <dimen name="rsb_reviewStep_item_bottom_padding">10dp</dimen>
     <dimen name="rsb_reviewStep_item_question_bottom_padding">10dp</dimen>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/btTitle"
+        style="@style/Backbone.Survey.Title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-medium"
+        android:text="@string/rsb_bluetooth_check_title" />
+
+    <TextView
+        android:id="@+id/btDescription"
+        style="@style/Backbone.Survey.Summary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="?android:textColorSecondary"
+        android:text="@string/rsb_bluetooth_check_text" />
+
+    <ImageView
+        android:id="@+id/btImage"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/rsb_padding_large"
+        android:layout_marginBottom="@dimen/rsb_padding_large"
+        android:layout_weight="1"
+        android:src="@drawable/rsb_ic_bluetooth_grey"
+        android:scaleType="fitCenter" />
+
+</LinearLayout>
