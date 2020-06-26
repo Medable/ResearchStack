@@ -133,6 +133,21 @@ public class SurveyStepLayout extends FixedSubmitBarLayout implements StepLayout
     }
 
     @Override
+    public void taskCancelled() {
+
+    }
+
+    @Override
+    public void enablePositiveAction() {
+
+    }
+
+    @Override
+    public void disablePositiveAction() {
+
+    }
+
+    @Override
     public void setCallbacks(StepCallbacks callbacks) {
         this.callbacks = callbacks;
     }

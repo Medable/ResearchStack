@@ -72,6 +72,21 @@ public class ConsentVisualStepLayout extends FixedSubmitBarLayout implements Ste
     }
 
     @Override
+    public void taskCancelled() {
+
+    }
+
+    @Override
+    public void enablePositiveAction() {
+
+    }
+
+    @Override
+    public void disablePositiveAction() {
+
+    }
+
+    @Override
     public void setCallbacks(StepCallbacks callbacks) {
         this.callbacks = callbacks;
     }

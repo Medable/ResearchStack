@@ -69,6 +69,21 @@ public class ConsentSignatureStepLayout extends RelativeLayout implements StepLa
     }
 
     @Override
+    public void taskCancelled() {
+
+    }
+
+    @Override
+    public void enablePositiveAction() {
+
+    }
+
+    @Override
+    public void disablePositiveAction() {
+
+    }
+
+    @Override
     public void setCallbacks(StepCallbacks callbacks) {
         this.callbacks = callbacks;
     }
