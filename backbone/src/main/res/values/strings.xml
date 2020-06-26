@@ -121,4 +121,39 @@
     <string name="rsb_edit_step_alert_step_skip_positive">Yes, skip</string>
     <string name="rsb_edit_step">Edit</string>
 
+    <!-- Omron -->
+    <string name="rsb_omron_no_devices_found_title">No Devices Found</string>
+    <string name="rsb_omron_no_devices_found_text">Please ensure your monitor is in Pairing mode and Bluetooth is enabled. Tap Retry when your device is ready for pairing.</string>
+    <string name="rsb_omron_pairing_retry">Retry</string>
+    <string name="rsb_omron_unpaired_title">Pair Your Device</string>
+    <string name="rsb_omron_unpaired_description">To participate in this study, please pair your Omron Blood Pressure Monitor with the app.</string>
+    <string name="rsb_omron_unpaired_text">1. To place the device in pairing mode, remove the batteries, press the START/STOP button 2–3 times, then reinsert the batteries.\n\n2. If you are prompted to enter a PIN code, enter the 6-digit PIN on the bottom of the monitor.\n\n3. If you get an Error (ERR), contact technical support.</string>
+    <string name="rsb_omron_connecting_text">Once your cuff is in place and after resting for at least 5 minutes, press START on your blood pressure monitor.\nOnce your measurements appear on the monitor, tap Next.</string>
+    <string name="rsb_omron_error_title">Your measurements could not be captured.</string>
+    <string name="rsb_omron_error_text">Please ensure your cuff is in place and press START. If this issue persists, contact technical support.</string>
+    <string name="rsb_omron_done_text">Once your measurements appear, tap Next to submit your data.</string>
+    <string name="rsb_omron_result_systolic">SYS: %1$s mmHg</string>
+    <string name="rsb_omron_result_diastolic">DIA: %1$s mmHg</string>
+    <string name="rsb_omron_result_pulserate">PULSE: %1$s/min</string>
+    <string name="rsb_omron_step_state_connecting">Connecting</string>
+    <string name="rsb_omron_step_state_reading">Reading</string>
+    <string name="rsb_omron_step_state_done">Done</string>
+    <string name="rsb_omron_step_stage_1">1</string>
+    <string name="rsb_omron_step_stage_2">2</string>
+    <string name="rsb_omron_step_stage_3">3</string>
+    <string name="rsb_omron_step_stage_3_final_intructions">Once your measurements appear on the monitor, tap Next.</string>
+    <string name="rsb_omron_button_text_pair">Pair</string>
+    <string name="rsb_omron_pairing_status_success_title">Device Status</string>
+    <string name="rsb_omron_pairing_in_progress_text">Looking for device…</string>
+    <string name="rsb_omron_pairing_status_success_text">Paired</string>
+    <string name="rsb_omron_pairing_status_pairing_text">Pairing…</string>
+    <string name="rsb_omron_pairing_status_fail_text">Failed\n\nIf this issue persists, contact technical support.</string>
+    <string name="rsb_location_step_no_permission_error_title">Permission Request</string>
+    <string name="rsb_location_step_no_permission_error_text">Location Permissions are required in order for Bluetooth to operate. Please grant Location Permissions from your device settings.</string>
+    <string name="rsb_bluetooth_check_title">Bluetooth Required</string>
+    <string name="rsb_bluetooth_check_text">Bluetooth must be enabled to continue. Please navigate to the Bluetooth section of your device’s Settings and enable Bluetooth.</string>
+    <string name="rsb_omron_success" translatable="false">Success</string>
+    <string name="rsb_omron_failure" translatable="false">Failure</string>
+    <string name="rsb_ok">OK</string>
+
 </resources>

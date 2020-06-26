@@ -18,6 +18,12 @@ public interface StepLayout {
      */
     boolean isBackEventConsumed();
 
+    void taskCancelled();
+
+    void enablePositiveAction();
+
+    void disablePositiveAction();
+
     void setCallbacks(StepCallbacks callbacks);
 
     void setCancelEditMode(boolean isCancelEdit);

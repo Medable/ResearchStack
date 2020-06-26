@@ -5,6 +5,8 @@ import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.util.TypedValue;
 
+import androidx.annotation.ColorInt;
+
 import org.researchstack.backbone.R;
 
 import java.lang.reflect.Method;
@@ -62,6 +64,17 @@ public class ThemeUtils {
             LogExt.e(ThemeUtils.class, e);
         }
         return 0;
+    }
+
+    /**
+     * Determines the best color contrast (black or white) to use against a colored background
+     *
+     * @param color the color integer to be computed
+     * @return either Color.BLACK or Color.WHITE depending on the input color contrast
+     */
+    public static int getContrastColor(@ColorInt int color) {
+        double a = 1 - (0.299 * Color.red(color) + 0.587 * Color.green(color) + 0.114 * Color.blue(color)) / 255;
+        return a < 0.5 ? Color.BLACK : Color.WHITE;
     }
 }
 

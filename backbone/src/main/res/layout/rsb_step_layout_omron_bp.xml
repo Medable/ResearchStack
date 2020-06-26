@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:filterTouchesWhenObscured="true">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/submit_bar"
+        android:clipToPadding="false"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/title"
+                style="@style/Backbone.Survey.Omron.Title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="Blood Pressure Measurement" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/paired_device_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <RelativeLayout
+                        android:id="@+id/device_connection_status"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/rsb_omron_top_padding"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/rsb_omron_state_circle_size"
+                            android:layout_marginStart="@dimen/rsb_omron_state_view_horizontal_margin"
+                            android:layout_marginEnd="@dimen/rsb_omron_state_view_horizontal_margin"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/divider12"
+                                android:layout_width="0dp"
+                                android:layout_height="2dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_weight="1"
+                                android:background="@color/rsb_bluetooth_step_uncompleted" />
+
+                            <ImageView
+                                android:id="@+id/divider23"
+                                android:layout_width="0dp"
+                                android:layout_height="2dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_weight="1"
+                                android:background="@color/rsb_bluetooth_step_uncompleted" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/step1"
+                                    android:layout_width="@dimen/rsb_omron_state_circle_size"
+                                    android:layout_height="@dimen/rsb_omron_state_circle_size"
+                                    android:layout_gravity="center_horizontal"
+                                    android:background="@drawable/rsb_bg_omron_device_step_uncompleted"
+                                    android:gravity="center"
+                                    android:text="@string/rsb_omron_step_stage_1"
+                                    android:textColor="@color/rsb_bluetooth_step_uncompleted"
+                                    android:textSize="@dimen/rsb_omron_state_circle_text_size" />
+
+                                <TextView
+                                    android:id="@+id/measure_status1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_horizontal"
+                                    android:gravity="center"
+                                    android:paddingTop="@dimen/rsb_omron_state_vertical_padding"
+                                    android:visibility="invisible"
+                                    android:text="@string/rsb_omron_step_state_connecting"
+                                    android:textColor="@color/rsb_omron_color_accent"
+                                    android:textSize="@dimen/rsb_omron_state_view_status_text_size" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/step2"
+                                    android:layout_width="@dimen/rsb_omron_state_circle_size"
+                                    android:layout_height="@dimen/rsb_omron_state_circle_size"
+                                    android:layout_gravity="center_horizontal"
+                                    android:background="@drawable/rsb_bg_omron_device_step_uncompleted"
+                                    android:gravity="center"
+                                    android:text="@string/rsb_omron_step_stage_2"
+                                    android:textColor="@color/rsb_bluetooth_step_uncompleted"
+                                    android:textSize="@dimen/rsb_omron_state_circle_text_size" />
+
+                                <TextView
+                                    android:id="@+id/measure_status2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_horizontal"
+                                    android:gravity="center"
+                                    android:paddingTop="@dimen/rsb_omron_state_vertical_padding"
+                                    android:visibility="invisible"
+                                    android:text="@string/rsb_omron_step_state_reading"
+                                    android:textColor="@color/rsb_omron_color_accent"
+                                    android:textSize="@dimen/rsb_omron_state_view_status_text_size" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/step3"
+                                    android:layout_width="@dimen/rsb_omron_state_circle_size"
+                                    android:layout_height="@dimen/rsb_omron_state_circle_size"
+                                    android:layout_gravity="center_horizontal"
+                                    android:background="@drawable/rsb_bg_omron_device_step_uncompleted"
+                                    android:gravity="center"
+                                    android:text="@string/rsb_omron_step_stage_3"
+                                    android:textColor="@color/rsb_bluetooth_step_uncompleted"
+                                    android:textSize="@dimen/rsb_omron_state_circle_text_size" />
+
+                                <TextView
+                                    android:id="@+id/measure_status3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_horizontal"
+                                    android:gravity="center"
+                                    android:paddingTop="@dimen/rsb_omron_state_vertical_padding"
+                                    android:visibility="invisible"
+                                    android:text="@string/rsb_omron_step_state_done"
+                                    android:textColor="@color/rsb_omron_color_accent"
+                                    android:textSize="@dimen/rsb_omron_state_view_status_text_size" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </RelativeLayout>
+
+                    <TextView
+                        android:id="@+id/step_instructions"
+                        style="@style/Backbone.Survey.Omron.Description"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/rsb_omron_step_stage_3_final_intructions"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <FrameLayout
+                        android:id="@+id/measure_result_container"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_above="@id/step_instructions"
+                        android:layout_below="@id/device_connection_status"
+                        android:layout_centerHorizontal="true"
+                        android:paddingBottom="10dp"
+                        android:visibility="invisible"
+                        app:layout_constraintBottom_toTopOf="@+id/step_instructions"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/device_connection_status">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@color/rsb_omron_color_accent"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            app:cardCornerRadius="6dp"
+                            app:cardElevation="4dp"
+                            app:cardUseCompatPadding="true">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/result_systolic"
+                                    style="@style/Backbone.Survey.Omron.Result"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center_horizontal"
+                                    android:text="@string/rsb_omron_result_systolic"
+                                    android:textColor="#0a3e76" />
+
+                                <TextView
+                                    android:id="@+id/result_diastolic"
+                                    style="@style/Backbone.Survey.Omron.Result"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center_horizontal"
+                                    android:text="@string/rsb_omron_result_diastolic"
+                                    android:textColor="#0a3e76" />
+
+                                <TextView
+                                    android:id="@+id/result_pulserate"
+                                    style="@style/Backbone.Survey.Omron.Result"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center_horizontal"
+                                    android:text="@string/rsb_omron_result_pulserate"
+                                    android:textColor="#0a3e76" />
+
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                    </FrameLayout>
+
+                    <ImageView
+                        android:id="@+id/loading_animation"
+                        android:layout_width="@dimen/rsb_omron_loading_animation_size"
+                        android:layout_height="@dimen/rsb_omron_loading_animation_size"
+                        android:layout_below="@id/device_connection_status"
+                        android:layout_centerHorizontal="true"
+                        android:background="@drawable/loading_1"
+                        app:layout_constraintBottom_toTopOf="@+id/step_instructions"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/device_connection_status"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <LinearLayout
+                    android:id="@+id/unpaired_device_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_marginTop="@dimen/rsb_padding_wedge"
+                    android:layout_marginStart="@dimen/rsb_margin_left"
+                    android:layout_marginEnd="@dimen/rsb_margin_left"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/unpaired_device_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/rsb_omron_unpaired_title"
+                        android:fontFamily="sans-serif-medium"
+                        android:textColor="@color/rsb_black"
+                        android:textSize="26sp" />
+
+                    <TextView
+                        android:id="@+id/unpaired_device_description"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/rsb_omron_padding_unpaired"
+                        android:text="@string/rsb_omron_unpaired_description"
+                        android:textColor="@color/rsb_black"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/unpaired_device_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/rsb_omron_unpaired_text"
+                        android:textColor="@color/rsb_black"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+            </FrameLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <org.researchstack.backbone.ui.views.SubmitBar
+        android:id="@+id/submit_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:negativeActionTitle="@string/rsb_step_skip"
+        app:positiveActionTitle="@string/rsb_next" />
+
+    <RelativeLayout
+        android:id="@+id/location_perms_error_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/location_perms_error_text"
+            style="@style/Backbone.Survey.Summary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginBottom="@dimen/rsb_padding_wedge"
+            android:text="@string/rsb_location_step_no_permission_error_text" />
+
+        <TextView
+            style="@style/Backbone.Survey.Title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/location_perms_error_text"
+            android:text="@string/rsb_location_step_no_permission_error_title" />
+
+        <Button
+            android:id="@+id/button_open_app_settings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/location_perms_error_text"
+            android:layout_gravity="center_horizontal"
+            android:layout_centerHorizontal="true"
+            android:paddingLeft="@dimen/rsb_padding_large"
+            android:paddingRight="@dimen/rsb_padding_large"
+            android:textAllCaps="true"
+            android:text="@string/rsb_ok" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

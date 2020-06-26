@@ -30,6 +30,7 @@ import java.util.List;
  */
 public abstract class Task implements Serializable {
     private String identifier;
+    private String key;
     /**
      *
      * @return the associated step for the task, in order
@@ -48,8 +49,10 @@ public abstract class Task implements Serializable {
      *
      * @param identifier the task identifier, see {@link #getIdentifier()}
      */
-    public Task(String identifier) {
+    public Task(String identifier, String key) {
+
         this.identifier = identifier;
+        this.key = key;
     }
 
     /**
@@ -69,6 +72,20 @@ public abstract class Task implements Serializable {
      */
     public String getIdentifier() {
         return identifier;
+    }
+
+    /**
+     * Gets the unique key for this task.
+     * <p>
+     * The task key is useful in situations where a particular task needs special treatment within the app. The special
+     * treatment can be built (Blood Pressure tas, etc) and this key can be used as an identifier for triggers, etc.
+     * The key will persist during a study migration, so using it means that we don't need to worry about updating it
+     * later, for all environments, etc.
+     *
+     * @return the task key
+     */
+    public String getKey() {
+        return key;
     }
 
     /**

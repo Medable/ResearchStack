@@ -38,6 +38,8 @@ public class Step implements Serializable, Cloneable {
     private int actionFailedColor;
     private String hiddenDefaultValue = null;
     private boolean isCompletionStep = false;
+    private boolean isPartOfOmronTask = false;
+    private String stepKey;
 
     /**
      * Returns a new step initialized with the specified identifier.
@@ -369,5 +371,21 @@ public class Step implements Serializable, Cloneable {
         cloned.stepLayoutClass = stepLayoutClass; //copied by reference (public getter only)
 
         return cloned;
+    }
+
+    public boolean isPartOfOmronTask() {
+        return isPartOfOmronTask;
+    }
+
+    public void setPartOfOmronTask(boolean partOfOmronTask) {
+        this.isPartOfOmronTask = partOfOmronTask;
+    }
+
+    public String getKey() {
+        return stepKey;
+    }
+
+    public void setKey(String stepKey) {
+        this.stepKey = stepKey;
     }
 }

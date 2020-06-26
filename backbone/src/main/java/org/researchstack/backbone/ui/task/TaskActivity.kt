@@ -26,7 +26,6 @@ import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.Theme
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
-import org.researchstack.backbone.BuildConfig
 import org.researchstack.backbone.R
 import org.researchstack.backbone.step.Step
 import org.researchstack.backbone.task.Task
@@ -38,6 +37,7 @@ import org.researchstack.backbone.ui.step.layout.StepLayout
 import org.researchstack.backbone.ui.step.layout.SurveyStepLayout
 import org.researchstack.backbone.utils.LocalizationUtils
 import org.researchstack.backbone.utils.ViewUtils
+import org.researchstack.backbone.utils.isOmronTask
 
 open class TaskActivity : AppCompatActivity(), PermissionMediator {
 
@@ -53,12 +53,14 @@ open class TaskActivity : AppCompatActivity(), PermissionMediator {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        if (BuildConfig.USE_SECURE_FLAG) {
+        
+        //TODO: Create BuildConfig class for backbone
+        /*if (BuildConfig.USE_SECURE_FLAG) {
             window.setFlags(
                     WindowManager.LayoutParams.FLAG_SECURE,
                     WindowManager.LayoutParams.FLAG_SECURE
             )
-        }
+        }**/
         setResult(Activity.RESULT_CANCELED)
         setContentView(R.layout.rsb_activity_task)
 
@@ -178,7 +180,9 @@ open class TaskActivity : AppCompatActivity(), PermissionMediator {
     }
 
     override fun onBackPressed() {
-        viewModel.previousStep()
+        if (!viewModel.currentStep!!.isPartOfOmronTask) {
+            viewModel.previousStep()
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -271,6 +275,11 @@ open class TaskActivity : AppCompatActivity(), PermissionMediator {
                     ).build())
         }
 
+        navigationEvent.step.isPartOfOmronTask = isOmronTask(getCurrentTaskKey())
+
+        if (navigationEvent.step.isPartOfOmronTask) {
+            supportActionBar?.setDisplayHomeAsUpEnabled(false)
+        }
 
         if (navigationEvent.popUpToStep == null) {
             navController.navigate(navigationEvent.step.destinationId)
@@ -394,4 +403,6 @@ open class TaskActivity : AppCompatActivity(), PermissionMediator {
     }
 
     protected fun getCurrentTaskId(): String? = viewModel.task.identifier
+    protected fun getCurrentTaskKey(): String? = viewModel.task.key
+
 }

@@ -26,4 +26,8 @@
 
     <color name="rsb_cell_header_grey">#aaaaaa</color>
     <color name="rsb_item_text_grey">#222222</color>
+
+    <!-- Omron -->
+    <color name="rsb_omron_color_accent">#08a6eb</color>
+    <color name="rsb_bluetooth_step_uncompleted">#9099a1</color>
 </resources>

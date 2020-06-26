@@ -216,4 +216,36 @@
         <item name="android:lineSpacingMultiplier">@dimen/rsb_reviewStep_item_answer_line_spacing_multiplier</item>
     </style>
 
+    <!-- Omron -->
+    <style name="Backbone.Survey.Omron.Title" parent="">
+        <item name="android:layout_marginTop">@dimen/rsb_margin_top</item>
+        <item name="android:paddingLeft">@dimen/rsb_margin_left</item>
+        <item name="android:paddingRight">@dimen/rsb_margin_right</item>
+        <item name="android:paddingTop">@dimen/rsb_padding_wedge</item>
+        <item name="android:paddingBottom">@dimen/rsb_padding_wedge</item>
+        <item name="android:textColor">@color/rsb_black</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textSize">@dimen/rsb_step_body_title_text_size</item>
+    </style>
+
+    <style name="Backbone.Survey.Omron.Result" parent="">
+        <item name="android:paddingLeft">@dimen/rsb_margin_left</item>
+        <item name="android:paddingRight">@dimen/rsb_margin_right</item>
+        <item name="android:layout_marginTop">@dimen/rsb_omron_results_margin_vertical</item>
+        <item name="android:layout_marginBottom">@dimen/rsb_omron_results_margin_vertical</item>
+        <item name="android:textColor">@color/rsb_black</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textSize">@dimen/rsb_omron_text_size_result</item>
+    </style>
+
+    <style name="Backbone.Survey.Omron.Description" parent="">
+        <item name="android:layout_marginBottom">@dimen/rsb_padding_small</item>
+        <item name="android:paddingLeft">@dimen/rsb_margin_left</item>
+        <item name="android:paddingRight">@dimen/rsb_margin_right</item>
+        <item name="android:paddingBottom">@dimen/rsb_padding_small</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@color/rsb_black</item>
+        <item name="android:textSize">@dimen/rsb_step_body_desc_text_size</item>
+    </style>
+
 </resources>

@@ -20,13 +20,18 @@ class FormStep(
 ) : QuestionStep(identifier, title, FormAnswerFormat()) {
 
     private var formSteps: List<QuestionStep>? = null
+    var deviceType: String? = null
 
     init {
         setText(text)
     }
 
     override fun getDestinationId(): Int {
-        return R.id.rsb_form_step_fragment
+        return if (deviceType != null && deviceType == "BPMonitor") {
+            R.id.rsb_omron_step_fragment
+        } else {
+            R.id.rsb_form_step_fragment
+        }
     }
 
     /**

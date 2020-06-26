@@ -37,8 +37,8 @@ public class OrderedTask extends Task implements Serializable {
      * @param steps      An array of {@link Step} objects in the order in which they should be
      *                   presented.
      */
-    public OrderedTask(String identifier, List<Step> steps) {
-        super(identifier);
+    public OrderedTask(String identifier, String key, List<Step> steps) {
+        super(identifier, key);
         this.steps = new ArrayList<>(steps);
     }
 
@@ -48,8 +48,8 @@ public class OrderedTask extends Task implements Serializable {
      * @param identifier The unique identifier for the task
      * @param steps      The {@link Step} objects in the order in which they should be presented.
      */
-    public OrderedTask(String identifier, Step... steps) {
-        this(identifier, Arrays.asList(steps));
+    public OrderedTask(String identifier, String key, Step... steps) {
+        this(identifier, key, Arrays.asList(steps));
     }
 
     /**
