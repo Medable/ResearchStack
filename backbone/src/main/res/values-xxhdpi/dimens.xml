@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Omron -->
+    <dimen name="rsb_omron_text_size_result">24sp</dimen>
+    <dimen name="rsb_omron_padding_unpaired">20dp</dimen>
+    <dimen name="rsb_omron_margin_medium">30dp</dimen>
+    <dimen name="rsb_omron_state_circle_size">50dp</dimen>
+    <dimen name="rsb_omron_state_view_horizontal_margin">50dp</dimen>
+    <dimen name="rsb_omron_state_circle_text_size">22sp</dimen>
+    <dimen name="rsb_omron_state_view_status_text_size">16sp</dimen>
+    <dimen name="rsb_omron_loading_animation_size">80dp</dimen>
+    <dimen name="rsb_step_body_desc_text_size">18sp</dimen>
+    <dimen name="rsb_step_body_title_text_size">32sp</dimen>
+
+    <dimen name="rsb_omron_state_vertical_padding">16dp</dimen>
+    <dimen name="rsb_omron_results_margin_vertical">4dp</dimen>
+    <dimen name="rsb_omron_top_padding">22dp</dimen>
+
+</resources>
