@@ -1,1 +1,10 @@
 include ':backbone'
+
+include ':utility'
+project(':utility').projectDir = new File('../../utility')
+
+include ':android-core-bluetooth'
+project(':android-core-bluetooth').projectDir = new File('../../android-core-bluetooth')
+
+include ':ohq-reference-code'
+project(':ohq-reference-code').projectDir = new File('../../ohq-reference-code')

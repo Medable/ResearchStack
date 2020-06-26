@@ -117,6 +117,12 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.6'
     implementation "com.afollestad.material-dialogs:core:0.9.0.2"
 
+    // Omron
+    implementation 'com.neovisionaries:nv-bluetooth:1.8'
+    api project(path: ':utility')
+    api project(path: ':ohq-reference-code')
+    api project(path: ':android-core-bluetooth')
+
     // JUnit 4 framework
     testImplementation 'junit:junit:4.13'
 
@@ -139,14 +145,14 @@ if (project.hasProperty("android")) { // Android libraries
         source = android.sourceSets.main.java.srcDirs
     }
 
-    afterEvaluate {
+    /*afterEvaluate {
         javadoc.classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
         javadoc.classpath += files(android.libraryVariants.collect { variant ->
             variant.getJavaCompileProvider().configure {
                 it.classpath.files
             }
         })
-    }
+    }**/
 } else { // Java libraries
     task sourcesJar(type: Jar, dependsOn: classes) {
         classifier = 'sources'
