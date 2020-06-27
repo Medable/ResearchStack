@@ -20,18 +20,19 @@ class FormStep(
 ) : QuestionStep(identifier, title, FormAnswerFormat()) {
 
     private var formSteps: List<QuestionStep>? = null
-    var deviceType: String? = null
+    var overrideType: String? = null
 
     init {
         setText(text)
     }
 
     override fun getDestinationId(): Int {
-        return if (deviceType != null && deviceType == "BPMonitor") {
-            R.id.rsb_omron_step_fragment
-        } else {
-            R.id.rsb_form_step_fragment
+        overrideType?.let {
+            if (it == OMRON_MEASUREMENT)
+            return R.id.rsb_omron_step_fragment
         }
+
+        return R.id.rsb_form_step_fragment
     }
 
     /**
@@ -49,5 +50,9 @@ class FormStep(
 
     fun setFormSteps(formSteps: List<QuestionStep>) {
         this.formSteps = formSteps
+    }
+
+    private companion object {
+        const val OMRON_MEASUREMENT = "omron_bp"
     }
 }
