@@ -155,5 +155,7 @@
     <string name="rsb_omron_success" translatable="false">Success</string>
     <string name="rsb_omron_failure" translatable="false">Failure</string>
     <string name="rsb_ok">OK</string>
+    <string name="rsb_cancel_button_text">Cancel</string>
+    <string name="rsb_next_button_text">Next</string>
 
 </resources>
