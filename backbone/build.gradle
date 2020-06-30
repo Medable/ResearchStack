@@ -119,9 +119,9 @@ dependencies {
 
     // Omron
     implementation 'com.neovisionaries:nv-bluetooth:1.8'
-    api project(path: ':utility')
-    api project(path: ':ohq-reference-code')
-    api project(path: ':android-core-bluetooth')
+    implementation project(path: ':utility')
+    implementation project(path: ':ohq-reference-code')
+    implementation project(path: ':android-core-bluetooth')
 
     // JUnit 4 framework
     testImplementation 'junit:junit:4.13'
