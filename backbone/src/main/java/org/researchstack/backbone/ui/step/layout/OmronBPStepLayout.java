@@ -8,6 +8,7 @@ import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -389,18 +390,15 @@ public class OmronBPStepLayout extends RelativeLayout implements StepLayout, Ses
         for (QuestionStep questionStep : step.getFormSteps()) {
             StepResult stepResult = new StepResult(questionStep);
             switch (questionStep.getKey()) {
-                case "4272559e-17f7-4268-96b4-04be6092ec86": // systolic keys
-                case "e1fdb4f7-6fac-4633-9a1d-27aa1a2cc342":
+                case "774fe74a-291b-4ad5-b96c-9177772d7b3e": //systolic keys
                     stepResult.setResult(resultValueSystolic);
                     result.setResultForIdentifier(questionStep.getIdentifier(), stepResult);
                     break;
-                case "220eef2c-9798-49f9-98cf-b6d9b2be4f3a": // diastolic keys
-                case "19bac45d-686d-4e76-a473-3666547d540d":
+                case "7d4e93ed-4d65-4d6e-b3c0-58f1e5bb9699"://diastolic keys
                     stepResult.setResult(resultValueDiastolic);
                     result.setResultForIdentifier(questionStep.getIdentifier(), stepResult);
                     break;
-                case "aac5de4f-3677-41e5-9662-43a2311ee890": // pulse keys
-                case "19bdaa84-77c5-418b-8294-ad1ee836493f":
+                case "6af32d6e-f747-4ce0-a415-de392413c6be": // pulse keys
                     stepResult.setResult(resultValuePulseRate);
                     result.setResultForIdentifier(questionStep.getIdentifier(), stepResult);
                     break;
