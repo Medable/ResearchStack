@@ -43,16 +43,20 @@ android {
 
     productFlavors {
         def useSecureFlagProd = rootProject.hasProperty("useSecureFlagProd") ? rootProject.useSecureFlagProd : true
+        def useSecureFlagUat = rootProject.hasProperty("useSecureFlagUat") ? rootProject.useSecureFlagUat : false
         def useSecureFlagDev = rootProject.hasProperty("useSecureFlagDev") ? rootProject.useSecureFlagDev : false
 
         prod {
             buildConfigField 'boolean', 'USE_SECURE_FLAG', "$useSecureFlagProd"
         }
 
+        uat {
+            buildConfigField 'boolean', 'USE_SECURE_FLAG', "$useSecureFlagUat"
+        }
+
         dev {
             buildConfigField 'boolean', 'USE_SECURE_FLAG', "$useSecureFlagDev"
         }
-
     }
 
     compileOptions {
