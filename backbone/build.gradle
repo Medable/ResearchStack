@@ -1,24 +1,31 @@
 apply plugin: 'com.android.library'
-apply plugin: 'me.tatarka.retrolambda'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 apply plugin: 'maven'
 
 android {
 
-    compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    compileSdkVersion 29
+    buildToolsVersion '29.0.3'
 
-    libraryVariants.all { variant ->
-        variant.outputs.each { output ->
-            output.outputFile = new File(output.outputFile.parentFile,
-                    output.outputFile.name.replace(".aar", "_v${VERSION_NAME}.aar"));
+    afterEvaluate {
+        def originalFilePath = "$buildDir/outputs/aar/backbone-release.aar"
+        def newFilePath = originalFilePath.replace(".aar", "_v${defaultConfig.versionName}.aar")
+        def debugFile = file(originalFilePath)
+
+        tasks.named("assembleRelease").configure {
+            doLast {
+                debugFile.renameTo(newFilePath)
+            }
         }
     }
 
     defaultConfig {
-        minSdkVersion 16
-        targetSdkVersion 22
-        versionCode 6
-        versionName version
+        minSdkVersion 23
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.8.0"
+        dimension "default"
     }
 
     buildTypes {
@@ -32,6 +39,22 @@ android {
         }
     }
 
+    flavorDimensions "default"
+
+    productFlavors {
+        def useSecureFlagProd = rootProject.hasProperty("useSecureFlagProd") ? rootProject.useSecureFlagProd : true
+        def useSecureFlagDev = rootProject.hasProperty("useSecureFlagDev") ? rootProject.useSecureFlagDev : false
+
+        prod {
+            buildConfigField 'boolean', 'USE_SECURE_FLAG', "$useSecureFlagProd"
+        }
+
+        dev {
+            buildConfigField 'boolean', 'USE_SECURE_FLAG', "$useSecureFlagDev"
+        }
+
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -42,31 +65,66 @@ android {
         exclude 'META-INF/NOTICE.txt'
     }
 
-    resourcePrefix 'rsb_'
+    android {
+        lintOptions {
+            abortOnError false
+        }
+    }
+
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:25.2.0'
-    compile 'com.android.support:cardview-v7:25.2.0'
-    compile 'com.android.support:preference-v14:25.2.0'
-    compile 'com.android.support:design:25.2.0'
-    compile 'com.google.code.gson:gson:2.4'
-    compile 'io.reactivex:rxjava:1.1.3'
-    compile 'io.reactivex:rxandroid:1.1.0'
-    compile 'com.jakewharton.rxbinding:rxbinding:0.2.0'
-    compile 'com.jakewharton.rxbinding:rxbinding-support-v4:0.2.0'
-    compile 'com.jakewharton.rxbinding:rxbinding-appcompat-v7:0.2.0'
-    compile 'com.jakewharton.rxbinding:rxbinding-design:0.2.0'
-    compile 'com.github.PhilJay:MPAndroidChart:v2.2.3'
+    def kotlinVersion = '1.3.70'
+    def koinVersion = '2.1.5'
+    def navVersion = '2.2.2'
+    def coreTestingVersion = '2.1.0'
+    def mockitoKotlinVersion = "2.2.0"
+    def mockitoVersion = '3.2.4'
 
-    compile 'com.scottyab:aes-crypto:0.0.3'
-    compile 'co.touchlab.squeaky:squeaky-query:0.4.0.0'
-    annotationProcessor 'co.touchlab.squeaky:squeaky-processor:0.4.0.0'
-    compile 'net.zetetic:android-database-sqlcipher:3.5.4@aar'
-    testCompile 'junit:junit:4.12'
-    testCompile 'org.robolectric:robolectric:3.0'
-    testCompile 'org.mockito:mockito-core:1.10.19'
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+
+    // Kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
+    testImplementation "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion"
+
+    // Material components
+    implementation "com.google.android.material:material:1.2.0-beta01"
+
+    // Koin for Android
+    implementation "org.koin:koin-android:$koinVersion"
+
+    // Koin Android ViewModel feature
+    implementation "org.koin:koin-android-viewmodel:$koinVersion"
+
+    // Koin Android X ViewModel feature
+    implementation "org.koin:koin-androidx-viewmodel:$koinVersion"
+
+    // Navigation Component
+    implementation "androidx.navigation:navigation-fragment-ktx:$navVersion"
+    implementation "androidx.navigation:navigation-ui-ktx:$navVersion"
+
+    // Android x
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'androidx.legacy:legacy-preference-v14:1.0.0'
+
+    // Android Lifecycle Extensions
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+
+    // Misc libs
+    implementation 'com.google.code.gson:gson:2.8.6'
+    implementation "com.afollestad.material-dialogs:core:0.9.0.2"
+
+    // JUnit 4 framework
+    testImplementation 'junit:junit:4.13'
+
+    // Mockito framework
+    testImplementation "org.mockito:mockito-core:$mockitoVersion"
+    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockitoKotlinVersion"
+
+    // Android core testing
+    testImplementation "androidx.arch.core:core-testing:$coreTestingVersion"
 }
 
 if (project.hasProperty("android")) { // Android libraries
@@ -83,7 +141,9 @@ if (project.hasProperty("android")) { // Android libraries
     afterEvaluate {
         javadoc.classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
         javadoc.classpath += files(android.libraryVariants.collect { variant ->
-            variant.javaCompile.classpath.files
+            variant.getJavaCompileProvider().configure {
+                it.classpath.files
+            }
         })
     }
 } else { // Java libraries
@@ -93,28 +153,34 @@ if (project.hasProperty("android")) { // Android libraries
     }
 }
 
+def RS_POM_GROUP = "com.medable.researchstack"
+def RS_POM_DESCRIPTION = "Medable's ResearchStack fork"
+def RS_POM_LICENCE_NAME = "The Apache Software License, Version 2.0"
+def RS_POM_LICENCE_URL = "http://www.apache.org/licenses/LICENSE-2.0.txt"
+def RS_POM_LICENCE_DIST = "repo"
+
 afterEvaluate { project ->
     uploadArchives {
         repositories {
             mavenDeployer {
 
-                pom.groupId = GROUP
-                pom.artifactId = project.getProperties().POM_ARTIFACT_ID
-                pom.version = VERSION_NAME
+                pom.groupId = RS_POM_GROUP
+                pom.artifactId = project.getProperties().BB_POM_ARTIFACT_ID
+                pom.version = android.defaultConfig.versionName
 
                 def deployPath = file('./')
                 repository(url: "file://${deployPath.absolutePath}/../../Android-SDK/")
 
                 pom.project {
-                    name project.getProperties().POM_NAME
-                    packaging project.getProperties().POM_PACKAGING
-                    description POM_DESCRIPTION
+                    name project.getProperties().BB_POM_NAME
+                    packaging project.getProperties().BB_POM_PACKAGING
+                    description RS_POM_DESCRIPTION
 
                     licenses {
                         license {
-                            name POM_LICENCE_NAME
-                            url POM_LICENCE_URL
-                            distribution POM_LICENCE_DIST
+                            name RS_POM_LICENCE_NAME
+                            url RS_POM_LICENCE_URL
+                            distribution RS_POM_LICENCE_DIST
                         }
                     }
                 }
@@ -122,14 +188,28 @@ afterEvaluate { project ->
                 pom.whenConfigured { pom ->
                     pom.dependencies.forEach { dep ->
                         if (dep.getVersion() == "unspecified") {
-                            dep.setGroupId(GROUP)
-                            dep.setVersion(VERSION_NAME)
+                            dep.setGroupId(RS_POM_GROUP)
+                            dep.setVersion(android.defaultConfig.versionName)
                         }
                     }
                 }
-
             }
         }
     }
 }
 
+buildscript {
+
+    repositories {
+        google()
+        jcenter()
+        maven {
+            url 'https://maven.google.com/'
+            name 'Google'
+        }
+    }
+
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.72"
+    }
+}
