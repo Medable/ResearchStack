@@ -20,7 +20,7 @@ import java.io.Serializable;
  * <p>
  * To use an answer format, instantiate the appropriate answer format subclass and attach it to a
  * question step or form item. Incorporate the resulting step into a task, and present the task with
- * a {@link org.researchstack.backbone.ui.task.TaskActivity}.
+ * a {@link org.researchstack.backbone.ui.ViewTaskActivity}.
  */
 public abstract class AnswerFormat implements Serializable {
     /**

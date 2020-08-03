@@ -1,7 +1,5 @@
 package org.researchstack.backbone.step;
 
-import org.researchstack.backbone.R;
-
 /**
  * This class represents the final step in the consent process, collecting the signature from the
  * study participant.
@@ -12,11 +10,6 @@ public class ConsentSignatureStep extends Step {
     public ConsentSignatureStep(String identifier) {
         super(identifier);
         setOptional(false);
-    }
-
-    @Override
-    public int getDestinationId() {
-        return R.id.rsb_consent_signature_step_fragment;
     }
 
     /**
