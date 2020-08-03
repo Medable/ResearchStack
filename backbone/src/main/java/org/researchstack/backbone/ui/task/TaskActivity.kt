@@ -28,7 +28,6 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 import org.researchstack.backbone.BuildConfig
 import org.researchstack.backbone.R
-import org.researchstack.backbone.step.Step
 import org.researchstack.backbone.task.Task
 import org.researchstack.backbone.ui.permissions.PermissionListener
 import org.researchstack.backbone.ui.permissions.PermissionMediator
@@ -39,6 +38,8 @@ import org.researchstack.backbone.ui.step.layout.SurveyStepLayout
 import org.researchstack.backbone.utils.LocalizationUtils
 import org.researchstack.backbone.utils.ViewUtils
 
+@Deprecated("Deprecated as part of the new handling for the branching logic",
+        ReplaceWith("com.medable.axon.ui.taskrunner.NRSTaskActivity"))
 open class TaskActivity : AppCompatActivity(), PermissionMediator {
 
     private val viewModel: TaskViewModel by viewModel { parametersOf(intent) }
@@ -65,11 +66,11 @@ open class TaskActivity : AppCompatActivity(), PermissionMediator {
         setSupportActionBar(findViewById(R.id.toolbar))
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
 
         observe(viewModel.currentStepEvent) { showStep(it) }
         observe(viewModel.taskCompleted) { close(it) }
         observe(viewModel.moveReviewStep) {
-            showStepTitle(it.step)
             navController.navigate(it.step.destinationId, null,
                     NavOptions.Builder().setPopUpTo(
                             viewModel.firstStep.destinationId,
@@ -275,14 +276,7 @@ open class TaskActivity : AppCompatActivity(), PermissionMediator {
         if (navigationEvent.popUpToStep == null) {
             navController.navigate(navigationEvent.step.destinationId)
         }
-        showStepTitle(navigationEvent.step)
         setActivityTheme(viewModel.colorPrimary, viewModel.colorPrimaryDark)
-    }
-
-    private fun showStepTitle(step: Step) {
-        supportActionBar?.title =
-                if (viewModel.editing) ""
-                else viewModel.task.getTitleForStep(this, step)
     }
 
     private fun hideKeyboard() {

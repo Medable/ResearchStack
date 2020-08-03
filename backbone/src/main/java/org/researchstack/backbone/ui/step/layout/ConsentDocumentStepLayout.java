@@ -6,11 +6,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.LinearLayout;
+
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.afollestad.materialdialogs.Theme;
 
+import org.jetbrains.annotations.NotNull;
 import org.researchstack.backbone.R;
 import org.researchstack.backbone.result.StepResult;
 import org.researchstack.backbone.step.ConsentDocumentStep;
@@ -25,7 +27,7 @@ import org.researchstack.backbone.utils.LocalizationUtils;
  * {@link #stepResult}
  * {@link #confirmationDialogBody}
  */
-public class ConsentDocumentStepLayout extends LinearLayout implements StepLayout {
+public class ConsentDocumentStepLayout extends ConstraintLayout implements StepLayout {
     private StepCallbacks callbacks;
 
     private String confirmationDialogBody;
@@ -33,6 +35,8 @@ public class ConsentDocumentStepLayout extends LinearLayout implements StepLayou
 
     private ConsentDocumentStep step;
     private StepResult<Boolean> stepResult;
+
+    private SubmitBar submitBar;
 
     public ConsentDocumentStepLayout(Context context) {
         super(context);
@@ -93,12 +97,16 @@ public class ConsentDocumentStepLayout extends LinearLayout implements StepLayou
     }
 
     @Override
+    public void setStepResultTo(@NotNull StepResult originalResult) {
+        // no-op: Only needed when the user is on edit mode inside regular steps
+    }
+
+    @Override
     public StepResult getStepResult() {
         return stepResult;
     }
 
     private void initializeStep() {
-        setOrientation(VERTICAL);
         LayoutInflater.from(getContext()).inflate(R.layout.rsb_step_layout_consent_doc, this, true);
 
         WebView pdfView = findViewById(R.id.webview);
@@ -113,15 +121,10 @@ public class ConsentDocumentStepLayout extends LinearLayout implements StepLayou
             @Override
             public void onPageFinished(WebView view, String url)
             {
-                final SubmitBar submitBar = findViewById(R.id.submit_bar);
+                submitBar = findViewById(R.id.submit_bar);
+                setSubmitBarButtonsActions();
                 submitBar.setPositiveTitleColor(step.getColorSecondary());
-                submitBar.setPositiveAction(actionView -> showDialog((dialog, which) -> {
-                    stepResult.setResult(true);
-                    callbacks.onSaveStep(StepCallbacks.ACTION_NEXT, step, stepResult);
-                    submitBar.clearActions();
-                }));
                 submitBar.setNegativeTitleColor(step.getPrimaryColor());
-                submitBar.setNegativeAction(actionView -> disagreeConsent());
                 submitBar.setNegativeTitle(LocalizationUtils.getLocalizedString(getContext(),R.string.rsb_disagree));
                 submitBar.setPositiveTitle(LocalizationUtils.getLocalizedString(getContext(),R.string.rsb_agree));
             }
@@ -129,6 +132,20 @@ public class ConsentDocumentStepLayout extends LinearLayout implements StepLayou
 
         pdfView.loadData(htmlContent, "text/html; charset=UTF-8", null);
 
+    }
+
+    private void setSubmitBarButtonsActions() {
+        submitBar.setPositiveAction(actionView -> submitBarOnClick());
+        submitBar.setNegativeAction(actionView -> disagreeConsent());
+    }
+
+    private void submitBarOnClick() {
+        submitBar.clearActions();
+        showDialog((dialog, which) -> {
+            stepResult.setResult(true);
+            callbacks.onSaveStep(StepCallbacks.ACTION_NEXT, step, stepResult);
+            submitBar.clearActions();
+        });
     }
 
     private void disagreeConsent() {
@@ -147,6 +164,7 @@ public class ConsentDocumentStepLayout extends LinearLayout implements StepLayou
                 .negativeText(LocalizationUtils.getLocalizedString(getContext(),R.string.rsb_consent_review_cancel))
                 .positiveText(LocalizationUtils.getLocalizedString(getContext(),R.string.rsb_agree))
                 .onPositive(positiveAction)
+                .cancelListener(dialog -> setSubmitBarButtonsActions())
                 .show();
     }
 }

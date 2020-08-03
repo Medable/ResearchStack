@@ -25,6 +25,7 @@ public class FormBody implements StepBody {
     private FormStep step;
     private StepResult<StepResult> result;
     private ViewGroup parent;
+    private static final String CONSENT_ID_FORM = "user_info_form";
 
     //-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
     // View Fields
@@ -50,16 +51,24 @@ public class FormBody implements StepBody {
 
         // Iterate through all steps and generate each compact view. Store each StepBody child in a
         // list to iterate over (e.g. within getStepResult())
-        for (QuestionStep questionStep : questionSteps) {
-            StepBody stepBody = createStepBody(questionStep);
-            if(!questionStep.isHidden()) {
+        for (int i = 0; i < questionSteps.size(); i++) {
+            StepBody stepBody = createStepBody(questionSteps.get(i));
+            if (!questionSteps.get(i).isHidden()) {
                 View bodyView = stepBody.getBodyView(VIEW_TYPE_COMPACT, inflater, body);
                 body.addView(bodyView);
+
+                if (i < questionSteps.size() - 1 && !step.getIdentifier().equals(CONSENT_ID_FORM)) {
+                    body.addView(getDividerView(inflater, body));
+                }
             }
             formStepChildren.add(stepBody);
         }
 
         return body;
+    }
+
+    private View getDividerView(LayoutInflater inflater, ViewGroup parent) {
+        return inflater.inflate(R.layout.rsb_form_step_divider, parent, false);
     }
 
     @Override

@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import org.jetbrains.annotations.NotNull;
 import org.researchstack.backbone.R;
 import org.researchstack.backbone.model.ConsentSection;
 import org.researchstack.backbone.result.StepResult;
@@ -98,6 +99,11 @@ public class ConsentVisualStepLayout extends FixedSubmitBarLayout implements Ste
     }
 
     @Override
+    public void setStepResultTo(@NotNull StepResult originalResult) {
+        // no-op : This step doesn't have a result
+    }
+
+    @Override
     public int getContentResourceId() {
         return R.layout.rsb_step_layout_consent_visual;
     }
@@ -105,7 +111,7 @@ public class ConsentVisualStepLayout extends FixedSubmitBarLayout implements Ste
     private void initializeStep() {
         final ConsentSection data = step.getSection();
 
-        ImageView imageView = (ImageView) findViewById(R.id.image);
+        ImageView imageView = findViewById(R.id.image);
 
         String imageName = !TextUtils.isEmpty(data.getCustomImageName())
                 ? data.getCustomImageName()
@@ -136,7 +142,7 @@ public class ConsentVisualStepLayout extends FixedSubmitBarLayout implements Ste
         }
 
         // Set Title
-        TextView titleView = (TextView) findViewById(R.id.title);
+        TextView titleView = findViewById(R.id.title);
         if (TextUtils.isEmpty(data.getTitle())) {
             titleView.setText(LocalizationUtils.getLocalizedString(getContext(), data.getType().getTitleResId()));
         } else {
@@ -144,12 +150,19 @@ public class ConsentVisualStepLayout extends FixedSubmitBarLayout implements Ste
         }
         titleView.setTextColor(principalTextColor);
 
-        // Set Summary
-        TextView summaryView = (TextView) findViewById(R.id.summary);
-        summaryView.setText(data.getSummary());
+        // Set Header color
+        TextView headerView = findViewById(R.id.header);
+        headerView.setTextColor(step.getPrimaryColor());
 
+        // Set Summary
+        TextView summaryView = findViewById(R.id.summary);
+        if (data.getSummary() != null && !data.getSummary().isEmpty()) {
+            summaryView.setText(data.getSummary());
+        } else {
+            summaryView.setVisibility(GONE);
+        }
         // Set more info
-        TextView moreInfoView = (TextView) findViewById(R.id.more_info);
+        TextView moreInfoView = findViewById(R.id.more_info);
 
         if (data.getContentUrl() != null || !TextUtils.isEmpty(data.getContent()) || !TextUtils.isEmpty(data.getHtmlContent()))
         {

@@ -1,5 +1,6 @@
 package org.researchstack.backbone.ui.step.layout;
 
+import androidx.core.text.HtmlCompat;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MediatorLiveData;
 import android.content.Context;
@@ -7,7 +8,6 @@ import android.content.Intent;
 import android.os.Parcelable;
 import androidx.annotation.NonNull;
 import androidx.annotation.StringRes;
-import android.text.Html;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.jetbrains.annotations.NotNull;
 import org.researchstack.backbone.R;
 import org.researchstack.backbone.ResourcePathManager;
 import org.researchstack.backbone.result.StepResult;
@@ -32,6 +33,7 @@ import org.researchstack.backbone.utils.LogExt;
 import org.researchstack.backbone.utils.TextUtils;
 
 import java.lang.reflect.Constructor;
+import java.util.Map;
 
 public class SurveyStepLayout extends FixedSubmitBarLayout implements StepLayout {
     public static final String TAG = SurveyStepLayout.class.getSimpleName();
@@ -163,6 +165,15 @@ public class SurveyStepLayout extends FixedSubmitBarLayout implements StepLayout
         return stepBody.getStepResult(isSkipped);
     }
 
+    @Override
+    public void setStepResultTo(@NotNull StepResult originalResult) {
+        if (isFormStep()) {
+            setFormStepChildrenResultsTo(originalResult);
+        } else {
+            stepResult.setResult(originalResult.getResult());
+        }
+    }
+
     public void initStepLayout() {
         LogExt.i(getClass(), "initStepLayout()");
 
@@ -171,6 +182,7 @@ public class SurveyStepLayout extends FixedSubmitBarLayout implements StepLayout
         title.setTextColor(principalTextColor);
         TextView summary = findViewById(R.id.rsb_survey_text);
         summary.setTextColor(secondaryTextColor);
+        View divider = findViewById(R.id.rsb_divider);
         submitBar = findViewById(R.id.rsb_submit_bar);
         submitBar.setNegativeTitleColor(coloryPrimary);
         submitBar.setPositiveTitleColor(colorSecondary);
@@ -185,12 +197,14 @@ public class SurveyStepLayout extends FixedSubmitBarLayout implements StepLayout
         if (questionStep != null) {
             if (!TextUtils.isEmpty(questionStep.getTitle())) {
                 title.setVisibility(View.VISIBLE);
-                title.setText(questionStep.getTitle());
+                divider.setVisibility(View.VISIBLE);
+                title.setText(HtmlCompat.fromHtml(questionStep.getTitle(), HtmlCompat.FROM_HTML_MODE_COMPACT));
             }
 
             if (!TextUtils.isEmpty(questionStep.getText())) {
                 summary.setVisibility(View.VISIBLE);
-                summary.setText(Html.fromHtml(questionStep.getText()));
+                divider.setVisibility(View.VISIBLE);
+                summary.setText(HtmlCompat.fromHtml(questionStep.getText(), HtmlCompat.FROM_HTML_MODE_COMPACT));
                 summary.setMovementMethod(new TextViewLinkHandler() {
                     @Override
                     public void onLinkClick(String url) {
@@ -346,5 +360,22 @@ public class SurveyStepLayout extends FixedSubmitBarLayout implements StepLayout
 
     public StepBody getStepBody() {
         return stepBody;
+    }
+
+    private void setFormStepChildrenResultsTo(@NotNull StepResult newChildrenResult) {
+        Map<String, Object> results = newChildrenResult.getResults();
+        for (Map.Entry<String, Object> result : results.entrySet()) {
+            String id = result.getKey();
+            Object value = result.getValue();
+            if (value instanceof StepResult) {
+                if (stepResult.getResultForIdentifier(id) != null) {
+                    ((StepResult) stepResult.getResultForIdentifier(id)).setResult(((StepResult) value).getResult());
+                }
+            }
+        }
+    }
+
+    private Boolean isFormStep() {
+        return stepBody instanceof FormBody;
     }
 }
