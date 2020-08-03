@@ -6,7 +6,7 @@ import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import androidx.core.app.NotificationCompat;
+import android.support.v7.app.NotificationCompat;
 import android.util.Log;
 
 import org.researchstack.skin.ui.MainActivity;

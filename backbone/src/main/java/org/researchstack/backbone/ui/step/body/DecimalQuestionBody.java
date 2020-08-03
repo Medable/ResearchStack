@@ -10,14 +10,11 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.google.android.material.textfield.TextInputLayout;
-
 import org.researchstack.backbone.R;
 import org.researchstack.backbone.answerformat.DecimalAnswerFormat;
 import org.researchstack.backbone.result.StepResult;
 import org.researchstack.backbone.step.QuestionStep;
 import org.researchstack.backbone.step.Step;
-import org.researchstack.backbone.utils.LocalizationUtils;
 import org.researchstack.backbone.utils.TextUtils;
 import org.researchstack.backbone.utils.ViewUtils;
 
@@ -32,6 +29,7 @@ public class DecimalQuestionBody implements StepBody {
     //-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
     // View Fields
     //-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+    private int viewType;
     private EditText editText;
 
     public DecimalQuestionBody(Step step, StepResult result) {
@@ -42,6 +40,8 @@ public class DecimalQuestionBody implements StepBody {
 
     @Override
     public View getBodyView(int viewType, LayoutInflater inflater, ViewGroup parent) {
+        this.viewType = viewType;
+
         View view = getViewForType(viewType, inflater, parent);
 
         LinearLayout.MarginLayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
@@ -71,10 +71,10 @@ public class DecimalQuestionBody implements StepBody {
     private View initViewCompact(LayoutInflater inflater, ViewGroup parent) {
         View formItemView = inflater.inflate(R.layout.rsb_item_edit_text_compact, parent, false);
 
-        TextView title = formItemView.findViewById(R.id.label);
+        TextView title = (TextView) formItemView.findViewById(R.id.label);
         title.setText(step.getTitle());
 
-        editText = ((TextInputLayout)formItemView.findViewById(R.id.value)).getEditText();
+        editText = (EditText) formItemView.findViewById(R.id.value);
         setFilters(parent.getContext());
 
         return formItemView;
@@ -89,9 +89,9 @@ public class DecimalQuestionBody implements StepBody {
         if (step.getPlaceholder() != null) {
             editText.setHint(step.getPlaceholder());
         } else if (maxValue == Integer.MAX_VALUE) {
-            editText.setHint(LocalizationUtils.getLocalizedString(context, R.string.rsb_hint_step_body_int_no_max));
+            editText.setHint(context.getString(R.string.rsb_hint_step_body_int_no_max));
         } else {
-            editText.setHint(LocalizationUtils.getLocalizedString(context, R.string.rsb_hint_step_body_dec,
+            editText.setHint(context.getString(R.string.rsb_hint_step_body_dec,
                     minValue,
                     maxValue));
         }

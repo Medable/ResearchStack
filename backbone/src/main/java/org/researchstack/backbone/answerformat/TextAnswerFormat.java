@@ -9,7 +9,7 @@ public class TextAnswerFormat extends AnswerFormat {
     public static final int UNLIMITED_LENGTH = 0;
     private int maximumLength;
 
-    private boolean isMultipleLines;
+    private boolean isMultipleLines = false;
 
     /**
      * Creates a TextAnswerFormat with no maximum length

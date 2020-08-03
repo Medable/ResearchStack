@@ -1,7 +1,7 @@
 package org.researchstack.skin.ui.layout;
 
 import android.content.Context;
-import androidx.appcompat.widget.AppCompatEditText;
+import android.support.v7.widget.AppCompatEditText;
 import android.util.AttributeSet;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;

@@ -14,14 +14,13 @@ import android.graphics.RectF;
 import android.graphics.drawable.shapes.PathShape;
 import android.os.Parcel;
 import android.os.Parcelable;
-import androidx.core.view.ViewCompat;
+import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
 import org.researchstack.backbone.R;
 import org.researchstack.backbone.ui.callbacks.SignatureCallbacks;
-import org.researchstack.backbone.utils.LocalizationUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,6 +49,8 @@ public class SignatureView extends View {
     // Properties
     //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     private String hintText;
+    private int guidelineMargin;
+    private int guidelineHeight;
     private int hintTextColor;
     private int guidelineColor;
     private int sigPrintColor;
@@ -88,7 +89,7 @@ public class SignatureView extends View {
         int signatureStroke = a.getDimensionPixelSize(R.styleable.SignatureView_signatureStrokeSize,
                 defSignatureStroke);
 
-        hintText = LocalizationUtils.getLocalizedString(getContext(), R.string.rsb_consent_signature_placeholder);
+        hintText = a.getString(R.styleable.SignatureView_hintText);
 
         hintTextColor = a.getColor(R.styleable.SignatureView_hintTextColor, Color.LTGRAY);
 
@@ -97,6 +98,14 @@ public class SignatureView extends View {
                 defHintTextSize);
 
         guidelineColor = a.getColor(R.styleable.SignatureView_guidelineColor, hintTextColor);
+
+        int defGuidelineMargin = (int) (getResources().getDisplayMetrics().density * 12);
+        guidelineMargin = a.getDimensionPixelSize(R.styleable.SignatureView_guidelineMargin,
+                defGuidelineMargin);
+
+        int defGuidelineHeight = (int) (getResources().getDisplayMetrics().density * 1);
+        guidelineHeight = a.getDimensionPixelSize(R.styleable.SignatureView_guidelineHeight,
+                defGuidelineHeight);
 
         a.recycle();
 
@@ -171,7 +180,7 @@ public class SignatureView extends View {
         //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
         hintPaint.setColor(guidelineColor);
         canvas.drawRect(drawBounds.left,
-                drawBounds.bottom,
+                drawBounds.bottom - guidelineHeight,
                 drawBounds.right,
                 drawBounds.bottom,
                 hintPaint);
@@ -181,9 +190,8 @@ public class SignatureView extends View {
         //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
         if (sigPath.isEmpty()) {
             hintPaint.setColor(hintTextColor);
-            int baselineY = drawBounds.bottom;
-            int paddingBottom =  (int) getResources().getDisplayMetrics().density * 10;
-            canvas.drawText(hintText, drawBounds.left, baselineY - paddingBottom, hintPaint);
+            int baselineY = drawBounds.bottom - guidelineMargin - guidelineHeight;
+            canvas.drawText(hintText, drawBounds.left, baselineY, hintPaint);
         } else {
             canvas.drawPath(sigPath, sigPaint);
         }
