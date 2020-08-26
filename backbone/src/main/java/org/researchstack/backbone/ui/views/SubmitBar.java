@@ -165,4 +165,14 @@ public class SubmitBar extends ConstraintLayout {
         editSaveView.setClickable(false);
         editSaveView.setTextColor(getContext().getColor(R.color.rsb_submit_disabled));
     }
+
+    public void setNegativeActionEnabled(boolean isEnabled, int defaultColor) {
+        negativeView.setClickable(isEnabled);
+
+        if (isEnabled) {
+            negativeView.setTextColor(defaultColor);
+        } else {
+            negativeView.setTextColor(getContext().getColor(R.color.rsb_submit_disabled));
+        }
+    }
 }
