@@ -25,6 +25,11 @@ import org.researchstack.backbone.utils.TextUtils;
 
 import java.net.URL;
 
+/**
+ * @deprecated as part of removing ResearchStack, use
+ * com.medable.axon.ui.taskrunner.layouts.DocumentSectionStepLayout instead
+ */
+@Deprecated
 public class ConsentVisualStepLayout extends FixedSubmitBarLayout implements StepLayout {
 
     private StepCallbacks callbacks;

@@ -26,7 +26,11 @@ import org.researchstack.backbone.utils.LocalizationUtils;
  * {@link #step}
  * {@link #stepResult}
  * {@link #confirmationDialogBody}
+ *
+ * @deprecated as part of removing ResearchStack, use
+ * com.medable.axon.ui.taskrunner.fragments.NRSConsentReviewStepFragment instead
  */
+@Deprecated
 public class ConsentDocumentStepLayout extends ConstraintLayout implements StepLayout {
     private StepCallbacks callbacks;
 
