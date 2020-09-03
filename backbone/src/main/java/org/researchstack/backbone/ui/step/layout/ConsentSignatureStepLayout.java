@@ -29,6 +29,11 @@ import java.io.ByteArrayOutputStream;
 import java.text.DateFormat;
 import java.util.Date;
 
+/**
+ * @deprecated as part of removing ResearchStack, use
+ * com.medable.axon.ui.taskrunner.fragments.ConsentReviewSignatureSubStepFragment instead
+ */
+@Deprecated
 public class ConsentSignatureStepLayout extends ConstraintLayout implements StepLayout {
     public static final String KEY_SIGNATURE = "ConsentSignatureStep.Signature";
     public static final String KEY_SIGNATURE_DATE = "ConsentSignatureStep.Signature.Date";
