@@ -1,0 +1,159 @@
+<?xml version='1.0' encoding='UTF-8'?><resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Consent Section -->
+    <string name="rsb_consent">თანხმობა</string>
+    <string name="rsb_consent_section_welcome">მოგესალმებით</string>
+    <string name="rsb_consent_section_data_gathering">მონაცემთა შეგროვება</string>
+    <string name="rsb_consent_section_privacy">კონფიდენციალურობა</string>
+    <string name="rsb_consent_section_data_use">მონაცემთა გამოყენება</string>
+    <string name="rsb_consent_section_time_commitment">დროის ვალდებულება</string>
+    <string name="rsb_consent_section_study_survey">კვლევა</string>
+    <string name="rsb_consent_section_study_tasks">სასწავლო ამოცანები</string>
+    <string name="rsb_consent_section_withdrawing">გაყვანა</string>
+
+    <!-- Consent section learn more -->
+    <string name="rsb_consent_section_more_info">შეიტყვეთ მეტი</string>
+    <string name="rsb_consent_section_more_info_data_gathering">შეიტყვეთ მეტი მონაცემთა შეგროვების შესახებ
+    </string>
+    <string name="rsb_consent_section_more_info_data_use">შეიტყვეთ მეტი მონაცემების გამოყენების შესახებ</string>
+    <string name="rsb_consent_section_more_info_privacy">შეიტყვეთ მეტი იმის შესახებ, თუ როგორ არის დაცული თქვენი კონფიდენციალურობა და პირადი მონაცემები
+    </string>
+    <string name="rsb_consent_section_more_info_welcome">პირველ რიგში შეიტყვეთ მეტი კვლევის შესახებ</string>
+    <string name="rsb_consent_section_more_info_study_survey">შეიტყვეთ მეტი კვლევის გამოკითხვის შესახებ
+    </string>
+    <string name="rsb_consent_section_more_info_time_commitment">შეიტყვეთ მეტი სწავლის გავლენის შესახებ თქვენს დროზე
+    </string>
+    <string name="rsb_consent_section_more_info_study_tasks">შეიტყვეთ მეტი შესრულებული დავალებების შესახებ
+    </string>
+    <string name="rsb_consent_section_more_info_withdrawing">შეიტყვეთ მეტი გაყვანის შესახებ</string>
+
+    <!-- Consent doc step -->
+    <string name="rsb_consent_review_alert_title">მიმოხილვა</string>
+    <string name="rsb_consent_review_cancel">გაუქმება</string>
+
+    <string name="rsb_saving_consent">თანხმობის შენახვა</string>
+    <string name="rsb_please_wait">გთხოვთ მოიცადოთ&#8230;</string>
+
+    <!-- Consent form step -->
+
+    <string name="rsb_consent_dob_full">დაბადების თარიღი</string>
+
+    <!-- Consent sig step -->
+    <string name="rsb_consent_signature_title">ხელმოწერა</string>
+    <string name="rsb_consent_signature_instruction">გთხოვთ ხელი მოაწეროთ თითის გამოყენებით ქვედა სტრიქონში.
+    </string>
+    <string name="rsb_consent_signature_placeholder">მოაწერეთ ხელი აქ</string>
+    <string name="rsb_consent_signature_clear">ნათელია</string>
+
+    <!-- Other -->
+
+    <string name="rsb_done">შესრულებულია</string>
+    <string name="rsb_step_skip">გამოტოვება</string>
+    <string name="rsb_next">შემდეგი</string>
+    <string name="rsb_name_first">სახელი</string>
+    <string name="rsb_name_last">გვარი</string>
+    <string name="rsb_disagree">უარყოფა</string>
+    <string name="rsb_agree">ვეთანხმები</string>
+    <string name="rsb_cancel">გაუქმება</string>
+    <string name="rsb_format_step_title">%2$s-დან %1$s ნაბიჯი</string>
+    <string name="rsb_hours">საათები</string>
+    <string name="rsb_minutes">წუთები</string>
+    <string name="rsb_task_cancel_title">აქტივობის შეწყვეტა</string>
+    <string name="rsb_task_cancel_text">დარწმუნებული ხართ, რომ გსურთ შეწყვიტოთ ეს აქტივობა და უარი თქვათ მის შედეგებზე?</string>
+    <string name="rsb_task_cancel_positive">გააუქმეთ შედეგები</string>
+
+    <!-- Step Errors -->
+    <string name="rsb_error_invalid_signature">ხელმოწერა არასწორია</string>
+    <string name="rsb_invalid_answer_default">მცდარი პასუხი, ისევ სცადეთ!</string>
+    <string name="rsb_invalid_answer_date_over">მცდარი პასუხი, თარიღი უნდა იყოს %1$s-მდე</string>
+    <string name="rsb_invalid_answer_date_under">მცდარი პასუხი, თარიღი უნდა იყოს %1$s-ის შემდეგ</string>
+    <string name="rsb_invalid_answer_integer_over">ნცდარი პასუხი, თქვენი შეფასება უნდა იყოს %1$s ან უფრო დაბალი</string>
+    <string name="rsb_invalid_answer_integer_under">მცდარი პასუხი, თქვენი შეფასება უნდა იყოს %1$s ან უფრო მაღალი</string>
+    <string name="rsb_invalid_answer_choice">გთხოვთ, აირჩიოთ მნიშვნელობა!</string>
+    <string name="rsb_invalid_answer_date_none">გთხოვთ აირჩიოთ თარიღი.</string>
+    <string name="rsb_birth_date_too_old">თქვენ უნდა იყოთ %1$s წლის ან ამაზე უმცროსი</string>
+    <string name="rsb_birth_date_too_young">თქვენ უნდა იყოთ მინიმუმ %1$s წლის</string>
+
+    <!-- Body Hints -->
+    <string name="rsb_hint_step_body_int">შეიყვანეთ ნომერი %1$d - %2$d</string>
+    <string name="rsb_hint_step_body_dec">შეიყვანეთ რიცხვი %1$.2f-%2$.2f</string>
+    <string name="rsb_hint_step_body_int_no_max">შეიყვანეთ ნომერი</string>
+    <string name="rsb_hint_step_body_date">შეიყვანეთ თარიღი</string>
+    <string name="rsb_hint_step_body_time">შეიყვანეთ დრო</string>
+    <string name="rsb_hint_step_body_datetime">შეიყვანეთ თარიღი და დრო</string>
+    <string name="rsb_hint_step_body_text">პასუხი</string>
+
+    <!-- Graphing -->
+    <string name="rsb_chart_progress_center">%2$s-დან %1$s</string>
+    <string name="rsb_chart_pie_value">%1$s&#65285;</string>
+
+    <!-- AssetVideoView -->
+
+    <!-- Text for error alert when a video container is not valid for progressive download/playback. -->
+    <string name="rsb_error_assetvideoview_invalid_progressive_playback">ეს ვიდეო არ არის დაშვებული ამ მოწყობილობაზე საჩვენებლად.</string>
+    <!-- Text for error alert when a video cannot be played. it can be used by any app. -->
+    <string name="rsb_error_assetvideoview_unknown">ამ ვიდეოს ჩვენება შეუძლებელია.</string>
+    <!-- Button to close error alert when a video cannot be played -->
+    <string name="rsb_error_assetvideoview_button">კეთილი</string>
+
+    <!-- Consent -->
+    <string name="rsb_consent_doc_line_printed_name">%1$s სახელი (დაბეჭდილი)</string>
+    <string name="rsb_consent_doc_line_signature">%1$s ხელმოწერა</string>
+    <string name="rsb_consent_doc_line_date">თარიღი</string>
+    <string name="rsb_consent_role">მონაწილე</string>
+
+    <!-- Edit -->
+    <string name="rsb_consent_review_save">შენახვა</string>
+    <string name="rsb_edit_step_alert_cancel_positive">დიახ, შეწყვიტეთ ცვლილებების შეტანა</string>
+    <string name="rsb_edit_step_alert_cancel_discard">არა, განაგრძეთ რედაქტირება</string>
+    <string name="rsb_edit_step_alert_cancel_title">გსურთ შეწყვიტოთ ცვლილებების შეტანა?</string>
+    <string name="rsb_edit_step_alert_cancel_content">ყველა ცვლილება გაუქმდება და გამოყენებული იქნება თქვენი თავდაპირველი პასუხი.</string>
+    <string name="rsb_edit_step_alert_step_save_title">გსურთ შეინახოთ თქვენი ცვლილებები?</string>
+    <string name="rsb_edit_step_alert_step_save_content">თუ ასეა, სხვა პასუხები შეიძლება გაუქმდეს და შეიძლება მოგთხოვოთ ახალი ინფორმაციის შეყვანა.</string>
+    <string name="rsb_edit_step_alert_step_save_discard">არა, გაუქმება</string>
+    <string name="rsb_edit_step_alert_step_save_positive">დიახ, შეინახეთ</string>
+    <string name="rsb_edit_step_alert_step_skip_title">გსურთ გამოტოვოთ ეს ნაბიჯი?</string>
+    <string name="rsb_edit_step_alert_step_skip_content">თქვენი თავდაპირველი პასუხი გაუქმდება.</string>
+    <string name="rsb_edit_step_alert_step_skip_discard">არა, არ გამოტოვოთ</string>
+    <string name="rsb_edit_step_alert_step_skip_positive">დიახ, გამოტოვეთ</string>
+    <string name="rsb_edit_step">რედაქტირება</string>
+
+    <!-- Material Date Picker Strings -->
+    <string name="mtrl_picker_range_header_title" tools:ignore="ResourceName" tools:override="true">აირჩიეთ თარიღების დიაპაზონი</string>
+    <string name="mtrl_picker_date_header_title" tools:ignore="ResourceName" tools:override="true">აირჩიეთ თარიღი</string>
+    <string name="mtrl_picker_range_header_unselected" tools:ignore="ResourceName" tools:override="true">დაწყების თარიღი - დასრულების თარიღი</string>
+    <string name="mtrl_picker_range_header_only_start_selected" tools:ignore="ResourceName" tools:override="true">%1$s - დასრულების თარიღი</string>
+    <string name="mtrl_picker_range_header_only_end_selected" tools:ignore="ResourceName" tools:override="true">დაწყების თარიღი - %1$s</string>
+    <string name="mtrl_picker_range_header_selected" tools:ignore="ResourceName" tools:override="true">%1$s - %2$s</string>
+    <string name="mtrl_picker_date_header_unselected" tools:ignore="ResourceName" tools:override="true">არჩეული თარიღი</string>
+    <string name="mtrl_picker_date_header_selected" translatable="false" tools:ignore="ResourceName" tools:override="true">%1$s</string>
+    <string name="mtrl_picker_confirm" translatable="false" tools:ignore="ResourceName" tools:override="true">@android:string/ok</string>
+    <string name="mtrl_picker_text_input_date_hint" tools:ignore="ResourceName" tools:override="true">თარიღი</string>
+    <string name="mtrl_picker_text_input_date_range_start_hint" tools:ignore="ResourceName" tools:override="true">დაწყების თარიღი</string>
+    <string name="mtrl_picker_text_input_date_range_end_hint" tools:ignore="ResourceName" tools:override="true">დასრულების თარიღი</string>
+    <string name="mtrl_picker_save" tools:ignore="ResourceName" tools:override="true">შენახვა</string>
+    <string name="mtrl_picker_invalid_range" tools:ignore="ResourceName" tools:override="true">მცდარი დიაპაზონი.</string>
+    <string name="mtrl_picker_out_of_range" tools:ignore="ResourceName" tools:override="true">დიაპაზონის მიღმა: %1$s</string>
+    <string name="mtrl_picker_invalid_format" tools:ignore="ResourceName" tools:override="true">მცდარი ფორმატი.</string>
+    <string name="mtrl_picker_invalid_format_use" tools:ignore="ResourceName" tools:override="true">გამოყენება: %1$s</string>
+    <string name="mtrl_picker_invalid_format_example" tools:ignore="ResourceName" tools:override="true">ნიმუში: %1$s</string>
+    <string name="mtrl_picker_toggle_to_calendar_input_mode" tools:ignore="ResourceName" tools:override="true">გადადით კალენდრის შეყვანის რეჟიმში</string>
+    <string name="mtrl_picker_toggle_to_text_input_mode" tools:ignore="ResourceName" tools:override="true">ტექსტის შეყვანის რეჟიმში გადართვა</string>
+    <string name="mtrl_picker_a11y_prev_month" tools:ignore="ResourceName" tools:override="true">წინა თვეზე გადასვლა</string>
+    <string name="mtrl_picker_a11y_next_month" tools:ignore="ResourceName" tools:override="true">შემდეგ თვეზე გადასვლა</string>
+    <string name="mtrl_picker_toggle_to_year_selection" tools:ignore="ResourceName" tools:override="true">დააჭირეთ წლის არჩევაზე გადასასვლელად</string>
+    <string name="mtrl_picker_toggle_to_day_selection" tools:ignore="ResourceName" tools:override="true">დააჭირეთ დღის არჩევაზე გადასასვლელად</string>
+    <string name="mtrl_picker_day_of_week_column_header" tools:ignore="ResourceName" tools:override="true">დღეების სვეტი: %1$s</string>
+    <string name="mtrl_picker_announce_current_selection" tools:ignore="ResourceName" tools:override="true">მიმდინარე არჩევანი: %1$s</string>
+    <string name="mtrl_picker_navigate_to_year_description" tools:ignore="ResourceName" tools:override="true">გადასვლა წელზე %1$s</string>
+
+    <!-- Material Time Picker Strings -->
+    <string name="time_picker_hour_label" tools:ignore="ResourceName" tools:override="true">საათი</string>
+    <string name="time_picker_minute_label" tools:ignore="ResourceName" tools:override="true">წუთი</string>
+    <string name="time_picker_header_text" tools:ignore="ResourceName" tools:override="true">დროის დაყენება</string>
+    <string name="time_picker_input_error" tools:ignore="ResourceName" tools:override="true">შეიყვანეთ სწორი დრო</string>
+    <string name="time_picker_prompt_label" tools:ignore="ResourceName" tools:override="true">აკრიფეთ დრო</string>
+
+    <string name="rsb_consent_text_question_error">*სავალდებულო ველი</string>
+
+</resources>

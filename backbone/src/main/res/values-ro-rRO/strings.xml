@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Consent Section -->
+    <string name="rsb_consent">Consimțământ</string>
+    <string name="rsb_consent_section_welcome">Bine ați venit</string>
+    <string name="rsb_consent_section_data_gathering">Colectarea datelor</string>
+    <string name="rsb_consent_section_privacy">Confidențialitate</string>
+    <string name="rsb_consent_section_data_use">Utilizarea datelor</string>
+    <string name="rsb_consent_section_time_commitment">Angajament de timp</string>
+    <string name="rsb_consent_section_study_survey">Sondaj de studiu</string>
+    <string name="rsb_consent_section_study_tasks">Sarcini de studiu</string>
+    <string name="rsb_consent_section_withdrawing">Retragere</string>
+
+    <!-- Consent section learn more -->
+    <string name="rsb_consent_section_more_info">Aflați mai multe</string>
+    <string name="rsb_consent_section_more_info_data_gathering">Aflați mai multe despre modul în care sunt colectate datele
+    </string>
+    <string name="rsb_consent_section_more_info_data_use">Aflați mai multe despre modul în care sunt folosite datele</string>
+    <string name="rsb_consent_section_more_info_privacy">Află mai multe despre modul în care sunt protejate confidențialitatea și identitatea dvs.
+    </string>
+    <string name="rsb_consent_section_more_info_welcome">Aflați mai multe despre studiu mai întâi</string>
+    <string name="rsb_consent_section_more_info_study_survey">Aflați mai multe despre sondajul de studiu
+    </string>
+    <string name="rsb_consent_section_more_info_time_commitment">Aflați mai multe despre impactul studiului asupra timpului dvs.
+    </string>
+    <string name="rsb_consent_section_more_info_study_tasks">Aflați mai multe despre sarcinile implicate
+    </string>
+    <string name="rsb_consent_section_more_info_withdrawing">Află mai multe despre retragere</string>
+
+    <!-- Consent doc step -->
+    <string name="rsb_consent_review_alert_title">Revizuire</string>
+    <string name="rsb_consent_review_cancel">Anulare</string>
+
+    <string name="rsb_saving_consent">Salvarea consimțământului</string>
+    <string name="rsb_please_wait">Așteptați&#8230;</string>
+
+    <!-- Consent form step -->
+
+    <string name="rsb_consent_dob_full">Data nașterii</string>
+
+    <!-- Consent sig step -->
+    <string name="rsb_consent_signature_title">Semnătură</string>
+    <string name="rsb_consent_signature_instruction">Semnați cu degetul pe rândul de mai jos.
+    </string>
+    <string name="rsb_consent_signature_placeholder">Semnați aici</string>
+    <string name="rsb_consent_signature_clear">Ștergeți</string>
+
+    <!-- Other -->
+
+    <string name="rsb_done">Efectuat</string>
+    <string name="rsb_step_skip">Omitere</string>
+    <string name="rsb_next">următorul</string>
+    <string name="rsb_name_first">Prenume</string>
+    <string name="rsb_name_last">Nume de familie</string>
+    <string name="rsb_disagree">Nu sunt de acord</string>
+    <string name="rsb_agree">De acord</string>
+    <string name="rsb_cancel">Anulare</string>
+    <string name="rsb_format_step_title">Pasul %1$s din %2$s</string>
+    <string name="rsb_hours">Ore</string>
+    <string name="rsb_minutes">Minute</string>
+    <string name="rsb_task_cancel_title">Părăsirea activității</string>
+    <string name="rsb_task_cancel_text">Sigur doriți să părăsiți această activitate și să renunțați la rezultatele acesteia?</string>
+    <string name="rsb_task_cancel_positive">Renunțați la rezultate</string>
+
+    <!-- Step Errors -->
+    <string name="rsb_error_invalid_signature">Semnătură nevalidă</string>
+    <string name="rsb_invalid_answer_default">Răspuns nevalid, încercați din nou!</string>
+    <string name="rsb_invalid_answer_date_over">Răspuns nevalid, data trebuie să fie înainte de %1$s</string>
+    <string name="rsb_invalid_answer_date_under">Răspuns nevalid, data trebuie să fie după %1$s</string>
+    <string name="rsb_invalid_answer_integer_over">Răspuns nevalid, valoarea dvs. trebuie să fie %1$s sau mai mică</string>
+    <string name="rsb_invalid_answer_integer_under">Răspuns nevalid, valoarea dvs. trebuie să fie %1$s sau mai mare</string>
+    <string name="rsb_invalid_answer_choice">Selectați o valoare!</string>
+    <string name="rsb_invalid_answer_date_none">Alegeți o dată.</string>
+    <string name="rsb_birth_date_too_old">Trebuie să aveți %1$s ani sau mai puțin</string>
+    <string name="rsb_birth_date_too_young">Trebuie să aveți cel puțin %1$s ani</string>
+
+    <!-- Body Hints -->
+    <string name="rsb_hint_step_body_int">Introduceți un număr %1$d-%2$d</string>
+    <string name="rsb_hint_step_body_dec">Introduceți un număr %1$.2f-%2$.2f</string>
+    <string name="rsb_hint_step_body_int_no_max">Introduceți un număr</string>
+    <string name="rsb_hint_step_body_date">Introduceți o dată</string>
+    <string name="rsb_hint_step_body_time">Introduceți o oră</string>
+    <string name="rsb_hint_step_body_datetime">Introduceți o dată și o oră</string>
+    <string name="rsb_hint_step_body_text">Răspuns</string>
+
+    <!-- Graphing -->
+    <string name="rsb_chart_progress_center">%1$s din %2$s</string>
+    <string name="rsb_chart_pie_value">%1$s&#65285;</string>
+
+    <!-- AssetVideoView -->
+
+    <!-- Text for error alert when a video container is not valid for progressive download/playback. -->
+    <string name="rsb_error_assetvideoview_invalid_progressive_playback">Acest videoclip nu este valid pentru transmiterea în flux către acest dispozitiv.</string>
+    <!-- Text for error alert when a video cannot be played. it can be used by any app. -->
+    <string name="rsb_error_assetvideoview_unknown">Nu se poate reda acest videoclip.</string>
+    <!-- Button to close error alert when a video cannot be played -->
+    <string name="rsb_error_assetvideoview_button">OK</string>
+
+    <!-- Consent -->
+    <string name="rsb_consent_doc_line_printed_name">Numele participantului %1$s (tipărit)</string>
+    <string name="rsb_consent_doc_line_signature">Semnătura participantului %1$s</string>
+    <string name="rsb_consent_doc_line_date">Dată</string>
+    <string name="rsb_consent_role">Participant</string>
+
+    <!-- Edit -->
+    <string name="rsb_consent_review_save">Salvare</string>
+    <string name="rsb_edit_step_alert_cancel_positive">DA, NU MAI FACE MODIFICĂRI</string>
+    <string name="rsb_edit_step_alert_cancel_discard">NU, CONTINUĂ EDITAREA</string>
+    <string name="rsb_edit_step_alert_cancel_title">Doriți să opriți efectuarea modificărilor?</string>
+    <string name="rsb_edit_step_alert_cancel_content">Toate modificările vor fi eliminate și va fi utilizat răspunsul dvs. inițial.</string>
+    <string name="rsb_edit_step_alert_step_save_title">Sigur doriți să salvați modificările?</string>
+    <string name="rsb_edit_step_alert_step_save_content">Celelalte răspunsuri pot fi șterse și vi se poate cere să trimiteți informații noi.</string>
+    <string name="rsb_edit_step_alert_step_save_discard">Nu, elimină</string>
+    <string name="rsb_edit_step_alert_step_save_positive">Da, salvează</string>
+    <string name="rsb_edit_step_alert_step_skip_title">Doriți să săriți peste acest pas?</string>
+    <string name="rsb_edit_step_alert_step_skip_content">Răspunsul dvs. inițial va fi eliminat.</string>
+    <string name="rsb_edit_step_alert_step_skip_discard">NU, NU SĂRI</string>
+    <string name="rsb_edit_step_alert_step_skip_positive">Da, sari</string>
+    <string name="rsb_edit_step">Editare</string>
+
+    <!-- Material Date Picker Strings -->
+    <string name="mtrl_picker_range_header_title" tools:ignore="ResourceName" tools:override="true">Selectați un interval de date</string>
+    <string name="mtrl_picker_date_header_title" tools:ignore="ResourceName" tools:override="true">Selectați o dată</string>
+    <string name="mtrl_picker_range_header_unselected" tools:ignore="ResourceName" tools:override="true">Data de începere – data de încheiere</string>
+    <string name="mtrl_picker_range_header_only_start_selected" tools:ignore="ResourceName" tools:override="true">%1$s – data de încheiere</string>
+    <string name="mtrl_picker_range_header_only_end_selected" tools:ignore="ResourceName" tools:override="true">Data de începere – %1$s</string>
+    <string name="mtrl_picker_range_header_selected" tools:ignore="ResourceName" tools:override="true">%1$s – %2$s</string>
+    <string name="mtrl_picker_date_header_unselected" tools:ignore="ResourceName" tools:override="true">Data selectată</string>
+    <string name="mtrl_picker_date_header_selected" translatable="false" tools:ignore="ResourceName" tools:override="true">%1$s</string>
+    <string name="mtrl_picker_confirm" translatable="false" tools:ignore="ResourceName" tools:override="true">@android:string/ok</string>
+    <string name="mtrl_picker_text_input_date_hint" tools:ignore="ResourceName" tools:override="true">Dată</string>
+    <string name="mtrl_picker_text_input_date_range_start_hint" tools:ignore="ResourceName" tools:override="true">Data de începere</string>
+    <string name="mtrl_picker_text_input_date_range_end_hint" tools:ignore="ResourceName" tools:override="true">Data de încheiere</string>
+    <string name="mtrl_picker_save" tools:ignore="ResourceName" tools:override="true">Salvare</string>
+    <string name="mtrl_picker_invalid_range" tools:ignore="ResourceName" tools:override="true">Interval nevalid.</string>
+    <string name="mtrl_picker_out_of_range" tools:ignore="ResourceName" tools:override="true">În afara intervalului: %1$s</string>
+    <string name="mtrl_picker_invalid_format" tools:ignore="ResourceName" tools:override="true">Format nevalid.</string>
+    <string name="mtrl_picker_invalid_format_use" tools:ignore="ResourceName" tools:override="true">Utilizare: %1$s</string>
+    <string name="mtrl_picker_invalid_format_example" tools:ignore="ResourceName" tools:override="true">Exemplu: %1$s</string>
+    <string name="mtrl_picker_toggle_to_calendar_input_mode" tools:ignore="ResourceName" tools:override="true">Comută la modul de introducere calendar</string>
+    <string name="mtrl_picker_toggle_to_text_input_mode" tools:ignore="ResourceName" tools:override="true">Comută la modul de introducere text</string>
+    <string name="mtrl_picker_a11y_prev_month" tools:ignore="ResourceName" tools:override="true">Schimbă la luna anterioară</string>
+    <string name="mtrl_picker_a11y_next_month" tools:ignore="ResourceName" tools:override="true">Schimbă la luna următoare</string>
+    <string name="mtrl_picker_toggle_to_year_selection" tools:ignore="ResourceName" tools:override="true">Atingeți pentru a comuta la selectarea unui an</string>
+    <string name="mtrl_picker_toggle_to_day_selection" tools:ignore="ResourceName" tools:override="true">Atingeți pentru a comuta la selectarea unei zile</string>
+    <string name="mtrl_picker_day_of_week_column_header" tools:ignore="ResourceName" tools:override="true">Coloana de zile: %1$s</string>
+    <string name="mtrl_picker_announce_current_selection" tools:ignore="ResourceName" tools:override="true">Selecția curentă: %1$s</string>
+    <string name="mtrl_picker_navigate_to_year_description" tools:ignore="ResourceName" tools:override="true">Navighează la anul %1$s</string>
+
+    <!-- Material Time Picker Strings -->
+    <string name="time_picker_hour_label" tools:ignore="ResourceName" tools:override="true">oră</string>
+    <string name="time_picker_minute_label" tools:ignore="ResourceName" tools:override="true">minut</string>
+    <string name="time_picker_header_text" tools:ignore="ResourceName" tools:override="true">Setați ora</string>
+    <string name="time_picker_input_error" tools:ignore="ResourceName" tools:override="true">Introduceți o oră validă</string>
+    <string name="time_picker_prompt_label" tools:ignore="ResourceName" tools:override="true">Introduceți ora</string>
+
+    <string name="rsb_consent_text_question_error">*Câmp obligatoriu</string>
+
+</resources>
