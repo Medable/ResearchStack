@@ -2,6 +2,9 @@
 
 ### Change log
 
+#### v1.8.1
+- Add ro_RO & ka_GE locales
+
 #### v1.8.0
 - UI clean up for most of step's layouts.
 - Add new languages: ms_MY, ta_IN, pt_BR, es_419, sk_SK
