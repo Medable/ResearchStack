@@ -2,8 +2,8 @@
 
 ### Change log
 
-#### v1.8.1
-- Add ro_RO & ka_GE locales
+#### v1.8.100
+- Add ro_RO, ka_GE, it_IT, th_TH locales.
 
 #### v1.8.0
 - UI clean up for most of step's layouts.
