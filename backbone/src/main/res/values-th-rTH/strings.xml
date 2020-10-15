@@ -1,0 +1,161 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Consent Section -->
+    <string name="rsb_consent">ความยินยอม</string>
+    <string name="rsb_consent_section_welcome">ยินดีต้อนรับ</string>
+    <string name="rsb_consent_section_data_gathering">การรวบรวมข้อมูล</string>
+    <string name="rsb_consent_section_privacy">ความเป็นส่วนตัว</string>
+    <string name="rsb_consent_section_data_use">การใช้ข้อมูล</string>
+    <string name="rsb_consent_section_time_commitment">เวลาที่ใช้</string>
+    <string name="rsb_consent_section_study_survey">แบบสำรวจการศึกษา</string>
+    <string name="rsb_consent_section_study_tasks">งานการศึกษา</string>
+    <string name="rsb_consent_section_withdrawing">การถอน</string>
+
+    <!-- Consent section learn more -->
+    <string name="rsb_consent_section_more_info">เรียนรู้เพิ่มเติม</string>
+    <string name="rsb_consent_section_more_info_data_gathering">เรียนรู้เพิ่มเติมถึงวิธีการรวบรวมข้อมูล
+    </string>
+    <string name="rsb_consent_section_more_info_data_use">เรียนรู้เพิ่มเติมถึงวิธีการใช้งานข้อมูล</string>
+    <string name="rsb_consent_section_more_info_privacy">เรียนรู้เพิ่มเติมถึงวิธีการปกป้องความเป็นส่วนตัวและตัวตนของคุณ
+    </string>
+    <string name="rsb_consent_section_more_info_welcome">เรียนรู้เพิ่มเติมถึงการศึกษาก่อน</string>
+    <string name="rsb_consent_section_more_info_study_survey">เรียนรู้เพิ่มเติมถึงแบบสำรวจการศึกษา
+    </string>
+    <string name="rsb_consent_section_more_info_time_commitment">เรียนรู้เพิ่มเติมถึงผลกระทบของการศึกษาต่อเวลาของคุณ
+    </string>
+    <string name="rsb_consent_section_more_info_study_tasks">เรียนรู้เพิ่มเติมเกี่ยวกับงานที่เกี่ยวข้อง
+    </string>
+    <string name="rsb_consent_section_more_info_withdrawing">เรียนรู้เพิ่มเติมเกี่ยวกับการถอน</string>
+
+    <!-- Consent doc step -->
+    <string name="rsb_consent_review_alert_title">ตรวจสอบ</string>
+    <string name="rsb_consent_review_cancel">ยกเลิก</string>
+
+    <string name="rsb_saving_consent">กำลังบันทึกการยินยอม</string>
+    <string name="rsb_please_wait">โปรดรอสักครู่&#8230;</string>
+
+    <!-- Consent form step -->
+
+    <string name="rsb_consent_dob_full">วันเกิด</string>
+
+    <!-- Consent sig step -->
+    <string name="rsb_consent_signature_title">ลายเซ็น</string>
+    <string name="rsb_consent_signature_instruction">โปรดลงชื่อโดยใช้นิ้วมือของคุณที่บรรทัดด้านล่างนี้
+    </string>
+    <string name="rsb_consent_signature_placeholder">เซ็นชื่อตรงนี้</string>
+    <string name="rsb_consent_signature_clear">ล้าง</string>
+
+    <!-- Other -->
+
+    <string name="rsb_done">เสร็จสิ้น</string>
+    <string name="rsb_step_skip">ข้าม</string>
+    <string name="rsb_next">ถัดไป</string>
+    <string name="rsb_name_first">ชื่อ</string>
+    <string name="rsb_name_last">นามสกุล</string>
+    <string name="rsb_disagree">ไม่ยินยอม</string>
+    <string name="rsb_agree">ยินยอม</string>
+    <string name="rsb_cancel">ยกเลิก</string>
+    <string name="rsb_format_step_title">ขั้นตอนที่ %1$s จาก %2$s</string>
+    <string name="rsb_hours">ชั่วโมง</string>
+    <string name="rsb_minutes">นาที</string>
+    <string name="rsb_task_cancel_title">ออกจากกิจกรรม</string>
+    <string name="rsb_task_cancel_text">คุณแน่ใจหรือไม่ว่าต้องการออกจากกิจกรรมนี้และละทิ้งผลลัพธ์?</string>
+    <string name="rsb_task_cancel_positive">ละทิ้งผลลัพธ์</string>
+
+    <!-- Step Errors -->
+    <string name="rsb_error_invalid_signature">ลายเซ็นไม่ถูกต้อง</string>
+    <string name="rsb_invalid_answer_default">คำตอบไม่ถูกต้อง ลองใหม่อีกครั้ง!</string>
+    <string name="rsb_invalid_answer_date_over">คำตอบไม่ถูกต้อง วันที่ต้องเป็นก่อน %1$s</string>
+    <string name="rsb_invalid_answer_date_under">คำตอบไม่ถูกต้อง วันที่ต้องเป็นหลัง %1$s</string>
+    <string name="rsb_invalid_answer_integer_over">คำตอบไม่ถูกต้อง ค่าต้องเป็น %1$s หรือต่ำกว่า</string>
+    <string name="rsb_invalid_answer_integer_under">คำตอบไม่ถูกต้อง ค่าต้องเป็น %1$s หรือสูงกว่า</string>
+    <string name="rsb_invalid_answer_choice">โปรดเลือกค่า!</string>
+    <string name="rsb_invalid_answer_date_none">โปรดเลือกวันที่</string>
+    <string name="rsb_birth_date_too_old">คุณต้องมีอายุไม่เกิน %1$s ปี</string>
+    <string name="rsb_birth_date_too_young">คุณต้องอายุอย่างน้อย %1$s ปี</string>
+
+    <!-- Body Hints -->
+    <string name="rsb_hint_step_body_int">ป้อนหมายเลข %1$d-%2$d</string>
+    <string name="rsb_hint_step_body_dec">ป้อนหมายเลข %1$.2f-%2$.2f</string>
+    <string name="rsb_hint_step_body_int_no_max">ป้อนหมายเลข</string>
+    <string name="rsb_hint_step_body_date">ป้อนวันที่</string>
+    <string name="rsb_hint_step_body_time">ป้อนเวลา</string>
+    <string name="rsb_hint_step_body_datetime">ป้อนวันที่และเวลา</string>
+    <string name="rsb_hint_step_body_text">คำตอบ</string>
+
+    <!-- Graphing -->
+    <string name="rsb_chart_progress_center">%1$s จาก %2$s</string>
+    <string name="rsb_chart_pie_value">%1$s&#65285;</string>
+
+    <!-- AssetVideoView -->
+
+    <!-- Text for error alert when a video container is not valid for progressive download/playback. -->
+    <string name="rsb_error_assetvideoview_invalid_progressive_playback">ไม่สามารถสตรีมวิดีโอนี้ไปยังอุปกรณ์นี้ได้</string>
+    <!-- Text for error alert when a video cannot be played. it can be used by any app. -->
+    <string name="rsb_error_assetvideoview_unknown">ไม่สามารถเล่นวิดีโอนี้ได้</string>
+    <!-- Button to close error alert when a video cannot be played -->
+    <string name="rsb_error_assetvideoview_button">ตกลง</string>
+
+    <!-- Consent -->
+    <string name="rsb_consent_doc_line_printed_name">ชื่อ %1$s (ตัวพิมพ์บรรจง)</string>
+    <string name="rsb_consent_doc_line_signature">ลายเซ็น %1$s</string>
+    <string name="rsb_consent_doc_line_date">วันที่</string>
+    <string name="rsb_consent_role">ผู้เข้าร่วม</string>
+
+    <!-- Edit -->
+    <string name="rsb_consent_review_save">บันทึก</string>
+    <string name="rsb_edit_step_alert_cancel_positive">ใช่ หยุดการแก้ไข</string>
+    <string name="rsb_edit_step_alert_cancel_discard">ไม่ แก้ไขต่อไป</string>
+    <string name="rsb_edit_step_alert_cancel_title">คุณต้องการหยุดแก้ไขหรือไม่?</string>
+    <string name="rsb_edit_step_alert_cancel_content">การเปลี่ยนแปลงทั้งหมดจะถูกละทิ้งและใช้คำตอบเดิมของคุณ</string>
+    <string name="rsb_edit_step_alert_step_save_title">คุณต้องการบันทึกการเปลี่ยนแปลงหรือไม่?</string>
+    <string name="rsb_edit_step_alert_step_save_content">คำตอบอื่นอาจถูกล้างและเราอาจขอให้คุณส่งข้อมูลใหม่</string>
+    <string name="rsb_edit_step_alert_step_save_discard">ไม่ ละทิ้ง</string>
+    <string name="rsb_edit_step_alert_step_save_positive">ใช่ บันทึก</string>
+    <string name="rsb_edit_step_alert_step_skip_title">คุณต้องการข้ามขั้นตอนนี้หรือไม่?</string>
+    <string name="rsb_edit_step_alert_step_skip_content">คำตอบเดิมของคุณจะถูกทิ้ง</string>
+    <string name="rsb_edit_step_alert_step_skip_discard">ไม่ ยังไม่ข้าม</string>
+    <string name="rsb_edit_step_alert_step_skip_positive">ใช่ ข้ามเลย</string>
+    <string name="rsb_edit_step">แก้ไข</string>
+
+    <!-- Material Date Picker Strings -->
+    <string name="mtrl_picker_range_header_title" tools:ignore="ResourceName" tools:override="true">เลือกช่วงวันที่</string>
+    <string name="mtrl_picker_date_header_title" tools:ignore="ResourceName" tools:override="true">เลือกวันที่</string>
+    <string name="mtrl_picker_range_header_unselected" tools:ignore="ResourceName" tools:override="true">วันที่เริ่มต้น – วันที่สิ้นสุด</string>
+    <string name="mtrl_picker_range_header_only_start_selected" tools:ignore="ResourceName" tools:override="true">%1$s – วันที่สิ้นสุด</string>
+    <string name="mtrl_picker_range_header_only_end_selected" tools:ignore="ResourceName" tools:override="true">วันที่เริ่มต้น – %1$s</string>
+    <string name="mtrl_picker_range_header_selected" tools:ignore="ResourceName" tools:override="true">%1$s – %2$s</string>
+    <string name="mtrl_picker_date_header_unselected" tools:ignore="ResourceName" tools:override="true">วันที่ที่เลือก</string>
+    <string name="mtrl_picker_date_header_selected" translatable="false" tools:ignore="ResourceName" tools:override="true">%1$s</string>
+    <string name="mtrl_picker_confirm" translatable="false" tools:ignore="ResourceName" tools:override="true">@android:string/ok</string>
+    <string name="mtrl_picker_text_input_date_hint" tools:ignore="ResourceName" tools:override="true">วันที่</string>
+    <string name="mtrl_picker_text_input_date_range_start_hint" tools:ignore="ResourceName" tools:override="true">วันที่เริ่มต้น</string>
+    <string name="mtrl_picker_text_input_date_range_end_hint" tools:ignore="ResourceName" tools:override="true">วันที่สิ้นสุด</string>
+    <string name="mtrl_picker_save" tools:ignore="ResourceName" tools:override="true">บันทึก</string>
+    <string name="mtrl_picker_invalid_range" tools:ignore="ResourceName" tools:override="true">ช่วงไม่ถูกต้อง</string>
+    <string name="mtrl_picker_out_of_range" tools:ignore="ResourceName" tools:override="true">อยู่นอกช่วง: %1$s</string>
+    <string name="mtrl_picker_invalid_format" tools:ignore="ResourceName" tools:override="true">รูปแบบไม่ถูกต้อง</string>
+    <string name="mtrl_picker_invalid_format_use" tools:ignore="ResourceName" tools:override="true">ใช้: %1$s</string>
+    <string name="mtrl_picker_invalid_format_example" tools:ignore="ResourceName" tools:override="true">ตัวอย่าง: %1$s</string>
+    <string name="mtrl_picker_toggle_to_calendar_input_mode" tools:ignore="ResourceName" tools:override="true">สลับเป็นโหมดป้อนปฏิทิน</string>
+    <string name="mtrl_picker_toggle_to_text_input_mode" tools:ignore="ResourceName" tools:override="true">สลับเป็นโหมดป้อนข้อความ</string>
+    <string name="mtrl_picker_a11y_prev_month" tools:ignore="ResourceName" tools:override="true">เปลี่ยนเป็นเดือนก่อนหน้า</string>
+    <string name="mtrl_picker_a11y_next_month" tools:ignore="ResourceName" tools:override="true">เปลี่ยนเป็นเดือนถัดไป</string>
+    <string name="mtrl_picker_toggle_to_year_selection" tools:ignore="ResourceName" tools:override="true">แตะเพื่อสลับเป็นการเลือกปี</string>
+    <string name="mtrl_picker_toggle_to_day_selection" tools:ignore="ResourceName" tools:override="true">แตะเพื่อสลับเป็นการเลือกวัน</string>
+    <string name="mtrl_picker_day_of_week_column_header" tools:ignore="ResourceName" tools:override="true">คอลัมน์วัน: %1$s</string>
+    <string name="mtrl_picker_announce_current_selection" tools:ignore="ResourceName" tools:override="true">การเลือกปัจจุบัน: %1$s</string>
+    <string name="mtrl_picker_navigate_to_year_description" tools:ignore="ResourceName" tools:override="true">นำทางไปยังปี %1$s</string>
+
+    <!-- Material Time Picker Strings -->
+    <string name="time_picker_hour_label" tools:ignore="ResourceName" tools:override="true">ชั่วโมง</string>
+    <string name="time_picker_minute_label" tools:ignore="ResourceName" tools:override="true">นาที</string>
+    <string name="time_picker_header_text" tools:ignore="ResourceName" tools:override="true">ตั้งเวลา</string>
+    <string name="time_picker_input_error" tools:ignore="ResourceName" tools:override="true">ป้อนเวลาที่ถูกต้อง</string>
+    <string name="time_picker_prompt_label" tools:ignore="ResourceName" tools:override="true">พิมพ์เวลา</string>
+
+
+    <string name="rsb_consent_text_question_error">*ฟิลด์ที่จำเป็น</string>
+
+</resources>
