@@ -1,0 +1,161 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Consent Section -->
+    <string name="rsb_consent">Sutikimas</string>
+    <string name="rsb_consent_section_welcome">Sveiki</string>
+    <string name="rsb_consent_section_data_gathering">Duomenų rinkimas</string>
+    <string name="rsb_consent_section_privacy">Privatumas</string>
+    <string name="rsb_consent_section_data_use">Duomenų naudojimas</string>
+    <string name="rsb_consent_section_time_commitment">Skiriamas laikas</string>
+    <string name="rsb_consent_section_study_survey">Tyrimo apžvalga</string>
+    <string name="rsb_consent_section_study_tasks">Tyrimo užduotys</string>
+    <string name="rsb_consent_section_withdrawing">Pasitraukimas</string>
+
+    <!-- Consent section learn more -->
+    <string name="rsb_consent_section_more_info">Sužinokite daugiau</string>
+    <string name="rsb_consent_section_more_info_data_gathering">Sužinokite daugiau apie duomenų rinkimą
+    </string>
+    <string name="rsb_consent_section_more_info_data_use">Sužinokite daugiau apie duomenų naudojimą</string>
+    <string name="rsb_consent_section_more_info_privacy">Sužinokite daugiau apie savo privatumo ir tapatybės apsaugą
+    </string>
+    <string name="rsb_consent_section_more_info_welcome">Pirma sužinokite daugiau apie tyrimą</string>
+    <string name="rsb_consent_section_more_info_study_survey">Sužinokite daugiau apie tyrimo apžvalgą
+    </string>
+    <string name="rsb_consent_section_more_info_time_commitment">Sužinokite daugiau apie tai, kiek laiko reikės skirti šiam tyrimui
+    </string>
+    <string name="rsb_consent_section_more_info_study_tasks">Sužinokite daugiau apie susijusias užduotis
+    </string>
+    <string name="rsb_consent_section_more_info_withdrawing">Sužinokite daugiau apie pasitraukimą</string>
+
+    <!-- Consent doc step -->
+    <string name="rsb_consent_review_alert_title">Peržiūrėti</string>
+    <string name="rsb_consent_review_cancel">Atšaukti</string>
+
+    <string name="rsb_saving_consent">Išsaugomas sutikimas</string>
+    <string name="rsb_please_wait">Palaukite&#8230;</string>
+
+    <!-- Consent form step -->
+
+    <string name="rsb_consent_dob_full">Gimimo data</string>
+
+    <!-- Consent sig step -->
+    <string name="rsb_consent_signature_title">Parašas</string>
+    <string name="rsb_consent_signature_instruction">Pasirašykite pirštu toliau esančioje eilutėje.
+    </string>
+    <string name="rsb_consent_signature_placeholder">Pasirašyti čia</string>
+    <string name="rsb_consent_signature_clear">Išvalyti</string>
+
+    <!-- Other -->
+
+    <string name="rsb_done">Atlikta</string>
+    <string name="rsb_step_skip">Praleisti</string>
+    <string name="rsb_next">Toliau</string>
+    <string name="rsb_name_first">Vardas</string>
+    <string name="rsb_name_last">Pavardė</string>
+    <string name="rsb_disagree">Nesutinku</string>
+    <string name="rsb_agree">Sutinku</string>
+    <string name="rsb_cancel">Atšaukti</string>
+    <string name="rsb_format_step_title">%1$s veiksmas iš %2$s</string>
+    <string name="rsb_hours">Valandos</string>
+    <string name="rsb_minutes">Minutės</string>
+    <string name="rsb_task_cancel_title">Išeiti iš veiklos</string>
+    <string name="rsb_task_cancel_text">Ar tikrai norite išeiti iš šios veiklos ir panaikinti jos rezultatus?</string>
+    <string name="rsb_task_cancel_positive">Panaikinti rezultatus</string>
+
+    <!-- Step Errors -->
+    <string name="rsb_error_invalid_signature">Netinkamas parašas</string>
+    <string name="rsb_invalid_answer_default">Netinkamas atsakymas. Bandykite dar kartą!</string>
+    <string name="rsb_invalid_answer_date_over">Netinkamas atsakymas. Data turi būti ankstesnė nei %1$s</string>
+    <string name="rsb_invalid_answer_date_under">Netinkamas atsakymas. Data turi būti vėlesnė nei %1$s</string>
+    <string name="rsb_invalid_answer_integer_over">Netinkamas atsakymas. Reikšmė turi būti %1$s arba mažesnė</string>
+    <string name="rsb_invalid_answer_integer_under">Netinkamas atsakymas. Reikšmė turi būti %1$s arba didesnė</string>
+    <string name="rsb_invalid_answer_choice">Pasirinkite reikšmę!</string>
+    <string name="rsb_invalid_answer_date_none">Pasirinkite datą.</string>
+    <string name="rsb_birth_date_too_old">Jūs turite būti %1$s m. arba jaunesni</string>
+    <string name="rsb_birth_date_too_young">Jūs turite būti sulaukę bent %1$s m.</string>
+
+    <!-- Body Hints -->
+    <string name="rsb_hint_step_body_int">Įveskite skaičių %1$d–%2$d</string>
+    <string name="rsb_hint_step_body_dec">Įveskite skaičių %1$.2f–%2$.2f</string>
+    <string name="rsb_hint_step_body_int_no_max">Įveskite skaičių</string>
+    <string name="rsb_hint_step_body_date">Įveskite datą</string>
+    <string name="rsb_hint_step_body_time">Įveskite laiką</string>
+    <string name="rsb_hint_step_body_datetime">Įveskite datą ir laiką</string>
+    <string name="rsb_hint_step_body_text">Atsakymas</string>
+
+    <!-- Graphing -->
+    <string name="rsb_chart_progress_center">%1$s iš %2$s</string>
+    <string name="rsb_chart_pie_value">%1$s &#65285;</string>
+
+    <!-- AssetVideoView -->
+
+    <!-- Text for error alert when a video container is not valid for progressive download/playback. -->
+    <string name="rsb_error_assetvideoview_invalid_progressive_playback">Šio vaizdo įrašo negalima perduoti srautu į šį įrenginį.</string>
+    <!-- Text for error alert when a video cannot be played. it can be used by any app. -->
+    <string name="rsb_error_assetvideoview_unknown">Šio vaizdo įrašo paleisti negalima.</string>
+    <!-- Button to close error alert when a video cannot be played -->
+    <string name="rsb_error_assetvideoview_button">Gerai</string>
+
+    <!-- Consent -->
+    <string name="rsb_consent_doc_line_printed_name">%1$s vardas ir pavardė (spausdintinėmis raidėmis)</string>
+    <string name="rsb_consent_doc_line_signature">%1$s parašas</string>
+    <string name="rsb_consent_doc_line_date">Data</string>
+    <string name="rsb_consent_role">Dalyvis</string>
+
+    <!-- Edit -->
+    <string name="rsb_consent_review_save">Išsaugoti</string>
+    <string name="rsb_edit_step_alert_cancel_positive">TAIP, NEBEDARYTI PAKEITIMŲ</string>
+    <string name="rsb_edit_step_alert_cancel_discard">NE, REDAGUOTI TOLIAU</string>
+    <string name="rsb_edit_step_alert_cancel_title">Ar norite baigti daryti pakeitimus?</string>
+    <string name="rsb_edit_step_alert_cancel_content">Visi pakeitimai bus panaikinti ir bus naudojamas pirminis atsakymas.</string>
+    <string name="rsb_edit_step_alert_step_save_title">Ar norite išsaugoti pakeitimus?</string>
+    <string name="rsb_edit_step_alert_step_save_content">Kiti atsakymai gali būti ištrinti ir jūsų gali būti prašoma pateikti naują informaciją.</string>
+    <string name="rsb_edit_step_alert_step_save_discard">Ne, panaikinti</string>
+    <string name="rsb_edit_step_alert_step_save_positive">Taip, išsaugoti</string>
+    <string name="rsb_edit_step_alert_step_skip_title">Ar norite praleisti šį veiksmą?</string>
+    <string name="rsb_edit_step_alert_step_skip_content">Jūsų pirminis atsakymas bus panaikintas.</string>
+    <string name="rsb_edit_step_alert_step_skip_discard">NE, NEPRALEISTI</string>
+    <string name="rsb_edit_step_alert_step_skip_positive">Taip, praleisti</string>
+    <string name="rsb_edit_step">Redaguoti</string>
+
+    <!-- Material Date Picker Strings -->
+    <string name="mtrl_picker_range_header_title" tools:ignore="ResourceName" tools:override="true">Pasirinkite datos intervalą</string>
+    <string name="mtrl_picker_date_header_title" tools:ignore="ResourceName" tools:override="true">Pasirinkite datą</string>
+    <string name="mtrl_picker_range_header_unselected" tools:ignore="ResourceName" tools:override="true">Pradžios data – pabaigos data</string>
+    <string name="mtrl_picker_range_header_only_start_selected" tools:ignore="ResourceName" tools:override="true">%1$s – pabaigos data</string>
+    <string name="mtrl_picker_range_header_only_end_selected" tools:ignore="ResourceName" tools:override="true">Pradžios data – %1$s</string>
+    <string name="mtrl_picker_range_header_selected" tools:ignore="ResourceName" tools:override="true">%1$s–%2$s</string>
+    <string name="mtrl_picker_date_header_unselected" tools:ignore="ResourceName" tools:override="true">Pasirinkta data</string>
+    <string name="mtrl_picker_date_header_selected" translatable="false" tools:ignore="ResourceName" tools:override="true">%1$s</string>
+    <string name="mtrl_picker_confirm" translatable="false" tools:ignore="ResourceName" tools:override="true">@android:string/ok</string>
+    <string name="mtrl_picker_text_input_date_hint" tools:ignore="ResourceName" tools:override="true">Data</string>
+    <string name="mtrl_picker_text_input_date_range_start_hint" tools:ignore="ResourceName" tools:override="true">Pradžios data</string>
+    <string name="mtrl_picker_text_input_date_range_end_hint" tools:ignore="ResourceName" tools:override="true">Pabaigos data</string>
+    <string name="mtrl_picker_save" tools:ignore="ResourceName" tools:override="true">Išsaugoti</string>
+    <string name="mtrl_picker_invalid_range" tools:ignore="ResourceName" tools:override="true">Netinkamas intervalas.</string>
+    <string name="mtrl_picker_out_of_range" tools:ignore="ResourceName" tools:override="true">Nepatenka į intervalą: %1$s</string>
+    <string name="mtrl_picker_invalid_format" tools:ignore="ResourceName" tools:override="true">Netinkamas formatas.</string>
+    <string name="mtrl_picker_invalid_format_use" tools:ignore="ResourceName" tools:override="true">Naudoti: %1$s</string>
+    <string name="mtrl_picker_invalid_format_example" tools:ignore="ResourceName" tools:override="true">Pavyzdys: %1$s</string>
+    <string name="mtrl_picker_toggle_to_calendar_input_mode" tools:ignore="ResourceName" tools:override="true">Perjungti į kalendoriaus įvesties režimą</string>
+    <string name="mtrl_picker_toggle_to_text_input_mode" tools:ignore="ResourceName" tools:override="true">Perjungti į teksto įvesties režimą</string>
+    <string name="mtrl_picker_a11y_prev_month" tools:ignore="ResourceName" tools:override="true">Pakeisti į ankstesnį mėnesį</string>
+    <string name="mtrl_picker_a11y_next_month" tools:ignore="ResourceName" tools:override="true">Pakeisti į kitą mėnesį</string>
+    <string name="mtrl_picker_toggle_to_year_selection" tools:ignore="ResourceName" tools:override="true">Bakstelėkite, kad pereitumėte prie metų pasirinkimo</string>
+    <string name="mtrl_picker_toggle_to_day_selection" tools:ignore="ResourceName" tools:override="true">Bakstelėkite, kad pereitumėte prie dienos pasirinkimo</string>
+    <string name="mtrl_picker_day_of_week_column_header" tools:ignore="ResourceName" tools:override="true">Dienų stulpelis: %1$s</string>
+    <string name="mtrl_picker_announce_current_selection" tools:ignore="ResourceName" tools:override="true">Dabartinis pasirinkimas: %1$s</string>
+    <string name="mtrl_picker_navigate_to_year_description" tools:ignore="ResourceName" tools:override="true">Eiti į metus: %1$s</string>
+
+    <!-- Material Time Picker Strings -->
+    <string name="time_picker_hour_label" tools:ignore="ResourceName" tools:override="true">val.</string>
+    <string name="time_picker_minute_label" tools:ignore="ResourceName" tools:override="true">min.</string>
+    <string name="time_picker_header_text" tools:ignore="ResourceName" tools:override="true">Nustatyti laiką</string>
+    <string name="time_picker_input_error" tools:ignore="ResourceName" tools:override="true">Įveskite tinkamą laiką</string>
+    <string name="time_picker_prompt_label" tools:ignore="ResourceName" tools:override="true">Įveskite laiką</string>
+
+
+    <string name="rsb_consent_text_question_error">*Būtinas laukas</string>
+
+</resources>
